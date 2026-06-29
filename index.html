@@ -7,7 +7,7 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root { --black: #070707; --white: #f0ece3; --gold: #FFE300; --grey: #111; --mid: #222; --muted: #666; --pad: clamp(2rem, 6vw, 6rem); }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body { background: var(--black); color: var(--white); font-family: 'Georgia', serif; overflow-x: hidden; }
 
 /* FLOATING CTA */
@@ -25,7 +25,7 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 
 .hero-content { position: relative; z-index: 1; }
 .hero-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; display: block; }
-.hero-name { font-size: clamp(2.8rem,6.5vw,7rem); font-weight: 900; line-height: 0.92; text-transform: uppercase; margin-bottom: 2.5rem; }
+.hero-name { font-size: clamp(2rem,8vw,7rem); font-weight: 900; line-height: 0.92; text-transform: uppercase; margin-bottom: 2.5rem; overflow-wrap: break-word; }
 .hero-name .first { display: block; color: var(--white); letter-spacing: -0.02em; }
 .hero-name .last { display: block; color: transparent; -webkit-text-stroke: 1.5px var(--white); letter-spacing: 0.07em; }
 .hero-name .last .hy { display: inline-block; margin: 0 0.05em; -webkit-text-stroke: 1.5px var(--gold); }
@@ -77,7 +77,7 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 .who-item-text { font-size: 0.9rem; line-height: 1.85; color: rgba(240,236,227,0.65); }
 
 /* CASES — Bilder ganz, natürliches Format, Masonry-Anordnung */
-.cases-title { font-size: clamp(2.5rem,5.5vw,6rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.025em; line-height: 0.9; margin-bottom: 1.1rem; }
+.cases-title { font-size: clamp(1.9rem,6vw,6rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.025em; line-height: 0.9; margin-bottom: 1.1rem; }
 .cases-note { font-size: 0.9rem; line-height: 1.6; color: rgba(240,236,227,0.5); font-style: italic; margin-bottom: clamp(2.5rem,5vw,3.5rem); max-width: 46ch; }
 .cases-grid { columns: 2; column-gap: clamp(1rem,2vw,1.5rem); }
 @media(max-width:700px){ .cases-grid { columns: 1; } }
@@ -115,7 +115,7 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 /* SKILLS */
 .skills-section { background: var(--grey); }
 .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3.5rem 5rem; margin-top: 3.5rem; }
-@media(max-width:640px){ .skills-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem 2rem; } }
+@media(max-width:640px){ .skills-grid { grid-template-columns: 1fr; gap: 2.2rem; } }
 .sg-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.6rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.1rem; }
 .sg-list { list-style: none; }
 .sg-list li { font-size: 0.9rem; line-height: 2.1; color: rgba(240,236,227,0.78); display: flex; align-items: center; gap: 0.8rem; }
@@ -125,7 +125,7 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 .contact-section { min-height: 60vh; display: flex; flex-direction: column; justify-content: center; padding: clamp(5rem,10vw,9rem) var(--pad); position: relative; overflow: hidden; }
 .contact-section::before { content: 'JA.'; position: absolute; right: -0.05em; bottom: -0.15em; font-size: clamp(12rem,28vw,34rem); font-weight: 900; color: transparent; -webkit-text-stroke: 1px rgba(255,227,0,0.04); line-height: 1; pointer-events: none; user-select: none; }
 .contact-pre { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem; letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase; margin-bottom: 2.5rem; }
-.contact-hl { font-size: clamp(2.8rem,6.5vw,7.5rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.03em; line-height: 0.92; margin-bottom: 4rem; }
+.contact-hl { font-size: clamp(2rem,8vw,7.5rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.03em; line-height: 0.95; margin-bottom: 4rem; overflow-wrap: break-word; }
 .contact-hl .out { color: transparent; -webkit-text-stroke: 1.5px var(--white); }
 .contact-links { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 4rem; }
 .contact-link { font-size: clamp(1rem,2vw,1.5rem); color: var(--white); text-decoration: none; font-style: italic; display: inline-flex; align-items: center; gap: 1.2rem; transition: color 0.2s; }
@@ -509,7 +509,7 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 <section class="contact-section">
   <p class="contact-pre">05 — Lass uns sprechen</p>
   <h2 class="contact-hl r">
-    Wenn dich<br>das&nbsp;<span class="out">anspricht</span>,<br>meld&nbsp;dich.
+    Wenn dich das <span class="out">anspricht</span>,<br>meld dich.
   </h2>
   <p style="font-size:.9rem;font-style:italic;color:var(--muted);margin-bottom:3rem" class="r d1">Gerne auch handschriftlich.</p>
   <div class="contact-links r d2">
