@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Michaela Al-Badri — Head of Creative</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #080808;
+    --white: #f0ece4;
+    --gold: #c8a96e;
+    --grey: #141414;
+    --mid: #2a2a2a;
+    --muted: #777;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    padding: clamp(2.5rem, 6vw, 6rem);
+    padding-bottom: clamp(3rem, 7vw, 7rem);
+    gap: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  @media (max-width: 700px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-portrait { display: none; }
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    z-index: 1;
+  }
+
+  .hero-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: clamp(0.6rem, 1.1vw, 0.8rem);
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-name {
+    font-size: clamp(3.8rem, 9.5vw, 10.5rem);
+    font-weight: 900;
+    line-height: 0.9;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .hero-name .first {
+    display: block;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+
+  .hero-name .last {
+    display: block;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--white);
+    letter-spacing: 0.06em;
+  }
+
+  /* Hyphen bekommt eigene Klasse mit Luft */
+  .hero-name .last .hyphen {
+    display: inline-block;
+    margin: 0 0.04em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--gold);
+  }
+
+  .hero-roles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.2rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-role {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    position: relative;
+  }
+
+  .hero-role:not(:last-child)::after {
+    content: '·';
+    position: absolute;
+    right: -0.9rem;
+    color: var(--gold);
+  }
+
+  .hero-tagline {
+    font-size: clamp(1.05rem, 2.2vw, 1.75rem);
+    line-height: 1.55;
+    max-width: 32ch;
+    color: rgba(240,236,228,0.82);
+    margin-bottom: 3.5rem;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    padding: 1.05rem 2.8rem;
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    align-self: flex-start;
+  }
+
+  .cta-btn:hover {
+    background: var(--white);
+    transform: translate(-4px, -4px);
+    box-shadow: 6px 6px 0 var(--gold);
+  }
+
+  /* Portrait */
+  .hero-portrait {
+    width: clamp(180px, 20vw, 320px);
+    align-self: end;
+    position: relative;
+  }
+
+  .hero-portrait img {
+    width: 100%;
+    display: block;
+    filter: grayscale(20%) contrast(1.05);
+    object-fit: cover;
+  }
+
+  .hero-portrait::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 60%, var(--black) 100%);
+    z-index: 1;
+  }
+
+  /* Scroll hint */
+  .scroll-hint {
+    position: absolute;
+    bottom: 2.5rem;
+    right: clamp(2.5rem, 6vw, 6rem);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .scroll-hint::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 3rem;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: drip 2s ease-in-out infinite;
+  }
+
+  @keyframes drip {
+    0%, 100% { height: 1.5rem; opacity: 0.4; }
+    50% { height: 3rem; opacity: 1; }
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+    margin: 0 clamp(2.5rem, 6vw, 6rem);
+    opacity: 0.25;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    padding: clamp(4rem, 9vw, 8rem) clamp(2.5rem, 6vw, 6rem);
+  }
+
+  .section-eyebrow {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 3.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .section-eyebrow::after {
+    content: '';
+    width: 3rem;
+    height: 1px;
+    background: rgba(200,169,110,0.4);
+  }
+
+  /* ── WHO ── */
+  .who-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  @media (max-width: 800px) {
+    .who-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+
+  .who-intro {
+    font-size: clamp(1.4rem, 2.8vw, 2.3rem);
+    line-height: 1.45;
+  }
+
+  .who-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding-top: 0.3rem;
+  }
+
+  .who-item {
+    border-left: 1px solid var(--mid);
+    padding-left: 1.8rem;
+  }
+
+  .who-item-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .who-item-text {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: rgba(240,236,228,0.7);
+  }
+
+  /* ── RICK RUBIN BAND ── */
+  .rubin-band {
+    background: var(--grey);
+    padding: clamp(3.5rem, 8vw, 7rem) clamp(2.5rem, 6vw, 6rem);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  @media (max-width: 700px) {
+    .rubin-band { grid-template-columns: 1fr; }
+    .rubin-img { max-width: 160px; }
+  }
+
+  .rubin-quote {
+    font-size: clamp(1.8rem, 4vw, 3.8rem);
+    font-style: italic;
+    line-height: 1.25;
+    font-weight: 300;
+  }
+
+  .rubin-quote strong {
+    font-style: normal;
+    color: var(--gold);
+  }
+
+  .rubin-attr {
+    display: block;
+    margin-top: 1.5rem;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    font-style: normal;
+  }
+
+  .rubin-img {
+    width: clamp(200px, 28vw, 420px);
+    height: clamp(180px, 22vw, 360px);
+    overflow: hidden;
+    flex-shrink: 0;
+    opacity: 0.9;
+  }
+
+  .rubin-img img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center 30%;
+    filter: grayscale(20%) contrast(1.05);
+  }
+
+  /* ── CASES ── */
+  .cases-headline {
+    font-size: clamp(2.5rem, 6vw, 6.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+    line-height: 0.92;
+    margin-bottom: 4rem;
+  }
+
+  .cases-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5px;
+    background: var(--mid);
+  }
+
+  @media (max-width: 640px) {
+    .cases-grid { grid-template-columns: 1fr; }
+  }
+
+  .case-card {
+    background: var(--black);
+    overflow: hidden;
+    position: relative;
+    transition: background 0.3s ease;
+  }
+
+  .case-card:hover { background: #0d0d0d; }
+
+  .case-img {
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .case-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+    filter: grayscale(15%) contrast(1.05);
+  }
+
+  .case-card:hover .case-img img {
+    transform: scale(1.04);
+  }
+
+  .case-body {
+    padding: 2.2rem 2.2rem 2.5rem;
+  }
+
+  .case-num {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    opacity: 0.7;
+  }
+
+  .case-title {
+    font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .case-desc {
+    font-size: 0.88rem;
+    line-height: 1.8;
+    color: rgba(240,236,228,0.62);
+    margin-bottom: 1.5rem;
+  }
+
+  .case-credit {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+    opacity: 0.55;
+  }
+
+  .case-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .case-tag {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(200,169,110,0.3);
+    padding: 0.25rem 0.7rem;
+  }
+
+  /* ── HANDWRITING ── */
+  .hw-band {
+    background: var(--grey);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 4rem;
+    padding: clamp(3rem, 7vw, 6rem) clamp(2.5rem, 6vw, 6rem);
+    overflow: hidden;
+  }
+
+  @media (max-width: 700px) {
+    .hw-band { grid-template-columns: 1fr; }
+    .hw-img { max-width: 200px; }
+  }
+
+  .hw-text {
+    font-size: clamp(1.3rem, 3vw, 2.8rem);
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.4;
+    font-weight: 300;
+  }
+
+  .hw-text .em { color: var(--gold); }
+
+  .hw-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+    border-left: 1px solid var(--mid);
+    padding-left: 4rem;
+    min-width: 180px;
+  }
+
+  @media (max-width: 700px) {
+    .hw-stats { border-left: none; padding-left: 0; flex-direction: row; justify-content: flex-start; }
+  }
+
+  .hw-stat .big {
+    display: block;
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .hw-stat .label {
+    display: block;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 0.5rem;
+  }
+
+  .hw-img {
+    display: none; /* Falls Bild zu unruhig wirkt, optional einblenden */
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3.5rem 5rem;
+    margin-top: 3.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .skills-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem 2rem; }
+  }
+
+  .skill-group-label {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.1rem;
+  }
+
+  .skill-list {
+    list-style: none;
+  }
+
+  .skill-list li {
+    font-size: 0.92rem;
+    line-height: 2.1;
+    color: rgba(240,236,228,0.78);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .skill-list li::before {
+    content: '';
+    width: 3px;
+    height: 3px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .skill-list.dim li {
+    color: rgba(240,236,228,0.78);
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    min-height: 65vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(4rem, 10vw, 9rem) clamp(2.5rem, 6vw, 6rem);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-section::before {
+    content: 'JA';
+    position: absolute;
+    right: -0.05em;
+    bottom: -0.15em;
+    font-size: clamp(12rem, 30vw, 36rem);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(200,169,110,0.05);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .contact-pre {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.35em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-headline {
+    font-size: clamp(2.8rem, 7vw, 8rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    line-height: 0.92;
+    margin-bottom: 4rem;
+  }
+
+  .contact-headline .outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--white);
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 4rem;
+  }
+
+  .contact-link {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: var(--white);
+    text-decoration: none;
+    font-style: italic;
+    transition: color 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .contact-link::before {
+    content: '→';
+    font-style: normal;
+    color: var(--gold);
+    font-size: 0.85em;
+    flex-shrink: 0;
+  }
+
+  .contact-link:hover { color: var(--gold); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--mid);
+    padding: 2rem clamp(2.5rem, 6vw, 6rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  footer span {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── REVEAL ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(1.8rem);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .d1 { transition-delay: 0.1s; }
+  .d2 { transition-delay: 0.2s; }
+  .d3 { transition-delay: 0.3s; }
+  .d4 { transition-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-label">Berlin · Head of Creative · 2026</p>
+    <h1 class="hero-name">
+      <span class="first">Michaela</span>
+      <span class="last">Al<span class="hyphen">-</span>Badri</span>
+    </h1>
+    <div class="hero-roles">
+      <span class="hero-role">Head of Creative</span>
+      <span class="hero-role">Handschriftspezialistin</span>
+      <span class="hero-role">Impulsgeberin</span>
+      <span class="hero-role">Berlinerin</span>
+    </div>
+    <p class="hero-tagline">
+      Ich entwickle kreative Ideen<br>
+      und setze sie um.<br>
+      Vom Konzept bis zum fertigen Film,<br>
+      Logo oder Kampagne.
+    </p>
+    <a href="mailto:michaelalange@mac.com" class="cta-btn">Schreib mir</a>
+  </div>
+  <div class="hero-portrait">
+    <img src="assets/page01_img1.jpg" alt="Michaela Al-Badri">
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WHO -->
+<section class="section">
+  <div class="section-eyebrow">01 — Wer ich bin</div>
+  <div class="who-grid">
+    <div class="who-intro reveal">
+      Vier Jahre Head of Creative.<br>
+      Sechs Jahre Handschrift.<br>
+      Bewegtbild. Logos. Kampagnen,<br>
+      die durch Berlin fahren.<br><br>
+      Ich wusste, was der Kunde wollte,<br>
+      <em style="color:var(--gold)">bevor er es selbst wusste.</em>
+    </div>
+    <div class="who-detail">
+      <div class="who-item reveal d1">
+        <div class="who-item-label">Head of Creative · NUSSBAUM Berlin</div>
+        <div class="who-item-text">Konzept, Brand Design, Logos, Imagefilme — von der Idee bis zum Finalcut. Ich hab das Team zusammengestellt. Die Drohne. Den Master Cutter. Alles. Nicht weil es mein Job war.</div>
+      </div>
+      <div class="who-item reveal d2">
+        <div class="who-item-label">Handschriftspezialistin · Schreibstatt</div>
+        <div class="who-item-text">Sechs Jahre. 25 Seiten täglich. Ich schreibe dynamisch. Jede Unterschrift, ohne zu üben. Für Marken und Konzerne, die wissen, wie Wertschätzung analog funktioniert.</div>
+      </div>
+      <div class="who-item reveal d3">
+        <div class="who-item-label">Nachrichtengrafik · ProSieben / Sat.1</div>
+        <div class="who-item-text">Hintergrundgrafik für kabel eins, Sat.1 und ProSieben. Markenidentität und Bewegtbild — seit den Anfängen des Digitalen.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RICK RUBIN -->
+<div class="rubin-band">
+  <div>
+    <p class="rubin-quote reveal">
+      „<strong>What matters</strong> is the work,<br>
+      not the method."
+      <span class="rubin-attr">— Rick Rubin</span>
+    </p>
+  </div>
+  <div class="rubin-img reveal d2">
+    <img src="assets/rubin-quote.jpg" alt="Michaela Al-Badri · Handschrift bei Dior">
+  </div>
+</div>
+
+<!-- CASES -->
+<section class="section">
+  <div class="section-eyebrow">02 — Ausgewählte Arbeiten</div>
+  <h2 class="cases-headline reveal">Was<br>entsteht,<br>bleibt.</h2>
+
+  <div class="cases-grid">
+
+    <!-- Samsys -->
+    <div class="case-card reveal">
+      <div class="case-img">
+        <img src="assets/page12_img1.jpg" alt="SAMSYS Messe">
+      </div>
+      <div class="case-body">
+        <div class="case-num">Case 01 · Messe</div>
+        <h3 class="case-title">SAMSYS.<br>Der Roboter und die Chili.</h3>
+        <p class="case-desc">Vier Stunden von der Anfrage bis zur Kundenfreigabe. Ein Hochpräzisions-Robotersystem, inszeniert mit einer Chili. Genau der Mut, der diesen Messeauftritt unvergesslich macht.</p>
+        <p class="case-credit">Entstanden als Head of Creative · NUSSBAUM Marketing Berlin</p>
+        <div class="case-tags">
+          <span class="case-tag">Konzept</span>
+          <span class="case-tag">Messedesign</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Capital Baustoffe -->
+    <div class="case-card reveal d1">
+      <div class="case-img">
+        <img src="assets/page13_img1.jpg" alt="Capital Baustoffe Kampagne">
+      </div>
+      <div class="case-body">
+        <div class="case-num">Case 02 · Kampagne</div>
+        <h3 class="case-title">Capital Baustoffe.<br>Durch ganz Berlin.</h3>
+        <p class="case-desc">Unverwechselbare Tier-Bildsprache, die seit über einem Jahr durch Berlin fährt. Vom LKW über Merch bis zu zwei Imagefilmen — konsequent durchgezogen.</p>
+        <p class="case-credit">Entstanden als Head of Creative · NUSSBAUM Marketing Berlin</p>
+        <div class="case-tags">
+          <span class="case-tag">Kampagne</span>
+          <span class="case-tag">Film</span>
+          <span class="case-tag">Out-of-Home</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MBST -->
+    <div class="case-card reveal d2">
+      <div class="case-img">
+        <img src="assets/page14_img1.jpg" alt="MBST Corporate Identity">
+      </div>
+      <div class="case-body">
+        <div class="case-num">Case 03 · Brand Design & Social Media</div>
+        <h3 class="case-title">MBST®.<br>National. International.</h3>
+        <p class="case-desc">Die gesamte Corporate Identity neu aufgebaut. Eine konsistente visuelle Basis — national wie international. Inkl. Social-Media-Auftritt von Grund auf entwickelt.</p>
+        <p class="case-credit">Entstanden als Head of Creative · NUSSBAUM Marketing Berlin</p>
+        <div class="case-tags">
+          <span class="case-tag">Brand Design</span>
+          <span class="case-tag">Social Media</span>
+          <span class="case-tag">CI</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dr. Brunk -->
+    <div class="case-card reveal d3">
+      <div class="case-img">
+        <img src="assets/page15_img1.jpg" alt="Dr. Brunk Logo">
+      </div>
+      <div class="case-body">
+        <div class="case-num">Case 04 · Logo</div>
+        <h3 class="case-title">Dr. Brunk.<br>Zwei in einer Linie.</h3>
+        <p class="case-desc">Gastroenterologie. Der Äskulapstab trifft den Darm — zwei ikonische Formen, verdichtet zu einer einzigen Linie. Wer hinschaut, erkennt beides. Wer nicht hinschaut, spürt, dass es stimmt.</p>
+        <p class="case-credit">Entstanden als Head of Creative · NUSSBAUM Marketing Berlin</p>
+        <div class="case-tags">
+          <span class="case-tag">Logo</span>
+          <span class="case-tag">Medizin</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- HANDSCHRIFT -->
+<div class="hw-band">
+  <div>
+    <p class="hw-text reveal">
+      „Ich schreibe dynamisch.<br>
+      Jede Unterschrift,<br>
+      <span class="em">ohne zu üben.</span><br>
+      Das ist ein Spleen von mir —<br>
+      und ein Alleinstellungsmerkmal."
+    </p>
+  </div>
+  <div class="hw-stats reveal d2">
+    <div class="hw-stat">
+      <span class="big">6</span>
+      <span class="label">Jahre Handschrift</span>
+    </div>
+    <div class="hw-stat">
+      <span class="big">25</span>
+      <span class="label">Seiten täglich</span>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section class="section">
+  <div class="section-eyebrow">03 — Was ich mitbringe</div>
+  <div class="skills-grid">
+    <div class="reveal">
+      <div class="skill-group-label">Design & Bild</div>
+      <ul class="skill-list">
+        <li>Adobe Photoshop</li>
+        <li>Adobe Illustrator</li>
+        <li>Canva</li>
+        <li>Druckvorstufe</li>
+      </ul>
+    </div>
+    <div class="reveal d1">
+      <div class="skill-group-label">Bewegtbild & Motion</div>
+      <ul class="skill-list">
+        <li>Motion Design</li>
+        <li>Imagefilm — Konzept bis Cut</li>
+        <li>Nachrichtengrafik</li>
+      </ul>
+    </div>
+    <div class="reveal d2">
+      <div class="skill-group-label">Brand & Kampagne</div>
+      <ul class="skill-list">
+        <li>Brand Design</li>
+        <li>Corporate Design</li>
+        <li>Kampagnenentwicklung</li>
+        <li>Social Media</li>
+        <li>KI-gestützte Contenterstellung</li>
+      </ul>
+    </div>
+    <div class="reveal d1">
+      <div class="skill-group-label">Handschrift</div>
+      <ul class="skill-list">
+        <li>Dynamisches Schreiben für Marken</li>
+        <li>Jede Unterschrift, ohne zu üben</li>
+        <li>Live-Auftritt bei Events</li>
+        <li>Großauflagen-Schriftprojekte</li>
+      </ul>
+    </div>
+    <div class="reveal d2">
+      <div class="skill-group-label">Sprachen</div>
+      <ul class="skill-list">
+        <li>Deutsch (Muttersprache)</li>
+        <li>Englisch</li>
+        <li>Schwedisch</li>
+        <li>Mazedonisch</li>
+      </ul>
+    </div>
+    <div class="reveal d3">
+      <div class="skill-group-label">Ich bin nicht</div>
+      <ul class="skill-list dim">
+        <li>Excel</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section">
+  <p class="contact-pre">04 — Lass uns sprechen</p>
+  <h2 class="contact-headline reveal">
+    Wenn dich<br>
+    das&nbsp;<span class="outline">anspricht</span>,<br>
+    meld&nbsp;dich.
+  </h2>
+  <p style="font-size:0.9rem; font-style:italic; color:var(--muted); margin-bottom:2.5rem;" class="reveal d1">
+    Gerne auch handschriftlich.
+  </p>
+  <div class="contact-links reveal d2">
+    <a href="mailto:michaelalange@mac.com" class="contact-link">michaelalange@mac.com</a>
+    <a href="tel:+4916090434343" class="contact-link">+49 160 90 43 43 43</a>
+  </div>
+  <a href="mailto:michaelalange@mac.com" class="cta-btn reveal d3">Jetzt schreiben</a>
+</section>
+
+<footer>
+  <span>Michaela Al-Badri · Head of Creative · Berlin</span>
+  <span>© 2026</span>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
