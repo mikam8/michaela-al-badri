@@ -39,17 +39,23 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 
 
 
-/* STATS BAND */
-.stats-band { background: var(--grey); padding: clamp(3.5rem,7vw,6rem) var(--pad); }
-.stats-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; }
-@media(max-width:700px){ .stats-grid { grid-template-columns: repeat(2,1fr); } }
-.stat-item { padding: 0 2rem 0 2rem; border-left: 1px solid rgba(200,169,110,0.15); }
-.stat-item:first-child { padding-left: 0; border-left: none; }
-@media(max-width:700px){ .stat-item:nth-child(2) { border-left: 1px solid rgba(200,169,110,0.15); } .stat-item:nth-child(3) { border-left: none; padding-left: 0; margin-top: 2.5rem; } .stat-item:nth-child(4) { margin-top: 2.5rem; } }
-.stat-num { font-size: clamp(3rem,5.5vw,5.5rem); font-weight: 900; color: var(--gold); line-height: 1; letter-spacing: -0.03em; display: block; }
-.stat-unit { font-size: 0.55em; font-weight: 400; opacity: 0.75; }
-.stat-title { font-size: clamp(0.75rem,1.2vw,0.95rem); font-weight: 700; color: var(--white); margin: 0.8rem 0 0.5rem; display: block; }
-.stat-text { font-size: 0.8rem; line-height: 1.65; color: rgba(240,236,227,0.5); font-style: italic; }
+/* MARQUEE */
+.marquee-band { background: var(--gold); overflow: hidden; padding: 0.9rem 0; white-space: nowrap; }
+.marquee-inner { display: inline-flex; animation: marquee 26s linear infinite; }
+.marquee-inner:hover { animation-play-state: paused; }
+.marquee-item { padding: 0 2.5rem; font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--black); }
+.marquee-sep { color: rgba(0,0,0,0.35); padding: 0; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ANTI-STATS */
+.anti-stats { background: var(--grey); padding: clamp(3rem,6vw,5rem) var(--pad); }
+.anti-stat { display: flex; align-items: baseline; gap: clamp(1.5rem,4vw,4rem); padding: clamp(1.5rem,3vw,2.2rem) 0; border-bottom: 1px solid rgba(200,169,110,0.1); }
+.anti-stat:first-child { border-top: 1px solid rgba(200,169,110,0.1); }
+.anti-stat-num { font-size: clamp(1.8rem,3.5vw,3.5rem); font-weight: 900; color: var(--gold); line-height: 1; min-width: clamp(4rem,8vw,8rem); text-align: right; flex-shrink: 0; letter-spacing: -0.04em; }
+.anti-stat-num .x { font-size: 0.45em; font-weight: 400; opacity: 0.7; }
+.anti-stat-main { font-size: clamp(1rem,1.8vw,1.5rem); font-weight: 700; line-height: 1.3; color: var(--white); }
+.anti-stat-sub { font-size: 0.82rem; color: rgba(240,236,227,0.45); font-style: italic; margin-top: 0.35rem; line-height: 1.65; }
+@media(max-width:600px){ .anti-stat { flex-direction: column; gap: 0.5rem; } .anti-stat-num { text-align: left; min-width: auto; } }
 
 /* DIVIDER */
 .div { height: 1px; background: linear-gradient(90deg,var(--gold),transparent); margin: 0 var(--pad); opacity: 0.2; }
@@ -72,11 +78,17 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 /* CASES */
 .cases-title { font-size: clamp(2.5rem,5.5vw,6rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.025em; line-height: 0.9; margin-bottom: 4rem; }
 .cases-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5px; background: var(--mid); }
-@media(max-width:640px){ .cases-grid { grid-template-columns: 1fr; } }
+.cases-grid .case-card.wide { grid-column: span 2; }
+@media(max-width:640px){ .cases-grid { grid-template-columns: 1fr; } .cases-grid .case-card.wide { grid-column: span 1; } }
 .case-card { background: var(--black); overflow: hidden; }
 .case-img { width: 100%; height: 260px; overflow: hidden; }
 .case-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
 .case-card:hover .case-img img { transform: scale(1.04); }
+.case-img-strip { display: grid; gap: 1.5px; background: var(--mid); }
+.case-img-strip.cols2 { grid-template-columns: 1fr 1fr; }
+.case-img-strip.cols3 { grid-template-columns: 1fr 1fr 1fr; }
+.case-img-strip img { width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.6s ease; }
+.case-img-strip img:hover { transform: scale(1.03); }
 .case-body { padding: 2.2rem 2.4rem 2.8rem; }
 .case-num { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.58rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; opacity: 0.65; }
 .case-title { font-size: clamp(1.2rem,2vw,1.7rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.01em; }
@@ -182,28 +194,56 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats-band">
-  <div class="stats-grid">
-    <div class="stat-item r">
-      <span class="stat-num">4</span>
-      <span class="stat-title">Jahre Head of Creative</span>
-      <span class="stat-text">Kein Mittelsmann. Vom Briefing direkt zum Ergebnis.</span>
+<!-- MARQUEE -->
+<div class="marquee-band">
+  <div class="marquee-inner">
+    <span class="marquee-item">Head of Creative</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Handschrift</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Berlin</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Kampagne</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Imagefilm</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Brand Design</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Social Media</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Impulsgeberin</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Head of Creative</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Handschrift</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Berlin</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Kampagne</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Imagefilm</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Brand Design</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Social Media</span><span class="marquee-sep">·</span>
+    <span class="marquee-item">Impulsgeberin</span><span class="marquee-sep">·</span>
+  </div>
+</div>
+
+<!-- ANTI-STATS -->
+<div class="anti-stats">
+  <div class="anti-stat r">
+    <span class="anti-stat-num">53</span>
+    <div>
+      <span class="anti-stat-main">Meine Ideen wissen das nicht.</span>
+      <p class="anti-stat-sub">Ich wäre gerne die Jüngste im Raum. Bin ich selten. Macht nichts.</p>
     </div>
-    <div class="stat-item r d1">
-      <span class="stat-num">1</span>
-      <span class="stat-title">Imagefilm. Allein gesteuert.</span>
-      <span class="stat-text">Idee. Team. Drohne. Master Cutterin. Finalcut. Fertig.</span>
+  </div>
+  <div class="anti-stat r d1">
+    <span class="anti-stat-num">93.000<span class="x"> ×</span></span>
+    <div>
+      <span class="anti-stat-main">„Sehr geehrte Damen und Herren" — nie von mir.</span>
+      <p class="anti-stat-sub">Meine Texte klingen nach Mensch. Das war schon immer so.</p>
     </div>
-    <div class="stat-item r d2">
-      <span class="stat-num">12<span class="stat-unit">+</span></span>
-      <span class="stat-title">Monate durch Berlin</span>
-      <span class="stat-text">Der Gorilla fährt noch immer. Die Kampagne auch.</span>
+  </div>
+  <div class="anti-stat r d2">
+    <span class="anti-stat-num">25</span>
+    <div>
+      <span class="anti-stat-main">Seiten täglich. Seit 6 Jahren.</span>
+      <p class="anti-stat-sub">Handschrift ist kein Hobby. Das ist Haltung. Ich kann jede Unterschrift.</p>
     </div>
-    <div class="stat-item r d3">
-      <span class="stat-num">6</span>
-      <span class="stat-title">Jahre Handschrift</span>
-      <span class="stat-text">Ich kann jede Unterschrift. Das ist kein Satz. Das ist Fakt.</span>
+  </div>
+  <div class="anti-stat r d3">
+    <span class="anti-stat-num">1</span>
+    <div>
+      <span class="anti-stat-main">Gorilla. Fährt noch immer durch Berlin.</span>
+      <p class="anti-stat-sub">12 Monate Kampagnenlaufzeit. Wer die Idee hat, muss sie nicht erklären.</p>
     </div>
   </div>
 </div>
@@ -276,19 +316,26 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
   <h2 class="cases-title r">Was entsteht, bleibt.</h2>
   <div class="cases-grid">
 
-    <div class="case-card r">
-      <div class="case-img"><img src="assets/samsys.jpg" alt="SAMSYS"></div>
+    <div class="case-card wide r">
+      <div class="case-img-strip cols2">
+        <img src="assets/samsys.jpg" alt="SAMSYS Roboter Chili">
+        <img src="assets/samsys2.jpg" alt="SAMSYS Messeauftritt">
+      </div>
       <div class="case-body">
         <div class="case-num">Case 01 · Messe</div>
         <h3 class="case-title">SAMSYS. Der Roboter und die Chili.</h3>
-        <p class="case-desc">4 Stunden von der Anfrage bis zur Kundenfreigabe. Ein Hochpräzisions-Robotersystem, inszeniert mit einer Chili. Genau der Mut, der diesen Auftritt unvergesslich macht.</p>
+        <p class="case-desc">Ein Hochpräzisions-Robotersystem, inszeniert mit einer Chili. Schnell, mutig, einprägsam — genau der Mut, der diesen Auftritt unvergesslich macht.</p>
         <p class="case-credit">Head of Creative · NUSSBAUM Marketing Berlin</p>
         <div class="case-tags"><span class="case-tag">Konzept</span><span class="case-tag">Messedesign</span></div>
       </div>
     </div>
 
-    <div class="case-card r d1">
-      <div class="case-img"><img src="assets/capital-full.jpg" alt="Capital Baustoffe" style="object-position:center 55%"></div>
+    <div class="case-card wide r d1">
+      <div class="case-img-strip cols3">
+        <img src="assets/capital-truck.jpg" alt="Capital Baustoffe LKW Berlin">
+        <img src="assets/capital-full.jpg" alt="Capital Baustoffe Kampagne" style="object-position:center 55%">
+        <img src="assets/capital20.jpg" alt="Capital Baustoffe Kampagnenbild">
+      </div>
       <div class="case-body">
         <div class="case-num">Case 02 · Kampagne</div>
         <h3 class="case-title">Capital Baustoffe. Durch ganz Berlin.</h3>
