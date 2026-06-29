@@ -78,19 +78,18 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 
 /* CASES */
 .cases-title { font-size: clamp(2.5rem,5.5vw,6rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.025em; line-height: 0.9; margin-bottom: 4rem; }
-.cases-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5px; background: var(--mid); }
-.cases-grid .case-card.wide { grid-column: span 2; }
-@media(max-width:640px){ .cases-grid { grid-template-columns: 1fr; } .cases-grid .case-card.wide { grid-column: span 1; } }
-.case-card { background: var(--black); overflow: hidden; }
-.case-img { width: 100%; height: 260px; overflow: hidden; }
-.case-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
-.case-card:hover .case-img img { transform: scale(1.04); }
-.case-img-strip { display: grid; gap: 1.5px; background: var(--mid); }
-.case-img-strip.cols2 { grid-template-columns: 1fr 1fr; }
-.case-img-strip.cols3 { grid-template-columns: 1fr 1fr 1fr; }
-.case-img-strip img { width: 100%; height: 200px; object-fit: cover; display: block; transition: transform 0.6s ease; }
-.case-img-strip img:hover { transform: scale(1.03); }
-.case-body { padding: 2.2rem 2.4rem 2.8rem; }
+.cases-grid { display: flex; flex-direction: column; gap: clamp(2.5rem,5vw,4.5rem); }
+.case-card { background: transparent; }
+/* Medien: ganze Arbeit sichtbar, sauber gerahmt, kein Beschnitt */
+.case-media { display: grid; gap: 1px; background: var(--mid); border: 1px solid rgba(200,169,110,0.14); }
+.case-media.one { grid-template-columns: 1fr; }
+.case-media.two { grid-template-columns: 1fr 1fr; }
+.case-media.three { grid-template-columns: repeat(3,1fr); }
+@media(max-width:760px){ .case-media.two, .case-media.three { grid-template-columns: 1fr; } }
+.case-media figure { background: #0d0d0d; display: flex; align-items: center; justify-content: center; padding: clamp(1rem,2.5vw,2rem); min-height: clamp(220px,30vw,380px); overflow: hidden; }
+.case-media img { max-width: 100%; max-height: clamp(220px,32vw,420px); width: auto; height: auto; object-fit: contain; display: block; transition: transform 0.5s ease; }
+.case-media figure:hover img { transform: scale(1.03); }
+.case-body { padding: 1.8rem 0 0; max-width: 60ch; }
 .case-num { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.58rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; opacity: 0.65; }
 .case-title { font-size: clamp(1.2rem,2vw,1.7rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.01em; }
 .case-desc { font-size: 0.87rem; line-height: 1.85; color: rgba(240,236,227,0.6); margin-bottom: 1.4rem; }
@@ -318,10 +317,10 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
   <h2 class="cases-title r">Was entsteht, bleibt.</h2>
   <div class="cases-grid">
 
-    <div class="case-card wide r">
-      <div class="case-img-strip cols2">
-        <img src="assets/samsys.jpg" alt="SAMSYS Roboter Chili">
-        <img src="assets/samsys2.jpg" alt="SAMSYS Messeauftritt">
+    <div class="case-card r">
+      <div class="case-media two">
+        <figure><img src="assets/samsys.jpg" alt="SAMSYS Roboter Chili"></figure>
+        <figure><img src="assets/samsys2.jpg" alt="SAMSYS Messeauftritt"></figure>
       </div>
       <div class="case-body">
         <div class="case-num">Case 01 · Messe</div>
@@ -332,11 +331,11 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
       </div>
     </div>
 
-    <div class="case-card wide r d1">
-      <div class="case-img-strip cols3">
-        <img src="assets/capital-truck.jpg" alt="Capital Baustoffe LKW Berlin">
-        <img src="assets/capital-full.jpg" alt="Capital Baustoffe Kampagne" style="object-position:center 55%">
-        <img src="assets/capital20.jpg" alt="Capital Baustoffe Kampagnenbild">
+    <div class="case-card r d1">
+      <div class="case-media three">
+        <figure><img src="assets/capital-truck.jpg" alt="Capital Baustoffe LKW Berlin"></figure>
+        <figure><img src="assets/capital-full.jpg" alt="Capital Baustoffe Kampagne"></figure>
+        <figure><img src="assets/capital20.jpg" alt="Capital Baustoffe Kampagnenbild"></figure>
       </div>
       <div class="case-body">
         <div class="case-num">Case 02 · Kampagne</div>
@@ -348,7 +347,9 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
     </div>
 
     <div class="case-card r d2">
-      <div class="case-img"><img src="assets/mbst.jpg" alt="MBST"></div>
+      <div class="case-media one">
+        <figure><img src="assets/mbst.jpg" alt="MBST Corporate Identity"></figure>
+      </div>
       <div class="case-body">
         <div class="case-num">Case 03 · Brand Design & Social Media</div>
         <h3 class="case-title">MBST®. National. International.</h3>
@@ -359,7 +360,9 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
     </div>
 
     <div class="case-card r d3">
-      <div class="case-img"><img src="assets/brunk.jpg" alt="Dr. Brunk"></div>
+      <div class="case-media one">
+        <figure><img src="assets/brunk.jpg" alt="Dr. Brunk Logo"></figure>
+      </div>
       <div class="case-body">
         <div class="case-num">Case 04 · Logo</div>
         <h3 class="case-title">Dr. Brunk. Zwei in einer Linie.</h3>
