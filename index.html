@@ -49,6 +49,7 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 
 /* ANTI-STATS */
 .anti-stats { background: var(--grey); padding: clamp(3rem,6vw,5rem) var(--pad); }
+.anti-stat-intro { font-family:'Helvetica Neue',Arial,sans-serif; font-size: clamp(0.7rem,1.1vw,0.85rem); letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: clamp(2rem,4vw,3rem); }
 .anti-stat { display: flex; align-items: baseline; gap: clamp(1.5rem,4vw,4rem); padding: clamp(1.5rem,3vw,2.2rem) 0; border-bottom: 1px solid rgba(200,169,110,0.1); }
 .anti-stat:first-child { border-top: 1px solid rgba(200,169,110,0.1); }
 .anti-stat-num { font-size: clamp(1.8rem,3.5vw,3.5rem); font-weight: 900; color: var(--gold); line-height: 1; min-width: clamp(4rem,8vw,8rem); text-align: right; flex-shrink: 0; letter-spacing: -0.04em; }
@@ -218,32 +219,33 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 
 <!-- ANTI-STATS -->
 <div class="anti-stats">
+  <div class="anti-stat-intro r">Was du wirklich wissen willst, bevor du mich buchst:</div>
   <div class="anti-stat r">
-    <span class="anti-stat-num">53</span>
+    <span class="anti-stat-num"><span class="count" data-to="1">1</span></span>
     <div>
-      <span class="anti-stat-main">Meine Ideen wissen das nicht.</span>
-      <p class="anti-stat-sub">Ich wäre gerne die Jüngste im Raum. Bin ich selten. Macht nichts.</p>
+      <span class="anti-stat-main">Person. Nicht fünf.</span>
+      <p class="anti-stat-sub">Konzept, Logo, Kampagne, Imagefilm — von der Idee bis zum Finalcut. Aus einer Hand. Wo andere ein ganzes Team auffahren, sitzt bei mir alles an einem Tisch.</p>
     </div>
   </div>
   <div class="anti-stat r d1">
-    <span class="anti-stat-num">93.000<span class="x"> ×</span></span>
+    <span class="anti-stat-num"><span class="count" data-to="3">3</span></span>
     <div>
-      <span class="anti-stat-main">„Sehr geehrte Damen und Herren" — nie von mir.</span>
-      <p class="anti-stat-sub">Meine Texte klingen nach Mensch. Das war schon immer so.</p>
+      <span class="anti-stat-main">Sender. Unter Sendedruck gelernt.</span>
+      <p class="anti-stat-sub">ProSieben, Sat.1, kabel eins. Wer Nachrichtengrafik in Echtzeit baut, kennt keine Schnappatmung bei deiner Deadline. Tempo ist bei mir kein Versprechen — es ist Gewohnheit.</p>
     </div>
   </div>
   <div class="anti-stat r d2">
-    <span class="anti-stat-num">25</span>
+    <span class="anti-stat-num"><span class="count" data-to="0">0</span></span>
     <div>
-      <span class="anti-stat-main">Seiten täglich. Seit 6 Jahren.</span>
-      <p class="anti-stat-sub">Handschrift ist kein Hobby. Das ist Haltung. Ich kann jede Unterschrift.</p>
+      <span class="anti-stat-main">Ausreden. Was ich nicht anfasse, sage ich vorher.</span>
+      <p class="anti-stat-sub">Excel? Never ever. Dafür kann ich alles andere wirklich — nicht so halb. Diese Ehrlichkeit spart uns beiden Zeit, Geld und Enttäuschung.</p>
     </div>
   </div>
   <div class="anti-stat r d3">
-    <span class="anti-stat-num">1</span>
+    <span class="anti-stat-num"><span class="count" data-to="53">53</span></span>
     <div>
-      <span class="anti-stat-main">Gorilla. Fährt noch immer durch Berlin.</span>
-      <p class="anti-stat-sub">12 Monate Kampagnenlaufzeit. Wer die Idee hat, muss sie nicht erklären.</p>
+      <span class="anti-stat-main">Jahre. Meine Ideen wissen das nicht.</span>
+      <p class="anti-stat-sub">Und sie arbeiten längst mit KI. Erfahrung aus zwanzig Jahren, dazu die Werkzeuge von heute — die Kombi bekommst du selten in einer Person.</p>
     </div>
   </div>
 </div>
@@ -281,9 +283,9 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 <div class="value-band r">
   <p class="value-prop">
     <em>Wer mich bucht, bekommt keine Konzeptmappe.</em>
-    <span class="break">Der bekommt jemanden,</span>
-    <span class="break">der um 9 Uhr den Auftrag hat —</span>
-    <span class="break">und um 13 Uhr die Freigabe.</span>
+    <span class="break">Der bekommt jemanden, der die Idee</span>
+    <span class="break">schon im Kopf hat, während andere</span>
+    <span class="break">noch das Briefing sortieren.</span>
   </p>
 </div>
 
@@ -469,6 +471,32 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 <script>
 const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('on'); }), {threshold:0.06});
 document.querySelectorAll('.r').forEach(el => obs.observe(el));
+
+// Count-up für die Zahlen
+const countObs = new IntersectionObserver((entries, o) => {
+  entries.forEach(x => {
+    if (!x.isIntersecting) return;
+    const el = x.target, to = +el.dataset.to, dur = 900, t0 = performance.now();
+    const tick = now => {
+      const p = Math.min((now - t0) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(eased * to);
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    o.unobserve(el);
+  });
+}, {threshold: 0.6});
+document.querySelectorAll('.count').forEach(el => countObs.observe(el));
+
+// Dezenter Parallax fürs Hero-Portrait
+const portrait = document.querySelector('.hero-bg-portraits img');
+if (portrait && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  addEventListener('scroll', () => {
+    const y = scrollY;
+    if (y < window.innerHeight) portrait.style.transform = 'rotate(1deg) translateX(2%) translateY(' + (y * 0.08) + 'px)';
+  }, {passive: true});
+}
 </script>
 </body>
 </html>
