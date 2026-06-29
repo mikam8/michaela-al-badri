@@ -130,6 +130,25 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 .r { opacity: 0; transform: translateY(1.5rem); transition: opacity 0.7s ease, transform 0.7s ease; }
 .r.on { opacity: 1; transform: translateY(0); }
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* VALUE PROP BAND */
+.value-band { background: var(--gold); padding: clamp(3rem,7vw,6rem) var(--pad); }
+.value-prop { font-size: clamp(1.4rem,3vw,2.8rem); font-weight: 900; line-height: 1.3; color: var(--black); max-width: 24ch; }
+.value-prop em { font-style: italic; font-weight: 400; }
+.value-prop .break { display: block; }
+
+/* TV SECTION */
+.tv-section { padding: clamp(4rem,8vw,7rem) var(--pad); }
+.tv-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: center; }
+@media(max-width:800px){ .tv-grid { grid-template-columns: 1fr; gap: 3rem; } }
+.tv-logos { display: flex; flex-direction: column; gap: 0.6rem; }
+.tv-logo { font-family:'Helvetica Neue',Arial,sans-serif; font-size: clamp(1.8rem,4vw,4rem); font-weight: 900; letter-spacing: -0.02em; line-height: 1.1; color: transparent; -webkit-text-stroke: 1px rgba(240,236,227,0.2); transition: -webkit-text-stroke-color 0.4s; }
+.tv-logo:hover { -webkit-text-stroke-color: var(--gold); }
+.tv-logo.active { color: var(--white); -webkit-text-stroke: none; }
+.tv-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.62rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1.5rem; }
+.tv-text { font-size: clamp(1rem,2vw,1.5rem); line-height: 1.6; }
+.tv-text .em { color: var(--gold); font-style: italic; }
+.tv-sub { font-size: 0.88rem; line-height: 1.85; color: rgba(240,236,227,0.6); margin-top: 1.5rem; }
 </style>
 </head>
 <body>
@@ -214,10 +233,39 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
         <div class="who-item-label">Handschriftspezialistin · Schreibstatt</div>
         <div class="who-item-text">25 Seiten täglich. Ich kann jede Unterschrift. Für Marken und Konzerne, die wissen wie Wertschätzung analog funktioniert.</div>
       </div>
-      <div class="who-item r d3">
-        <div class="who-item-label">Nachrichtengrafik · ProSieben / Sat.1</div>
-        <div class="who-item-text">Hintergrundgrafik für kabel eins, Sat.1 und ProSieben. Markenidentität und Bewegtbild seit den Anfängen des Digitalen.</div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- VALUE PROPOSITION -->
+<div class="value-band r">
+  <p class="value-prop">
+    <em>Wer mich bucht, bekommt keine Konzeptmappe.</em>
+    <span class="break">Der bekommt jemanden,</span>
+    <span class="break">der um 9 Uhr den Auftrag hat —</span>
+    <span class="break">und um 13 Uhr die Freigabe.</span>
+  </p>
+</div>
+
+<!-- PRO7 / TV -->
+<section class="tv-section">
+  <div class="tv-grid">
+    <div class="r">
+      <div class="tv-label">Medien-DNA</div>
+      <div class="tv-logos">
+        <span class="tv-logo active">PRO7.</span>
+        <span class="tv-logo">SAT.1.</span>
+        <span class="tv-logo">KABEL EINS.</span>
       </div>
+    </div>
+    <div class="r d1">
+      <p class="tv-text">
+        Hintergrundgrafik für drei TV-Sender.<br>
+        <span class="em">Tempo, Präzision, Bildsprache<br>unter Nachrichtendruck.</span>
+      </p>
+      <p class="tv-sub">Wer gelernt hat, für Millionen Menschen im Sekundentakt zu gestalten — Nachrichten, die in Echtzeit passieren, Bilder, die sofort sitzen müssen — macht danach keine mittelmäßige Markenarbeit mehr. Diese Schule steckt in jedem Logo, jeder Kampagne, jedem Film, den ich seitdem gemacht habe.</p>
     </div>
   </div>
 </section>
