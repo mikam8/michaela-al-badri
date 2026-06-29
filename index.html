@@ -76,26 +76,23 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 .who-item-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.6rem; letter-spacing: 0.28em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.7rem; }
 .who-item-text { font-size: 0.9rem; line-height: 1.85; color: rgba(240,236,227,0.65); }
 
-/* CASES */
-.cases-title { font-size: clamp(2.5rem,5.5vw,6rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.025em; line-height: 0.9; margin-bottom: 4rem; }
-.cases-grid { display: flex; flex-direction: column; gap: clamp(2.5rem,5vw,4.5rem); }
-.case-card { background: transparent; }
-/* Medien: ganze Arbeit sichtbar, sauber gerahmt, kein Beschnitt */
-.case-media { display: grid; gap: 1px; background: var(--mid); border: 1px solid rgba(255,227,0,0.14); }
-.case-media.one { grid-template-columns: 1fr; }
-.case-media.two { grid-template-columns: 1fr 1fr; }
-.case-media.three { grid-template-columns: repeat(3,1fr); }
-@media(max-width:760px){ .case-media.two, .case-media.three { grid-template-columns: 1fr; } }
-.case-media figure { background: #0d0d0d; display: flex; align-items: center; justify-content: center; padding: clamp(1rem,2.5vw,2rem); min-height: clamp(220px,30vw,380px); overflow: hidden; }
-.case-media img { max-width: 100%; max-height: clamp(220px,32vw,420px); width: auto; height: auto; object-fit: contain; display: block; transition: transform 0.5s ease; }
-.case-media figure:hover img { transform: scale(1.03); }
-.case-body { padding: 1.8rem 0 0; max-width: 60ch; }
-.case-num { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.58rem; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; opacity: 0.65; }
-.case-title { font-size: clamp(1.2rem,2vw,1.7rem); font-weight: 700; line-height: 1.2; margin-bottom: 1rem; letter-spacing: -0.01em; }
-.case-desc { font-size: 0.87rem; line-height: 1.85; color: rgba(240,236,227,0.6); margin-bottom: 1.4rem; }
-.case-credit { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.57rem; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; opacity: 0.5; margin-bottom: 1.3rem; }
+/* CASES — uniformes Karten-Grid, alle Bilder exakt gleich groß */
+.cases-title { font-size: clamp(2.5rem,5.5vw,6rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.025em; line-height: 0.9; margin-bottom: 1.1rem; }
+.cases-note { font-size: 0.9rem; line-height: 1.6; color: rgba(240,236,227,0.5); font-style: italic; margin-bottom: clamp(2.5rem,5vw,3.5rem); max-width: 46ch; }
+.cases-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: clamp(1rem,2vw,1.5rem); }
+@media(max-width:720px){ .cases-grid { grid-template-columns: 1fr; } }
+.case-card { position: relative; background: #0d0d0d; border: 1px solid rgba(255,227,0,0.14); overflow: hidden; transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease; }
+.case-card:hover { border-color: var(--gold); transform: translateY(-5px); box-shadow: 0 18px 40px rgba(0,0,0,0.5); }
+.case-figure { aspect-ratio: 4 / 3; display: flex; align-items: center; justify-content: center; padding: clamp(1.2rem,2.5vw,2.2rem); overflow: hidden; }
+.case-figure img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; transition: transform 0.6s cubic-bezier(.2,.7,.2,1); }
+.case-card:hover .case-figure img { transform: scale(1.05); }
+.case-cap { padding: 1.1rem 1.4rem 1.4rem; border-top: 1px solid rgba(255,227,0,0.1); }
+.case-cap-top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.45rem; }
+.case-name { font-size: clamp(1rem,1.5vw,1.25rem); font-weight: 700; letter-spacing: -0.01em; }
+.case-kind { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+.case-line { font-size: 0.82rem; line-height: 1.6; color: rgba(240,236,227,0.55); margin-bottom: 0.9rem; }
 .case-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-.case-tag { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.57rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(255,227,0,0.28); padding: 0.22rem 0.65rem; }
+.case-tag { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(255,227,0,0.28); padding: 0.2rem 0.6rem; }
 
 /* RICK RUBIN — full image band */
 .rubin-band { position: relative; background: var(--black); padding: clamp(3rem,7vw,6rem) var(--pad); display: flex; align-items: center; justify-content: center; }
@@ -160,9 +157,14 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 .tv-text { font-size: clamp(1rem,2vw,1.5rem); line-height: 1.6; }
 .tv-text .em { color: var(--gold); font-style: italic; }
 .tv-sub { font-size: 0.88rem; line-height: 1.85; color: rgba(240,236,227,0.6); margin-top: 1.5rem; }
+/* SCROLL-PROGRESS */
+.progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--gold); z-index: 200; will-change: width; }
+@media(prefers-reduced-motion: reduce){ .progress { display: none; } }
 </style>
 </head>
 <body>
+
+<div class="progress" id="progress"></div>
 
 <a href="mailto:michaelalange@mac.com" class="float-cta">
   <span class="float-cta-dot"></span>
@@ -218,33 +220,33 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 
 <!-- ANTI-STATS -->
 <div class="anti-stats">
-  <div class="anti-stat-intro r">Was du wirklich wissen willst, bevor du mich buchst:</div>
+  <div class="anti-stat-intro r">Damit du weißt, mit wem du es zu tun hast:</div>
   <div class="anti-stat r">
     <span class="anti-stat-num"><span class="count" data-to="1">1</span></span>
     <div>
-      <span class="anti-stat-main">Person. Nicht fünf.</span>
-      <p class="anti-stat-sub">Konzept, Logo, Kampagne, Imagefilm — von der Idee bis zum Finalcut. Aus einer Hand. Wo andere ein ganzes Team auffahren, sitzt bei mir alles an einem Tisch.</p>
+      <span class="anti-stat-main">Ansprechpartnerin für alles.</span>
+      <p class="anti-stat-sub">Idee, Logo, Kampagne, Film — von Anfang bis Schnitt aus einer Hand. Das hält die Wege kurz und die Abstimmung einfach.</p>
     </div>
   </div>
   <div class="anti-stat r d1">
     <span class="anti-stat-num"><span class="count" data-to="3">3</span></span>
     <div>
-      <span class="anti-stat-main">Sender. Unter Sendedruck gelernt.</span>
-      <p class="anti-stat-sub">ProSieben, Sat.1, kabel eins. Wer Nachrichtengrafik in Echtzeit baut, kennt keine Schnappatmung bei deiner Deadline. Tempo ist bei mir kein Versprechen — es ist Gewohnheit.</p>
+      <span class="anti-stat-main">Sender, bei denen Tempo dazugehörte.</span>
+      <p class="anti-stat-sub">Nachrichtengrafik für ProSieben, Sat.1 und kabel eins. Dort lernt man, ruhig zu bleiben, wenn die Zeit drängt — das bleibt.</p>
     </div>
   </div>
   <div class="anti-stat r d2">
     <span class="anti-stat-num"><span class="count" data-to="0">0</span></span>
     <div>
-      <span class="anti-stat-main">Ausreden. Was ich nicht anfasse, sage ich vorher.</span>
-      <p class="anti-stat-sub">Excel? Never ever. Dafür kann ich alles andere wirklich — nicht so halb. Diese Ehrlichkeit spart uns beiden Zeit, Geld und Enttäuschung.</p>
+      <span class="anti-stat-main">Mal Schöngerede.</span>
+      <p class="anti-stat-sub">Was nicht mein Fach ist — Excel zum Beispiel — sage ich offen. So weißt du von Anfang an, woran du bist.</p>
     </div>
   </div>
   <div class="anti-stat r d3">
     <span class="anti-stat-num"><span class="count" data-to="53">53</span></span>
     <div>
-      <span class="anti-stat-main">Jahre. Meine Ideen wissen das nicht.</span>
-      <p class="anti-stat-sub">Und sie arbeiten längst mit KI. Erfahrung aus zwanzig Jahren, dazu die Werkzeuge von heute — die Kombi bekommst du selten in einer Person.</p>
+      <span class="anti-stat-main">Jahre — und neugierig geblieben.</span>
+      <p class="anti-stat-sub">Zwei Jahrzehnte Erfahrung, dazu die Werkzeuge von heute, KI inklusive. Die Mischung hält die Arbeit frisch.</p>
     </div>
   </div>
 </div>
@@ -315,59 +317,60 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 <section class="section">
   <div class="eyebrow">02 — Ausgewählte Arbeiten</div>
   <h2 class="cases-title r">Was entsteht, bleibt.</h2>
+  <p class="cases-note r">Ausgewählte Arbeiten — entstanden in meiner Zeit als Head of Creative bei NUSSBAUM Marketing Berlin.</p>
   <div class="cases-grid">
 
     <div class="case-card r">
-      <div class="case-media two">
-        <figure><img src="assets/samsys.jpg" alt="SAMSYS Messe-Flyer Multi-4000"></figure>
-        <figure><img src="assets/samsys-stand.jpg" alt="SAMSYS Messestand Banner"></figure>
-      </div>
-      <div class="case-body">
-        <div class="case-num">Case 01 · Messe</div>
-        <h3 class="case-title">SAMSYS. Der Roboter und die Chili.</h3>
-        <p class="case-desc">Ein Hochpräzisions-Robotersystem, inszeniert mit einer Chili. Schnell, mutig, einprägsam — genau der Mut, der diesen Auftritt unvergesslich macht.</p>
-        <p class="case-credit">Head of Creative · NUSSBAUM Marketing Berlin</p>
-        <div class="case-tags"><span class="case-tag">Konzept</span><span class="case-tag">Messedesign</span></div>
+      <div class="case-figure"><img src="assets/samsys.jpg" alt="SAMSYS Messe-Flyer Multi-4000"></div>
+      <div class="case-cap">
+        <div class="case-cap-top"><span class="case-name">SAMSYS</span><span class="case-kind">Messe</span></div>
+        <p class="case-line">Multi-4000 — Robotik, mutig inszeniert mit einer Chili.</p>
+        <div class="case-tags"><span class="case-tag">Konzept</span><span class="case-tag">Key Visual</span></div>
       </div>
     </div>
 
     <div class="case-card r d1">
-      <div class="case-media two">
-        <figure><img src="assets/capital-truck.jpg" alt="Capital Baustoffe LKW Berlin"></figure>
-        <figure><img src="assets/capital20.jpg" alt="Capital Baustoffe Gorilla-Kampagne"></figure>
-      </div>
-      <div class="case-body">
-        <div class="case-num">Case 02 · Kampagne</div>
-        <h3 class="case-title">Capital Baustoffe. Durch ganz Berlin.</h3>
-        <p class="case-desc">Unverwechselbare Tier-Bildsprache, seit über einem Jahr durch Berlin. Vom LKW über Merch bis zu zwei Imagefilmen — eine Bildsprache, konsequent durchgezogen.</p>
-        <p class="case-credit">Head of Creative · NUSSBAUM Marketing Berlin</p>
-        <div class="case-tags"><span class="case-tag">Kampagne</span><span class="case-tag">Film</span><span class="case-tag">Out-of-Home</span></div>
+      <div class="case-figure"><img src="assets/samsys-stand.jpg" alt="SAMSYS Messestand Banner"></div>
+      <div class="case-cap">
+        <div class="case-cap-top"><span class="case-name">SAMSYS</span><span class="case-kind">Messestand</span></div>
+        <p class="case-line">Der Auftritt, aufgebaut in der Halle — Banner und Bühne.</p>
+        <div class="case-tags"><span class="case-tag">Messedesign</span></div>
       </div>
     </div>
 
     <div class="case-card r d2">
-      <div class="case-media one">
-        <figure><img src="assets/mbst-wall.jpg" alt="MBST Wand-Mockup Gesundheit beginnt in der Zelle"></figure>
-      </div>
-      <div class="case-body">
-        <div class="case-num">Case 03 · Brand Design & Social Media</div>
-        <h3 class="case-title">MBST®. National. International.</h3>
-        <p class="case-desc">Die gesamte Corporate Identity neu aufgebaut. Konsistente visuelle Basis national wie international — inkl. Social-Media-Auftritt von Grund auf entwickelt.</p>
-        <p class="case-credit">Head of Creative · NUSSBAUM Marketing Berlin</p>
-        <div class="case-tags"><span class="case-tag">Brand Design</span><span class="case-tag">Social Media</span><span class="case-tag">CI</span></div>
+      <div class="case-figure"><img src="assets/capital-truck.jpg" alt="Capital Baustoffe LKW Berlin"></div>
+      <div class="case-cap">
+        <div class="case-cap-top"><span class="case-name">Capital Baustoffe</span><span class="case-kind">Out-of-Home</span></div>
+        <p class="case-line">Die Tier-Kampagne, seit über einem Jahr unterwegs durch Berlin.</p>
+        <div class="case-tags"><span class="case-tag">Kampagne</span><span class="case-tag">Film</span></div>
       </div>
     </div>
 
     <div class="case-card r d3">
-      <div class="case-media one">
-        <figure><img src="assets/brunk.jpg" alt="Dr. Brunk Logo"></figure>
+      <div class="case-figure"><img src="assets/capital20.jpg" alt="Capital Baustoffe Gorilla-Kampagne"></div>
+      <div class="case-cap">
+        <div class="case-cap-top"><span class="case-name">Capital Baustoffe</span><span class="case-kind">Motiv</span></div>
+        <p class="case-line">Der Gorilla — ein Bild, das man sich merkt.</p>
+        <div class="case-tags"><span class="case-tag">Bildsprache</span></div>
       </div>
-      <div class="case-body">
-        <div class="case-num">Case 04 · Logo</div>
-        <h3 class="case-title">Dr. Brunk. Zwei in einer Linie.</h3>
-        <p class="case-desc">Der Äskulapstab trifft den Darm — zwei ikonische Formen, verdichtet zu einer einzigen Linie. Wer hinschaut, erkennt beides. Wer nicht, spürt dass es stimmt.</p>
-        <p class="case-credit">Head of Creative · NUSSBAUM Marketing Berlin</p>
-        <div class="case-tags"><span class="case-tag">Logo</span><span class="case-tag">Medizin</span></div>
+    </div>
+
+    <div class="case-card r d2">
+      <div class="case-figure"><img src="assets/mbst-wall.jpg" alt="MBST Wand Gesundheit beginnt in der Zelle"></div>
+      <div class="case-cap">
+        <div class="case-cap-top"><span class="case-name">MBST®</span><span class="case-kind">Corporate Identity</span></div>
+        <p class="case-line">CI neu aufgebaut — national wie international, bis ins Detail.</p>
+        <div class="case-tags"><span class="case-tag">Brand Design</span><span class="case-tag">Social Media</span></div>
+      </div>
+    </div>
+
+    <div class="case-card r d3">
+      <div class="case-figure"><img src="assets/brunk.jpg" alt="Dr. Brunk Logo"></div>
+      <div class="case-cap">
+        <div class="case-cap-top"><span class="case-name">Dr. Brunk</span><span class="case-kind">Logo</span></div>
+        <p class="case-line">Äskulapstab trifft Darm — zwei Formen, eine Linie.</p>
+        <div class="case-tags"><span class="case-tag">Logo</span><span class="case-tag">Signet</span></div>
       </div>
     </div>
 
@@ -491,14 +494,28 @@ const countObs = new IntersectionObserver((entries, o) => {
 }, {threshold: 0.6});
 document.querySelectorAll('.count').forEach(el => countObs.observe(el));
 
-// Dezenter Parallax fürs Hero-Portrait
+// Dezenter Parallax fürs Hero-Portrait + Scroll-Fortschrittsbalken
 const portrait = document.querySelector('.hero-bg-portraits img');
-if (portrait && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  addEventListener('scroll', () => {
+const bar = document.getElementById('progress');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let ticking = false;
+function onScroll() {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
     const y = scrollY;
-    if (y < window.innerHeight) portrait.style.transform = 'rotate(1deg) translateX(2%) translateY(' + (y * 0.08) + 'px)';
-  }, {passive: true});
+    if (bar) {
+      const h = document.documentElement.scrollHeight - innerHeight;
+      bar.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+    }
+    if (portrait && !reduce && y < innerHeight) {
+      portrait.style.transform = 'rotate(1deg) translateX(2%) translateY(' + (y * 0.08) + 'px)';
+    }
+    ticking = false;
+  });
 }
+addEventListener('scroll', onScroll, {passive: true});
+onScroll();
 </script>
 </body>
 </html>
