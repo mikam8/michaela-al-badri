@@ -735,7 +735,13 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
 const navToggle = document.getElementById('navToggle');
 const navOverlay = document.getElementById('navOverlay');
 navToggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
-navOverlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('nav-open')));
+navOverlay.querySelectorAll('a').forEach(a => a.addEventListener('click', (e) => {
+  document.body.classList.remove('nav-open');
+  if (a.getAttribute('href') === '#top') {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  }
+}));
 addEventListener('keydown', e => { if(e.key === 'Escape') document.body.classList.remove('nav-open'); });
 
 const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('on'); obs.unobserve(x.target); } }), {threshold:0.08});
