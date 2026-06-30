@@ -68,7 +68,13 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 .hero { min-height: 100vh; position: relative; display: flex; align-items: flex-end; padding: var(--pad); padding-top: clamp(5rem,12vw,10rem); padding-bottom: 0; overflow: hidden; }
 .hero-bg-portraits { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
 .hero-bg-portraits img { position: absolute; bottom: 0; right: 2%; height: 100%; width: auto; object-fit: contain; object-position: bottom center; opacity: 1; }
-@media(max-width:800px){ .hero-bg-portraits img { right: 0; height: 30%; opacity: 0.5; } }
+@media(max-width:800px){
+  /* Mobile: Text oben, Foto darunter (groß, klar, bündig zum Gelben) */
+  .hero { flex-direction: column; align-items: stretch; }
+  .hero-content { order: 1; }
+  .hero-bg-portraits { position: static; order: 2; height: auto; overflow: visible; }
+  .hero-bg-portraits img { position: static; height: auto; width: auto; max-height: 56vh; max-width: 82%; margin: 0 auto; display: block; opacity: 1; }
+}
 
 .hero-content { position: relative; z-index: 1; }
 .hero-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; display: block; }
@@ -257,8 +263,8 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   .contact-section { min-height: auto; }
 
   /* HERO */
-  .hero { min-height: auto; padding-top: 5.5rem; padding-bottom: 2.5rem; }
-  .hero-content { padding-bottom: 2rem; }
+  .hero { min-height: auto; padding-top: 5.5rem; padding-bottom: 0; }
+  .hero-content { padding-bottom: 1.6rem; }
   .hero-label { font-size: 0.6rem; letter-spacing: 0.25em; margin-bottom: 1.2rem; }
   .hero-name { font-size: 1.95rem; line-height: 1.08; margin-bottom: 1.4rem; }
   .hero-name .last { letter-spacing: 0; -webkit-text-stroke-width: 1px; }
