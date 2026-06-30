@@ -23,8 +23,8 @@
  <body class="p-4">
   <main class="w-full max-w-5xl mx-auto"><!-- INTRO -->
    <section id="intro" class="fade-in text-center"><img class="w-full h-56 object-cover rounded-sm mb-8 shadow-lg" loading="lazy" src="https://images.pexels.com/photos/4348401/pexels-photo-4348401.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Kreativer Arbeitsplatz mit Kalligrafie und Design">
-    <h1 class="mb-4" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 28px;">Okay – lass uns checken, ob wir auf derselben Wellenlänge sind.</h1>
-    <p class="mb-8 max-w-xl mx-auto" style="color: rgb(163, 163, 163); font-weight: 400; font-size: 16px;">15 Fragen. Danach weißt du, warum unser Projekt zusammen anders läuft. Mittendrin statt nur dabei – let's go.</p><button class="quiz-btn px-8 py-3 rounded-none font-bold uppercase tracking-wider" onclick="startQuiz()" style="background: rgb(255, 227, 0); color: rgb(0, 0, 0); font-weight: 700; font-size: 16px;">LOS GEHT'S</button>
+    <h1 class="mb-4" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 28px;">Verstehen wir uns? Finden wir's heraus.</h1>
+    <p class="mb-8 max-w-xl mx-auto" style="color: rgb(163, 163, 163); font-weight: 400; font-size: 16px;">15 kurze Fragen rund um Design, KI und Handschrift. Am Ende siehst du, wie ich denke und arbeite – und ob wir zusammenpassen.</p><button class="quiz-btn px-8 py-3 rounded-none font-bold uppercase tracking-wider" onclick="startQuiz()" style="background: rgb(255, 227, 0); color: rgb(0, 0, 0); font-weight: 700; font-size: 16px;">LOS GEHT'S</button>
    </section><!-- QUIZ -->
    <section id="quiz-area" class="hidden fade-in">
     <div id="progress" class="mb-6 flex items-center gap-3">
@@ -61,7 +61,7 @@
       <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Dein Content geht live. Was macht einen guten Social-Media-Hook?</h2>
       <div class="grid gap-3"><button class="quiz-btn text-left px-5 py-3" onclick="answer(this,0)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">A) Möglichst viele Hashtags</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,1)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">B) Die ersten 3 Sekunden fesseln emotional</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,2)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">C) Ein möglichst langes Video</button>
       </div>
-      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ Boom. Genau das setze ich in jeder Kampagne um – dein Publikum soll hängen bleiben. Wir zwei? Unaufhaltbar.</p>
+      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ Genau das setze ich in jeder Kampagne um – dein Publikum soll von der ersten Sekunde an hängen bleiben.</p>
      </div>
      <div class="question" data-correct="0" data-img="q5-img">
       <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Dein Logo soll überall funktionieren. Vektor vs. Pixel?</h2>
@@ -103,7 +103,7 @@
       <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Dein Stil soll überall wiedererkennbar sein. Was ist Style Transfer?</h2>
       <div class="grid gap-3"><button class="quiz-btn text-left px-5 py-3" onclick="answer(this,0)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">A) Den Stil eines Kunstwerks auf ein anderes Bild übertragen</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,1)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">B) Ein neues Logo automatisch generieren</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,2)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">C) Schriftarten zwischen Dokumenten kopieren</button>
       </div>
-      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ Style Transfer = dein visueller Fingerabdruck, KI-gestützt auf alle Formate gebracht. Magisch, oder?</p>
+      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ Style Transfer macht deinen visuellen Fingerabdruck auf alle Formate übertragbar – konsistent und wiedererkennbar.</p>
      </div>
      <div class="question" data-correct="2" data-img="q12-img">
       <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Fast fertig. Was beschreibt »Weißraum« im Design?</h2>
@@ -136,9 +136,9 @@
    <section id="result" class="hidden fade-in text-center">
     <h2 class="mb-3" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 24px;">Dein Ergebnis</h2>
     <p id="score-display" class="text-5xl font-bold text-yellow-400 mb-4"></p>
-    <p data-template-id="result-high" class="mb-4 hidden" style="color: rgb(255, 255, 255); font-weight: 400; font-size: 16px;">Du weißt genau, wovon ich rede. 🔥 Stell dir vor, was passiert, wenn wir das zusammen auf dein Projekt loslassen. Ich bring die Execution, du die Vision – let's build.</p>
-    <p data-template-id="result-mid" class="mb-4 hidden" style="color: rgb(255, 255, 255); font-weight: 400; font-size: 16px;">Starker Start – du hast das Gespür. Die Lücken? Genau dafür bin ich da. Zusammen wird aus deiner Idee ein System, das funktioniert. Ready?</p>
-    <p data-template-id="result-low" class="mb-4 hidden" style="color: rgb(255, 255, 255); font-weight: 400; font-size: 16px;">Kein Stress – genau dafür buchst du mich. 🚀 Ich bringe das Know-how mit, du bringst deine Vorstellung. Zusammen wird's großartig. Versprochen.</p><button class="quiz-btn px-8 py-3 rounded-none font-bold uppercase tracking-wider mt-2" onclick="location.reload()" style="background: rgb(255, 227, 0); color: rgb(0, 0, 0); font-weight: 700; font-size: 16px;">NOCHMAL SPIELEN</button>
+    <p data-template-id="result-high" class="mb-4 hidden" style="color: rgb(255, 255, 255); font-weight: 400; font-size: 16px;">Du weißt genau, wovon ich rede. Genau diese gemeinsame Sprache macht ein Projekt leicht. Lass uns reden – ich freue mich darauf.</p>
+    <p data-template-id="result-mid" class="mb-4 hidden" style="color: rgb(255, 255, 255); font-weight: 400; font-size: 16px;">Du hast ein gutes Gespür. Den Rest bringe ich mit – gemeinsam wird aus deiner Idee etwas, das wirklich funktioniert.</p>
+    <p data-template-id="result-low" class="mb-4 hidden" style="color: rgb(255, 255, 255); font-weight: 400; font-size: 16px;">Du musst nicht alles wissen – genau dafür bin ich da. Du bringst deine Vorstellung mit, ich das Handwerk. Zusammen wird das richtig gut.</p><button class="quiz-btn px-8 py-3 rounded-none font-bold uppercase tracking-wider mt-2" onclick="location.reload()" style="background: rgb(255, 227, 0); color: rgb(0, 0, 0); font-weight: 700; font-size: 16px;">NOCHMAL SPIELEN</button>
    </section>
   </main>
   <script>
