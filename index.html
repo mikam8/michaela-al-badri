@@ -77,7 +77,9 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 /* HERO */
 .hero { min-height: 100vh; position: relative; display: flex; align-items: flex-end; padding: var(--pad); padding-top: clamp(5rem,12vw,10rem); padding-bottom: 0; overflow: hidden; }
 .hero-bg-portraits { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-.hero-bg-portraits img { position: absolute; bottom: 0; right: 2%; height: 100%; width: auto; object-fit: contain; object-position: bottom center; opacity: 1; }
+.hero-bg-portraits img { position: absolute; bottom: 0; right: 2%; height: 100%; width: auto; object-fit: contain; object-position: bottom center; opacity: 1;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%);
+          mask-image: linear-gradient(to bottom, transparent 0%, #000 12%); }
 .hero-portrait-cta { display: none; }
 @media(max-width:800px){
   /* Mobile: Porträt als Büste, der zentrierte CTA-Button ist die Standlinie –
