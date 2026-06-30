@@ -76,15 +76,15 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 .who-item-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.6rem; letter-spacing: 0.28em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.7rem; }
 .who-item-text { font-size: 0.9rem; line-height: 1.85; color: rgba(240,236,227,0.65); }
 
-/* CASES — Bilder ganz, natürliches Format, Masonry-Anordnung */
+/* CASES — uniformes 16:9-Grid, alle Bilder gleich groß, kein Beschnitt */
 .cases-title { font-size: clamp(1.9rem,6vw,6rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.025em; line-height: 0.9; margin-bottom: 1.1rem; }
 .cases-note { font-size: 0.9rem; line-height: 1.6; color: rgba(240,236,227,0.5); font-style: italic; margin-bottom: clamp(2.5rem,5vw,3.5rem); max-width: 46ch; }
-.cases-grid { columns: 2; column-gap: clamp(1rem,2vw,1.5rem); }
-@media(max-width:700px){ .cases-grid { columns: 1; } }
-.case-card { break-inside: avoid; -webkit-column-break-inside: avoid; margin: 0 0 clamp(1rem,2vw,1.5rem); background: #0d0d0d; border: 1px solid rgba(255,227,0,0.14); overflow: hidden; transition: border-color 0.35s ease, box-shadow 0.35s ease; }
-.case-card:hover { border-color: var(--gold); box-shadow: 0 16px 40px rgba(0,0,0,0.5); }
-.case-figure { display: block; overflow: hidden; line-height: 0; }
-.case-figure img { width: 100%; height: auto; display: block; transition: transform 0.7s cubic-bezier(.2,.7,.2,1); }
+.cases-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: clamp(1rem,2vw,1.5rem); }
+@media(max-width:700px){ .cases-grid { grid-template-columns: 1fr; } }
+.case-card { background: #0d0d0d; border: 1px solid rgba(255,227,0,0.14); overflow: hidden; transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease; }
+.case-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.5); }
+.case-figure { display: block; overflow: hidden; line-height: 0; aspect-ratio: 16 / 9; }
+.case-figure img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s cubic-bezier(.2,.7,.2,1); }
 .case-card:hover .case-figure img { transform: scale(1.04); }
 .case-cap { padding: 1.1rem 1.4rem 1.4rem; }
 .case-cap-top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.45rem; }
@@ -352,65 +352,74 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
   <div class="cases-grid">
 
     <div class="case-card">
-      <div class="case-figure"><img src="assets/samsys.jpg" alt="SAMSYS Messe-Flyer Multi-4000" loading="lazy"></div>
+      <div class="case-figure"><img src="assets/ref-samsys.jpg" alt="SAMSYS Messestand" loading="lazy"></div>
       <div class="case-cap">
         <div class="case-cap-top"><span class="case-name">SAMSYS</span><span class="case-kind">Messe</span></div>
-        <p class="case-line">Multi-4000 — Robotik, mutig inszeniert mit einer Chili.</p>
+        <p class="case-line">Der komplette Messeauftritt — vom Banner bis zur Bühne, inszeniert mit der Chili.</p>
         <div class="case-tags"><span class="case-tag">Konzept</span><span class="case-tag">Key Visual</span></div>
       </div>
     </div>
 
     <div class="case-card">
-      <div class="case-figure"><img src="assets/samsys-stand.jpg" alt="SAMSYS Messestand Banner" loading="lazy"></div>
-      <div class="case-cap">
-        <div class="case-cap-top"><span class="case-name">SAMSYS</span><span class="case-kind">Messestand</span></div>
-        <p class="case-line">Der Auftritt, aufgebaut in der Halle — Banner und Bühne.</p>
-        <div class="case-tags"><span class="case-tag">Messedesign</span></div>
-      </div>
-    </div>
-
-    <div class="case-card">
-      <div class="case-figure"><img src="assets/mbst-wall.jpg" alt="MBST Wand Gesundheit beginnt in der Zelle" loading="lazy"></div>
+      <div class="case-figure"><img src="assets/ref-mbst-wand.jpg" alt="MBST Wand Gesundheit beginnt in der Zelle" loading="lazy"></div>
       <div class="case-cap">
         <div class="case-cap-top"><span class="case-name">MBST®</span><span class="case-kind">Corporate Identity</span></div>
-        <p class="case-line">CI neu aufgebaut — „Gesundheit beginnt in der Zelle", national wie international.</p>
-        <div class="case-tags"><span class="case-tag">Brand Design</span></div>
+        <p class="case-line">Die Markenwelt an der Wand — „Gesundheit beginnt in der Zelle".</p>
+        <div class="case-tags"><span class="case-tag">Brand Design</span><span class="case-tag">CI</span></div>
       </div>
     </div>
 
     <div class="case-card">
-      <div class="case-figure"><img src="assets/mbst-phone.jpg" alt="MBST Instagram auf dem Smartphone" loading="lazy"></div>
+      <div class="case-figure"><img src="assets/ref-mbst-social.jpg" alt="MBST Social Media Instagram" loading="lazy"></div>
       <div class="case-cap">
         <div class="case-cap-top"><span class="case-name">MBST®</span><span class="case-kind">Social Media</span></div>
         <p class="case-line">Der Instagram-Auftritt, von Grund auf entwickelt.</p>
-        <div class="case-tags"><span class="case-tag">Social Media</span></div>
+        <div class="case-tags"><span class="case-tag">Social Media</span><span class="case-tag">Content</span></div>
       </div>
     </div>
 
     <div class="case-card">
-      <div class="case-figure"><img src="assets/brunk.jpg" alt="Dr. Brunk Praxisschild" loading="lazy"></div>
+      <div class="case-figure"><img src="assets/ref-mbst-welt.jpg" alt="MBST Markenwelt international" loading="lazy"></div>
+      <div class="case-cap">
+        <div class="case-cap-top"><span class="case-name">MBST®</span><span class="case-kind">Markenwelt</span></div>
+        <p class="case-line">Vom Boarding-Pass bis zum Empfang — eine Marke, international gedacht.</p>
+        <div class="case-tags"><span class="case-tag">Brand World</span><span class="case-tag">International</span></div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-figure"><img src="assets/ref-capital-gorilla.jpg" alt="Capital Baustoffe Gorilla-Truck" loading="lazy"></div>
+      <div class="case-cap">
+        <div class="case-cap-top"><span class="case-name">Capital Baustoffe</span><span class="case-kind">Out-of-Home</span></div>
+        <p class="case-line">Der Gorilla — „Wenn Sie starke Partner wollen."</p>
+        <div class="case-tags"><span class="case-tag">Kampagne</span><span class="case-tag">OOH</span></div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-figure"><img src="assets/ref-capital-gepard.jpg" alt="Capital Baustoffe Gepard-Truck" loading="lazy"></div>
+      <div class="case-cap">
+        <div class="case-cap-top"><span class="case-name">Capital Baustoffe</span><span class="case-kind">Out-of-Home</span></div>
+        <p class="case-line">Der Gepard — „Wenn Sie es schnell wollen." Eine Tierwelt, ein System.</p>
+        <div class="case-tags"><span class="case-tag">Bildsprache</span><span class="case-tag">Serie</span></div>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-figure"><img src="assets/ref-brunk.jpg" alt="Dr. Brunk Logo und Praxisschild" loading="lazy"></div>
       <div class="case-cap">
         <div class="case-cap-top"><span class="case-name">Dr. Brunk</span><span class="case-kind">Logo</span></div>
-        <p class="case-line">Äskulapstab trifft Darm — zwei Formen, eine Linie.</p>
+        <p class="case-line">Äskulapstab trifft Darm — zwei Formen, eine Linie. Logo &amp; Praxisschild.</p>
         <div class="case-tags"><span class="case-tag">Logo</span><span class="case-tag">Signet</span></div>
       </div>
     </div>
 
     <div class="case-card">
-      <div class="case-figure"><img src="assets/capital-truck.jpg" alt="Capital Baustoffe LKW Berlin" loading="lazy"></div>
+      <div class="case-figure"><img src="assets/ref-handschrift.jpg" alt="Handschrift Signaturen und Markenarbeiten" loading="lazy"></div>
       <div class="case-cap">
-        <div class="case-cap-top"><span class="case-name">Capital Baustoffe</span><span class="case-kind">Out-of-Home</span></div>
-        <p class="case-line">Der große LKW — die Kampagne, unterwegs durch Berlin.</p>
-        <div class="case-tags"><span class="case-tag">Kampagne</span><span class="case-tag">Film</span></div>
-      </div>
-    </div>
-
-    <div class="case-card">
-      <div class="case-figure"><img src="assets/capital20.jpg" alt="Capital Baustoffe Gorilla-Motiv" loading="lazy"></div>
-      <div class="case-cap">
-        <div class="case-cap-top"><span class="case-name">Capital Baustoffe</span><span class="case-kind">Motiv</span></div>
-        <p class="case-line">Der Gorilla — das Gesicht der Kampagne.</p>
-        <div class="case-tags"><span class="case-tag">Bildsprache</span></div>
+        <div class="case-cap-top"><span class="case-name">Handschrift</span><span class="case-kind">Schrift & Signatur</span></div>
+        <p class="case-line">Von Dior bis zur Unterschrift — Handschrift als Markenzeichen.</p>
+        <div class="case-tags"><span class="case-tag">Handschrift</span><span class="case-tag">Kalligrafie</span></div>
       </div>
     </div>
 
