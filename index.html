@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>Michaela Al-Badri · Head of Creative &amp; Handschriftspezialistin · Berlin</title>
 <meta name="description" content="Michaela Al-Badri, Head of Creative aus Berlin. Brand Design, Logos, Kampagnen, Imagefilme und einzigartige Handschrift. Projektbasiert: Du bezahlst nicht die Zeit, du bezahlst das Ergebnis.">
 <meta name="keywords" content="Head of Creative Berlin, Creative Director Berlin, Brand Design, Corporate Design, Logo Design, Kampagnen, Imagefilm, Motion Design, Social Media, Handschrift, Kalligrafie, Handschriftspezialistin, Unterschrift gestalten, KI Content, Michaela Al-Badri">
@@ -80,7 +83,7 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 .hero-bg-portraits img { position: absolute; bottom: 0; right: 2%; height: 100%; width: auto; object-fit: contain; object-position: bottom center; opacity: 1;
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%);
           mask-image: linear-gradient(to bottom, transparent 0%, #000 12%); }
-.hero-portrait-cta { display: none; }
+.hero-bg-portraits .hero-portrait-cta { display: none; }
 @media(max-width:800px){
   /* Mobile: Porträt als Büste, der zentrierte CTA-Button ist die Standlinie –
      das Bild endet exakt an der Unterkante des Buttons. */
@@ -98,7 +101,7 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
     height: auto; width: auto; max-width: 90%; max-height: none;
     margin: 0; display: block; opacity: 1; z-index: 0;
   }
-  .hero-portrait-cta {
+  .hero-bg-portraits .hero-portrait-cta {
     display: inline-block;
     position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
     z-index: 2; margin: 0; white-space: nowrap;
@@ -107,7 +110,9 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 
 .hero-content { position: relative; z-index: 1; }
 .hero-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; display: block; }
-.hero-name { font-size: clamp(1.5rem,4.4vw,4.8rem); font-weight: 800; line-height: 1.02; text-transform: uppercase; margin-bottom: 2.5rem; white-space: nowrap; }
+.hero-name { font-size: clamp(1.5rem,4.4vw,4.8rem); font-weight: 800; line-height: 1.02; text-transform: uppercase; margin-bottom: 1.3rem; white-space: nowrap; }
+.hero-bridge { font-size: clamp(1rem,1.7vw,1.3rem); line-height: 1.5; color: rgba(240,236,227,0.65); margin-bottom: 2.2rem; max-width: 34ch; }
+.hero-bridge .em { color: var(--gold); font-style: normal; font-weight: 700; }
 .hero-name .first { display: inline; color: var(--white); letter-spacing: -0.02em; }
 .hero-name .last { display: inline; color: var(--white); -webkit-text-stroke: 0; letter-spacing: 0.04em; margin-left: 0.25em; }
 .hero-name .last .hy { display: inline-block; margin: 0 0.05em; color: var(--gold); -webkit-text-stroke: 0; }
@@ -383,11 +388,12 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
     <a href="mailto:michaelalange@mac.com" class="btn hero-portrait-cta">Schreib mir</a>
   </div>
   <div class="hero-content">
-    <span class="hero-label">Berlin · Head of Creative</span>
+    <span class="hero-label">M8 Studio · Berlin</span>
     <h1 class="hero-name">
       <span class="first">Michaela</span>
       <span class="last">Al<span class="hy">-</span>Badri</span>
     </h1>
+    <p class="hero-bridge"><span class="em">M8 Studio, das bin ich.</span> Plus ein eingespieltes Netzwerk aus Kreativen und Freelancern.</p>
     <div class="hero-roles">
       <span class="hero-role">Head of Creative</span>
       <span class="hero-role">Handschriftspezialistin</span>
