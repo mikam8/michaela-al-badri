@@ -13,6 +13,10 @@
     body{font-family:'Space Mono',monospace;background:#000}
     .quiz-btn{transition:all .2s ease;border:1px solid #333}
     .quiz-btn:hover{border-color:#FFE300;transform:translateY(-2px)}
+    /* Antwort-Optionen: kompakt, einheitlich, klar antippbar */
+    .quiz-btn.text-left{display:flex;align-items:center;min-height:3.25rem;line-height:1.35}
+    #progress-text{font-size:13px!important;color:rgba(255,255,255,.85)!important;letter-spacing:.06em}
+    #question-col h2{font-size:19px!important;line-height:1.35}
     .quiz-btn.correct{background:#FFE300!important;color:#000!important;border-color:#FFE300!important}
     .quiz-btn.wrong{opacity:.4;border-color:#555!important}
     .fade-in{animation:fadeIn .4s ease}
@@ -66,7 +70,7 @@
     function updateProgress(){
       const pct=(current/allQuestions.length)*100;
       document.getElementById('progress-bar').style.width=pct+'%';
-      document.getElementById('progress-text').textContent=(current+1)+'/'+allQuestions.length;
+      document.getElementById('progress-text').textContent='Frage '+(current+1)+' / '+allQuestions.length;
     }
 
     function answer(btn,idx){
