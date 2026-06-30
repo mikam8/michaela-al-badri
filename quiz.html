@@ -17,6 +17,9 @@
     .quiz-btn.text-left{display:flex;align-items:center;min-height:3.25rem;line-height:1.35}
     #progress-text{font-size:13px!important;color:rgba(255,255,255,.85)!important;letter-spacing:.06em}
     #question-col h2{font-size:19px!important;line-height:1.35}
+    /* Weiter-Button: klar, volle Breite (nur wenn sichtbar) */
+    #next-btn{width:100%;text-align:center;padding:0.95rem 1rem!important;font-size:15px;margin-top:1.25rem}
+    #next-btn:not(.hidden){display:block}
     .quiz-btn.correct{background:#FFE300!important;color:#000!important;border-color:#FFE300!important}
     .quiz-btn.wrong{opacity:.4;border-color:#555!important}
     .fade-in{animation:fadeIn .4s ease}
@@ -27,7 +30,7 @@
     .hover\:bg-yellow-300:hover{background-color:#FFE300!important}
   </style>
  </head>
- <body class="p-4">
+ <body class="py-4 px-0">
   <main class="w-full max-w-5xl mx-auto"><!-- INTRO -->
    <section id="intro" class="fade-in text-center"><img class="block mx-auto rounded-sm mb-8 shadow-lg" style="max-height: 440px; width: auto; max-width: 100%" loading="lazy" src="assets/quiz-me.jpg" alt="Michaela Al-Badri">
     <h1 class="mb-4" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 28px;">Hi, ich bin Michaela. Lernen wir uns kennen?</h1>

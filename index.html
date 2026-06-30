@@ -297,7 +297,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
 .m8-sub .em { color: var(--gold); font-style: italic; }
 
 /* QUIZ-EMBED */
-.quiz-embed { border: 1px solid rgba(255,227,0,0.18); background: #000; }
+.quiz-embed { background: transparent; }
 .quiz-embed iframe { width: 100%; border: 0; display: block; min-height: 300px; transition: height 0.25s ease; }
 
 /* SCROLL-PROGRESS */
@@ -693,7 +693,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   <h2 class="cases-title r" style="margin-bottom:1.1rem">Sind wir auf einer Wellenlänge?</h2>
   <p class="cases-note r">Ein paar ehrliche Fragen, ganz persönlich. Danach hast du ein Gefühl dafür, wie ich ticke und ob wir zusammenpassen.</p>
   <div class="quiz-embed r">
-    <iframe id="quizFrame" src="quiz.html" title="Lernen wir uns kennen, das Quiz" loading="lazy" scrolling="no"></iframe>
+    <iframe id="quizFrame" src="quiz.html" title="Lernen wir uns kennen, das Quiz" scrolling="no"></iframe>
   </div>
   <div class="cta-line r">
     <span class="need">Wenn's passt, sollten wir keine Zeit verlieren.</span>
@@ -742,11 +742,19 @@ const navToggle = document.getElementById('navToggle');
 const navOverlay = document.getElementById('navOverlay');
 navToggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
 navOverlay.querySelectorAll('a').forEach(a => a.addEventListener('click', (e) => {
+  const href = a.getAttribute('href');
   document.body.classList.remove('nav-open');
-  if (a.getAttribute('href') === '#top') {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-  }
+  if (!href || href.charAt(0) !== '#') return;
+  e.preventDefault();
+  const smooth = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  const go = () => {
+    if (href === '#top') { window.scrollTo({ top: 0, behavior: smooth }); return; }
+    const t = document.querySelector(href);
+    if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 64, behavior: smooth });
+  };
+  go();
+  // Nach Layout-Shift (z.B. Quiz-iframe wächst) Ziel korrigieren
+  setTimeout(go, 480);
 }));
 addEventListener('keydown', e => { if(e.key === 'Escape') document.body.classList.remove('nav-open'); });
 
