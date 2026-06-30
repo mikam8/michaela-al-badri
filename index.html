@@ -103,9 +103,9 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 
 .hero-content { position: relative; z-index: 1; }
 .hero-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; display: block; }
-.hero-name { font-size: clamp(2rem,8vw,7rem); font-weight: 800; line-height: 0.92; text-transform: uppercase; margin-bottom: 2.5rem; overflow-wrap: break-word; }
-.hero-name .first { display: block; color: var(--white); letter-spacing: -0.02em; }
-.hero-name .last { display: block; color: var(--white); -webkit-text-stroke: 0; letter-spacing: 0.07em; }
+.hero-name { font-size: clamp(1.6rem,7.2vw,6.6rem); font-weight: 800; line-height: 1.02; text-transform: uppercase; margin-bottom: 2.5rem; white-space: nowrap; }
+.hero-name .first { display: inline; color: var(--white); letter-spacing: -0.02em; }
+.hero-name .last { display: inline; color: var(--white); -webkit-text-stroke: 0; letter-spacing: 0.04em; margin-left: 0.25em; }
 .hero-name .last .hy { display: inline-block; margin: 0 0.05em; color: var(--gold); -webkit-text-stroke: 0; }
 .hero-roles { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; margin-bottom: 2.5rem; }
 .hero-role { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); position: relative; }
@@ -208,7 +208,7 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 .sg-tag:hover { border-color: var(--gold); }
 .sg-tag.no { color: var(--muted); border-color: rgba(255,255,255,0.12); text-decoration: line-through; text-decoration-color: rgba(255,255,255,0.35); }
 /* Skills: führt mit dem Urteil, Werkzeug ist Fußnote */
-.skills-lead { max-width: 30ch; }
+.skills-lead { max-width: 62ch; }
 .skills-claim { font-size: clamp(1.6rem,3.4vw,2.8rem); font-weight: 800; line-height: 1.28; margin-bottom: 1.4rem; }
 .skills-claim .em { color: var(--gold); font-style: italic; font-weight: 400; }
 .skills-sub { font-size: clamp(0.95rem,1.6vw,1.15rem); line-height: 1.75; color: rgba(240,236,227,0.7); max-width: 52ch; }
@@ -302,7 +302,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   .hero { min-height: auto; padding-top: 5.5rem; padding-bottom: 0; }
   .hero-content { padding-bottom: 1.6rem; }
   .hero-label { font-size: 0.6rem; letter-spacing: 0.25em; margin-bottom: 1.2rem; }
-  .hero-name { font-size: 1.95rem; line-height: 1.08; margin-bottom: 1.4rem; }
+  .hero-name { font-size: clamp(1.4rem,7.4vw,1.95rem); line-height: 1.1; margin-bottom: 1.4rem; }
   .hero-name .last { letter-spacing: 0; -webkit-text-stroke: 0; }
   .hero-name .last .hy { -webkit-text-stroke: 0; margin: 0 0.02em; }
   .hero-roles { gap: 0.3rem 1rem; margin-bottom: 1.6rem; }
@@ -337,7 +337,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   .contact-section::before { font-size: 8rem; }
 }
 @media (max-width: 380px) {
-  .hero-name { font-size: 1.75rem; }
+  .hero-name { font-size: clamp(1.25rem,7vw,1.75rem); }
   .contact-hl { font-size: 1.6rem; }
   .cases-title { font-size: 1.5rem; }
 }
