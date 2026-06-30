@@ -789,6 +789,14 @@ function onScroll() {
 }
 addEventListener('scroll', onScroll, {passive: true});
 onScroll();
+
+// Nach-oben-Button: zuverlässig scrollen (Anker-Scroll klappt mobil nicht überall)
+if (toTop) {
+  toTop.addEventListener('click', e => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
+}
 </script>
 </body>
 </html>
