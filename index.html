@@ -3,7 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Michaela Al-Badri — Head of Creative</title>
+<title>Michaela Al-Badri — Head of Creative &amp; Handschriftspezialistin | Berlin</title>
+<meta name="description" content="Michaela Al-Badri — Head of Creative aus Berlin. Brand Design, Logos, Kampagnen, Imagefilme und einzigartige Handschrift. Projektbasiert: Du bezahlst nicht die Zeit, du bezahlst das Ergebnis.">
+<meta name="keywords" content="Head of Creative Berlin, Creative Director Berlin, Brand Design, Corporate Identity, Logo Design, Kampagnen, Imagefilm, Motion Design, Social Media, Handschrift, Kalligrafie, Handschriftspezialistin, Unterschrift gestalten, KI Content, Michaela Al-Badri">
+<meta name="author" content="Michaela Al-Badri">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="geo.region" content="DE-BE">
+<meta name="geo.placename" content="Berlin">
+<link rel="canonical" href="https://mikam8.github.io/michaela-al-badri/">
+<meta name="theme-color" content="#070707">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="Michaela Al-Badri">
+<meta property="og:title" content="Michaela Al-Badri — Head of Creative &amp; Handschriftspezialistin | Berlin">
+<meta property="og:description" content="Brand Design, Logos, Kampagnen, Imagefilme und einzigartige Handschrift. Projektbasiert — du bezahlst das Ergebnis.">
+<meta property="og:url" content="https://mikam8.github.io/michaela-al-badri/">
+<meta property="og:image" content="https://mikam8.github.io/michaela-al-badri/assets/og-share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Michaela Al-Badri — Head of Creative, Berlin">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Michaela Al-Badri — Head of Creative &amp; Handschriftspezialistin | Berlin">
+<meta name="twitter:description" content="Brand Design, Logos, Kampagnen, Imagefilme und einzigartige Handschrift. Projektbasiert — du bezahlst das Ergebnis.">
+<meta name="twitter:image" content="https://mikam8.github.io/michaela-al-badri/assets/og-share.jpg">
+
+<!-- Strukturierte Daten für Google & KI-Suchmaschinen -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Michaela Al-Badri",
+  "jobTitle": "Head of Creative",
+  "url": "https://mikam8.github.io/michaela-al-badri/",
+  "image": "https://mikam8.github.io/michaela-al-badri/assets/og-share.jpg",
+  "email": "mailto:michaelalange@mac.com",
+  "telephone": "+49 160 90 43 43 43",
+  "description": "Head of Creative und Handschriftspezialistin aus Berlin. Brand Design, Logos, Kampagnen, Imagefilme und einzigartige Handschrift — projektbasiert abgerechnet, das Ergebnis zählt.",
+  "address": { "@type": "PostalAddress", "addressLocality": "Berlin", "addressRegion": "Berlin", "addressCountry": "DE" },
+  "knowsAbout": ["Head of Creative","Brand Design","Corporate Identity","Logo Design","Kampagnenentwicklung","Imagefilm","Motion Design","Social Media","Handschrift","Kalligrafie","Schriftgestaltung","KI-gestützte Contenterstellung"],
+  "knowsLanguage": ["Deutsch","Englisch","Schwedisch","Mazedonisch"],
+  "hasOccupation": { "@type": "Occupation", "name": "Head of Creative", "occupationLocation": { "@type": "City", "name": "Berlin" } },
+  "makesOffer": { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kreative Markenarbeit", "description": "Konzept, Brand Design, Logos, Kampagnen, Imagefilme und Handschrift — projektbasiert abgerechnet. Du bezahlst nicht die Zeit, du bezahlst das Ergebnis." } }
+}
+</script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root { --black: #070707; --white: #f0ece3; --gold: #FFE300; --grey: #111; --mid: #222; --muted: #666; --pad: clamp(2rem, 6vw, 6rem); }
@@ -136,9 +182,14 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 footer { border-top: 1px solid var(--mid); padding: 2rem var(--pad); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
 footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
 
-.r { opacity: 0; transform: translateY(1.5rem); transition: opacity 0.7s ease, transform 0.7s ease; }
-.r.on { opacity: 1; transform: translateY(0); }
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.r { opacity: 0; transform: translateY(2rem); transition: opacity 0.85s cubic-bezier(.16,1,.3,1), transform 0.85s cubic-bezier(.16,1,.3,1); will-change: opacity, transform; }
+.r.on { opacity: 1; transform: none; }
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+/* Referenz-Karten gestaffelt rein-sliden */
+.cases-grid .case-card { opacity: 0; transform: translateY(2.2rem) scale(.985); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+.cases-grid .case-card.on { opacity: 1; transform: none; }
+.cases-grid .case-card:nth-child(2n) { transition-delay: .09s; }
+@media(prefers-reduced-motion: reduce){ .r,.cases-grid .case-card{ opacity:1!important; transform:none!important; } }
 
 /* VALUE PROP BAND */
 .value-band { background: var(--gold); padding: clamp(4rem,9vw,7.5rem) var(--pad); display: flex; justify-content: center; }
@@ -537,8 +588,8 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 </footer>
 
 <script>
-const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('on'); }), {threshold:0.06});
-document.querySelectorAll('.r').forEach(el => obs.observe(el));
+const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('on'); obs.unobserve(x.target); } }), {threshold:0.08});
+document.querySelectorAll('.r, .cases-grid .case-card').forEach(el => obs.observe(el));
 
 // Quiz-iframe: Höhe automatisch an Inhalt anpassen
 addEventListener('message', e => {
