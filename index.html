@@ -186,7 +186,7 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 
 /* HANDWRITING */
 .hw-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 3rem; flex-wrap: wrap; margin-bottom: clamp(2rem,4vw,3.2rem); }
-.hw-text { font-size: clamp(1.3rem,2.8vw,2.4rem); font-style: italic; line-height: 1.45; font-weight: 300; max-width: 26ch; }
+.hw-text { font-size: clamp(1.3rem,2.8vw,2.4rem); font-style: italic; line-height: 1.45; font-weight: 300; max-width: 26ch; text-wrap: balance; }
 .hw-text .em { color: var(--gold); font-style: normal; }
 .hw-nums { display: flex; gap: 2.8rem; flex-shrink: 0; }
 .hw-num .big { display: block; font-size: clamp(2.6rem,5vw,4.5rem); font-weight: 800; color: var(--gold); line-height: 1; letter-spacing: -0.03em; }
@@ -337,7 +337,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   .who-item-text { font-size: 0.95rem; line-height: 1.8; }
   .m8-lead { font-size: 1.35rem; line-height: 1.5; }
   .case-line { font-size: 0.88rem; line-height: 1.65; }
-  .hw-text { font-size: 1.25rem; line-height: 1.5; }
+  .hw-text { font-size: 1.2rem; line-height: 1.5; max-width: 100%; }
   .cta-line .need { font-size: 1.05rem; line-height: 1.5; }
 
   /* mehr Luft */
