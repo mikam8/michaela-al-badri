@@ -737,6 +737,10 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
 </footer>
 
 <script>
+// Seite immer oben starten (Chrome/Safari merken sich sonst die alte Scroll-Position)
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.addEventListener('load', () => window.scrollTo(0, 0));
+
 // Menü
 const navToggle = document.getElementById('navToggle');
 const navOverlay = document.getElementById('navOverlay');
