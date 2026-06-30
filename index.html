@@ -78,26 +78,28 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 .hero { min-height: 100vh; position: relative; display: flex; align-items: flex-end; padding: var(--pad); padding-top: clamp(5rem,12vw,10rem); padding-bottom: 0; overflow: hidden; }
 .hero-bg-portraits { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
 .hero-bg-portraits img { position: absolute; bottom: 0; right: 2%; height: 100%; width: auto; object-fit: contain; object-position: bottom center; opacity: 1; }
+.hero-portrait-cta { display: none; }
 @media(max-width:800px){
-  /* Mobile: Text oben, freigestellte Figur auf einem Gold-Feld im Goldenen Schnitt (1,618:1).
-     Unterkörper im Gelb verankert, Kopf/Schultern ragen in den dunklen Raum. */
+  /* Mobile: Porträt als Büste, der zentrierte CTA-Button ist die Standlinie –
+     das Bild endet exakt an der Unterkante des Buttons. */
   .hero { flex-direction: column; align-items: stretch; min-height: auto; padding-bottom: 0; }
   .hero-content { order: 1; position: relative; z-index: 2; }
+  .hero-content .btn { display: none; }
   .hero-bg-portraits {
-    position: relative; order: 2; height: auto; overflow: visible;
-    margin: 1.4rem calc(-1 * var(--pad)) 1.6rem;
-    display: flex; justify-content: center; align-items: flex-end;
-    isolation: isolate;
-  }
-  .hero-bg-portraits::before {
-    content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-    width: 88%; max-width: 30rem; height: 62%; background: var(--gold); z-index: 0;
+    position: relative; order: 2;
+    margin: 1.6rem calc(-1 * var(--pad)) 1.4rem;
+    height: clamp(17rem, 40vh, 25rem);
+    overflow: hidden; display: block; isolation: isolate;
   }
   .hero-bg-portraits img {
-    position: relative; z-index: 1;
-    height: auto; width: auto; max-height: 60vh; max-width: 86%;
-    object-fit: contain; object-position: bottom center;
-    margin: 0; display: block; opacity: 1;
+    position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+    height: auto; width: auto; max-width: 90%; max-height: none;
+    margin: 0; display: block; opacity: 1; z-index: 0;
+  }
+  .hero-portrait-cta {
+    display: inline-block;
+    position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
+    z-index: 2; margin: 0; white-space: nowrap;
   }
 }
 
@@ -376,6 +378,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
 <section class="hero">
   <div class="hero-bg-portraits">
     <img src="assets/michaela2.png" alt="">
+    <a href="mailto:michaelalange@mac.com" class="btn hero-portrait-cta">Schreib mir</a>
   </div>
   <div class="hero-content">
     <span class="hero-label">Berlin · Head of Creative</span>
