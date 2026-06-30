@@ -223,10 +223,6 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 .tv-text .em { color: var(--gold); font-style: italic; }
 .tv-sub { font-size: 0.88rem; line-height: 1.85; color: rgba(240,236,227,0.6); margin-top: 1.5rem; }
 /* BRAND-MARK (fix, immer sichtbar) */
-.brand-mark { position: fixed; top: 1.3rem; left: 1.3rem; z-index: 120; width: 46px; height: 46px; opacity: 0.85; transition: opacity 0.25s ease, transform 0.25s ease; }
-.brand-mark:hover { opacity: 1; transform: scale(1.06); }
-.brand-mark img { width: 100%; height: 100%; display: block; }
-@media(max-width:640px){ .brand-mark { width: 38px; height: 38px; top: 0.9rem; left: 0.9rem; } }
 
 /* NAV (Hamburger + Overlay) */
 section[id], div[id="studio"] { scroll-margin-top: 80px; }
@@ -244,17 +240,14 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
 .nav-overlay a span { display: block; font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 0.15rem; }
 
 /* INLINE CTA */
-.cta-line { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; margin-top: clamp(2.5rem,5vw,3.5rem); }
-.cta-line span { font-size: clamp(1.05rem,2vw,1.5rem); font-style: italic; color: rgba(240,236,227,0.85); }
-.cta-arrow { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 0.7rem 1.6rem; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; white-space: nowrap; }
-.cta-arrow:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 rgba(255,227,0,0.4); }
+.cta-line { display: flex; align-items: baseline; gap: 0.6rem 1.3rem; flex-wrap: wrap; margin-top: clamp(2.2rem,4.5vw,3.2rem); padding-top: clamp(1.5rem,3vw,2rem); border-top: 1px solid rgba(255,227,0,0.12); }
+.cta-line .need { font-size: clamp(1rem,1.9vw,1.4rem); font-style: italic; color: rgba(240,236,227,0.88); line-height: 1.4; }
+.cta-arrow { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); text-decoration: none; white-space: nowrap; border-bottom: 1px solid transparent; padding-bottom: 2px; transition: border-color 0.2s ease; }
+.cta-arrow:hover { border-color: var(--gold); }
 
 /* M8 STUDIO */
 .m8-section { background: var(--grey); }
-.m8-grid { display: grid; grid-template-columns: auto 1fr; gap: clamp(2rem,5vw,4.5rem); align-items: center; }
-@media(max-width:700px){ .m8-grid { grid-template-columns: 1fr; gap: 2rem; text-align: left; } }
-.m8-mark { width: clamp(120px,18vw,190px); flex-shrink: 0; }
-.m8-mark img { width: 100%; height: auto; display: block; }
+.m8-grid { display: block; max-width: 60ch; }
 .m8-lead { font-size: clamp(1.4rem,2.8vw,2.2rem); line-height: 1.4; margin-bottom: 1.2rem; }
 .m8-lead em { color: var(--gold); font-style: italic; }
 .m8-sub { font-size: clamp(0.95rem,1.6vw,1.15rem); line-height: 1.75; color: rgba(240,236,227,0.7); margin-bottom: 2rem; max-width: 52ch; }
@@ -318,8 +311,6 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
 
 <div class="progress" id="progress"></div>
 <span id="top"></span>
-
-<a href="#top" class="brand-mark" aria-label="M8 Studio — nach oben"><img src="assets/logo-light.png" alt="M8 Studio"></a>
 
 <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
 <nav class="nav-overlay" id="navOverlay">
@@ -447,6 +438,10 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
       </div>
     </div>
   </div>
+  <div class="cta-line r">
+    <span class="need">Deine Marke braucht keinen Dienstleister, der abarbeitet — sondern jemanden, der sie versteht.</span>
+    <a href="mailto:michaelalange@mac.com" class="cta-arrow">Schreib mir →</a>
+  </div>
 </section>
 
 
@@ -541,8 +536,8 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
 
   </div>
   <div class="cta-line r">
-    <span>Sowas für deine Marke?</span>
-    <a href="mailto:michaelalange@mac.com" class="cta-arrow">Schreib mir →</a>
+    <span class="need">Das, was hängen bleibt, entsteht nicht von allein.</span>
+    <a href="mailto:michaelalange@mac.com" class="cta-arrow">Projekt starten →</a>
   </div>
 </section>
 
@@ -573,6 +568,10 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
     <div class="hw-vid"><video src="assets/hw-vid2.mp4" muted loop playsinline preload="metadata" autoplay></video></div>
     <div class="hw-vid"><video src="assets/hw-vid1.mp4" muted loop playsinline preload="metadata" autoplay></video></div>
     <div class="hw-vid"><video src="assets/hw-vid3.mp4" muted loop playsinline preload="metadata" autoplay></video></div>
+  </div>
+  <div class="cta-line r">
+    <span class="need">In einer Welt voller Copy-Paste bleibt das hängen, was von Hand kommt.</span>
+    <a href="mailto:michaelalange@mac.com" class="cta-arrow">Lass uns reden →</a>
   </div>
 </section>
 
@@ -619,6 +618,10 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
       </div>
     </div>
   </div>
+  <div class="cta-line r">
+    <span class="need">Du brauchst nicht fünf Dienstleister. Du brauchst eine.</span>
+    <a href="mailto:michaelalange@mac.com" class="cta-arrow">Anfragen →</a>
+  </div>
 </section>
 
 <div class="div"></div>
@@ -627,17 +630,20 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
 <section class="section" id="quiz">
   <div class="eyebrow">05 — Kleiner Test</div>
   <h2 class="cases-title r" style="margin-bottom:1.1rem">Sind wir auf einer Wellenlänge?</h2>
-  <p class="cases-note r">15 Fragen rund um KI, Design und Handschrift. Danach weißt du, warum wir zusammen anders arbeiten.</p>
+  <p class="cases-note r">10 kurze Fragen, ganz persönlich. Danach hast du ein Gefühl dafür, wie ich ticke — und ob wir zusammenpassen.</p>
   <div class="quiz-embed r">
-    <iframe id="quizFrame" src="quiz.html" title="KI &amp; Kreativ-Quiz" loading="lazy" scrolling="no"></iframe>
+    <iframe id="quizFrame" src="quiz.html" title="Lernen wir uns kennen — das Quiz" loading="lazy" scrolling="no"></iframe>
+  </div>
+  <div class="cta-line r">
+    <span class="need">Wenn's passt, sollten wir keine Zeit verlieren.</span>
+    <a href="mailto:michaelalange@mac.com" class="cta-arrow">Schreib mir →</a>
   </div>
 </section>
 
 <!-- M8 STUDIO -->
 <section class="section m8-section" id="studio">
   <div class="m8-grid">
-    <div class="m8-mark r"><img src="assets/logo-light.png" alt="M8 Studio Logo"></div>
-    <div class="m8-text r d1">
+    <div class="m8-text r">
       <div class="eyebrow">M8 Studio</div>
       <p class="m8-lead">Hinter M8 Studio steht <em>Michaela Al-Badri</em> — und ein eingespieltes Netzwerk aus Kreativen und Freelancern.</p>
       <p class="m8-sub">Konzept, Film, Brand Design, Text, Code — was dein Projekt braucht, wird zusammengestellt. Eine Ansprechpartnerin, das richtige Team dahinter. <span class="em">Alles ist möglich. Es muss nur gemacht werden.</span></p>
