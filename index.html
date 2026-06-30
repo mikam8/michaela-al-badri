@@ -228,6 +228,21 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 .brand-mark img { width: 100%; height: 100%; display: block; }
 @media(max-width:640px){ .brand-mark { width: 38px; height: 38px; top: 0.9rem; left: 0.9rem; } }
 
+/* NAV (Hamburger + Overlay) */
+section[id], div[id="studio"] { scroll-margin-top: 80px; }
+.nav-toggle { position: fixed; top: 1.3rem; right: 1.3rem; z-index: 140; width: 46px; height: 46px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; background: rgba(7,7,7,0.82); border: 1px solid rgba(255,227,0,0.3); backdrop-filter: blur(8px); cursor: pointer; transition: border-color 0.25s; }
+.nav-toggle:hover { border-color: var(--gold); }
+.nav-toggle span { display: block; width: 20px; height: 2px; background: var(--gold); transition: transform 0.3s ease, opacity 0.3s ease; }
+body.nav-open .nav-toggle span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+body.nav-open .nav-toggle span:nth-child(2){ opacity: 0; }
+body.nav-open .nav-toggle span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+@media(max-width:640px){ .nav-toggle { width: 38px; height: 38px; top: 0.9rem; right: 0.9rem; } .nav-toggle span { width: 17px; } }
+.nav-overlay { position: fixed; inset: 0; z-index: 135; background: rgba(7,7,7,0.97); backdrop-filter: blur(12px); display: flex; flex-direction: column; justify-content: center; padding: clamp(2rem,8vw,5rem); gap: 0.2rem; opacity: 0; pointer-events: none; transition: opacity 0.35s ease; }
+body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
+.nav-overlay a { font-family:'Georgia',serif; font-size: clamp(1.5rem,5vw,2.4rem); font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em; color: var(--white); text-decoration: none; padding: 0.35rem 0; transition: color 0.2s ease, padding-left 0.2s ease; }
+.nav-overlay a:hover { color: var(--gold); padding-left: 0.6rem; }
+.nav-overlay a span { display: block; font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.6rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-top: 0.15rem; }
+
 /* INLINE CTA */
 .cta-line { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; margin-top: clamp(2.5rem,5vw,3.5rem); }
 .cta-line span { font-size: clamp(1.05rem,2vw,1.5rem); font-style: italic; color: rgba(240,236,227,0.85); }
@@ -305,6 +320,17 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 <span id="top"></span>
 
 <a href="#top" class="brand-mark" aria-label="M8 Studio — nach oben"><img src="assets/logo-light.png" alt="M8 Studio"></a>
+
+<button class="nav-toggle" id="navToggle" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+<nav class="nav-overlay" id="navOverlay">
+  <a href="#about">Über mich<span>Wer hinter M8 Studio steht</span></a>
+  <a href="#work">Arbeiten<span>Ausgewählte Referenzen</span></a>
+  <a href="#handschrift">Handschrift<span>Mein Alleinstellungsmerkmal</span></a>
+  <a href="#skills">Leistungen<span>Was ich für dich mache</span></a>
+  <a href="#quiz">Der Test<span>Passen wir zusammen?</span></a>
+  <a href="#studio">M8 Studio<span>Das Netzwerk dahinter</span></a>
+  <a href="#kontakt">Kontakt<span>Schreib mir</span></a>
+</nav>
 
 <a href="mailto:michaelalange@mac.com" class="float-cta">
   <span class="float-cta-dot"></span>
@@ -394,7 +420,7 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 <div class="div"></div>
 
 <!-- WHO -->
-<section class="section">
+<section class="section" id="about">
   <div class="eyebrow">01 — Wer ich bin</div>
   <div class="who-grid">
     <div class="who-intro r">
@@ -435,7 +461,7 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 
 
 <!-- CASES -->
-<section class="section">
+<section class="section" id="work">
   <div class="eyebrow">02 — Ausgewählte Arbeiten</div>
   <h2 class="cases-title r">Was entsteht, bleibt.</h2>
   <p class="cases-note r">Ausgewählte Arbeiten — entstanden in meiner Zeit als Head of Creative bei NUSSBAUM Marketing Berlin.</p>
@@ -530,7 +556,7 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 </div>
 
 <!-- HANDWRITING -->
-<section class="section">
+<section class="section" id="handschrift">
   <div class="eyebrow">03 — Alleinstellungsmerkmal</div>
   <div class="hw-head r">
     <p class="hw-text">
@@ -553,7 +579,7 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 <div class="div"></div>
 
 <!-- SKILLS -->
-<section class="section skills-section">
+<section class="section skills-section" id="skills">
   <div class="eyebrow">04 — Was ich mitbringe</div>
   <div class="skills-grid">
     <div class="r">
@@ -608,7 +634,7 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 </section>
 
 <!-- M8 STUDIO -->
-<section class="section m8-section">
+<section class="section m8-section" id="studio">
   <div class="m8-grid">
     <div class="m8-mark r"><img src="assets/logo-light.png" alt="M8 Studio Logo"></div>
     <div class="m8-text r d1">
@@ -621,7 +647,7 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 </section>
 
 <!-- CONTACT -->
-<section class="contact-section">
+<section class="contact-section" id="kontakt">
   <p class="contact-pre">06 — Lass uns sprechen</p>
   <h2 class="contact-hl r">
     Wenn dich das <span class="out">anspricht</span>,<br>meld dich.
@@ -644,6 +670,13 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 </footer>
 
 <script>
+// Menü
+const navToggle = document.getElementById('navToggle');
+const navOverlay = document.getElementById('navOverlay');
+navToggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
+navOverlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('nav-open')));
+addEventListener('keydown', e => { if(e.key === 'Escape') document.body.classList.remove('nav-open'); });
+
 const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('on'); obs.unobserve(x.target); } }), {threshold:0.08});
 document.querySelectorAll('.r, .cases-grid .case-card').forEach(el => obs.observe(el));
 

@@ -7,6 +7,9 @@
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
   <style>
+    /* sofort verstecken (bevor Tailwind lädt) — verhindert riesige iframe-Höhe */
+    .hidden{display:none!important}
+    html,body{height:auto;min-height:0}
     body{font-family:'Space Mono',monospace;background:#000}
     .quiz-btn{transition:all .2s ease;border:1px solid #333}
     .quiz-btn:hover{border-color:#FFE300;transform:translateY(-2px)}
