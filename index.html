@@ -774,9 +774,17 @@ document.querySelectorAll('.hw-vid video').forEach(v => vidObs.observe(v));
 
 // Quiz-iframe: Höhe automatisch an Inhalt anpassen
 addEventListener('message', e => {
-  if (e.data && typeof e.data.quizHeight === 'number') {
-    const f = document.getElementById('quizFrame');
-    if (f) f.style.height = (e.data.quizHeight + 4) + 'px';
+  if (!e.data) return;
+  const f = document.getElementById('quizFrame');
+  if (typeof e.data.quizHeight === 'number' && f) {
+    f.style.height = (e.data.quizHeight + 4) + 'px';
+  }
+  // Quiz hält sich beim Start/Weiter selbst im Blick (sonst rutscht man auf M8 Studio)
+  if (e.data.quizScroll && f) {
+    setTimeout(() => {
+      const y = f.getBoundingClientRect().top + window.scrollY - 16;
+      window.scrollTo({ top: y, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    }, 130);
   }
 });
 

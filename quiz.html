@@ -68,7 +68,7 @@
       showQuestion();
     }
 
-    function showQuestion(){const qCol=document.getElementById('question-col');qCol.innerHTML='';const q=allQuestions[order[current]];qCol.appendChild(q.cloneNode(true));updateProgress();}
+    function showQuestion(){const qCol=document.getElementById('question-col');qCol.innerHTML='';const q=allQuestions[order[current]];qCol.appendChild(q.cloneNode(true));updateProgress();try{parent.postMessage({quizScroll:true},'*');}catch(e){}}
 
     function updateProgress(){
       const pct=(current/allQuestions.length)*100;
