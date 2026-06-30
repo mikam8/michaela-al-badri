@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KI &amp; Kreativ-Quiz</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'Space Mono',monospace;background:#000}
+    .quiz-btn{transition:all .2s ease;border:1px solid #333}
+    .quiz-btn:hover{border-color:#FFE300;transform:translateY(-2px)}
+    .quiz-btn.correct{background:#FFE300!important;color:#000!important;border-color:#FFE300!important}
+    .quiz-btn.wrong{opacity:.4;border-color:#555!important}
+    .fade-in{animation:fadeIn .4s ease}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    /* Marken-Gelb statt Canva-Gelb */
+    .bg-yellow-400{background-color:#FFE300!important}
+    .text-yellow-400{color:#FFE300!important}
+    .hover\:bg-yellow-300:hover{background-color:#FFE300!important}
+  </style>
+ </head>
+ <body class="p-4">
+  <main class="w-full max-w-5xl mx-auto"><!-- INTRO -->
+   <section id="intro" class="fade-in text-center"><img class="w-full h-56 object-cover rounded-sm mb-8 shadow-lg" loading="lazy" src="https://images.pexels.com/photos/4348401/pexels-photo-4348401.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Kreativer Arbeitsplatz mit Kalligrafie und Design">
+    <h1 class="mb-4" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 28px;">Okay – lass uns checken, ob wir auf derselben Wellenlänge sind.</h1>
+    <p class="mb-8 max-w-xl mx-auto" style="color: rgb(163, 163, 163); font-weight: 400; font-size: 16px;">15 Fragen. Danach weißt du, warum unser Projekt zusammen anders läuft. Mittendrin statt nur dabei – let's go.</p><button class="quiz-btn px-8 py-3 rounded-none font-bold uppercase tracking-wider" onclick="startQuiz()" style="background: rgb(255, 227, 0); color: rgb(0, 0, 0); font-weight: 700; font-size: 16px;">LOS GEHT'S</button>
+   </section><!-- QUIZ -->
+   <section id="quiz-area" class="hidden fade-in">
+    <div id="progress" class="mb-6 flex items-center gap-3">
+     <div class="flex-1 h-1 bg-white/20 overflow-hidden">
+      <div id="progress-bar" class="h-full bg-yellow-400 transition-all duration-300" style="width:0%"></div>
+     </div><span id="progress-text" class="text-xs text-white/60 font-bold uppercase"></span>
+    </div>
+    <div id="split-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+     <div id="question-col"></div>
+     <div id="image-col" class="hidden md:block overflow-hidden shadow-lg">
+      <div id="image-wrapper" class="relative w-full h-72 md:h-96"></div>
+     </div>
+    </div>
+    <div id="questions-pool" class="hidden">
+     <div class="question" data-correct="1" data-img="q1-img">
+      <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Wir bauen gerade dein Visual-Konzept. Was beschreibt ein »GAN«?</h2>
+      <div class="grid gap-3"><button class="quiz-btn text-left px-5 py-3" onclick="answer(this,0)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">A) Ein Bildformat für Vektorgrafiken</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,1)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">B) Ein Netzwerk aus Generator &amp; Diskriminator</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,2)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">C) Eine Drucktechnik für Logos</button>
+      </div>
+      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ Genau das nutze ich für deine Visuals. GANs steuern, Ergebnisse lenken – Handwerk, kein Zufall.</p>
+     </div>
+     <div class="question" data-correct="2" data-img="q2-img">
+      <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Deine Marke braucht Persönlichkeit. Welche Schriftklasse ist handschriftlich?</h2>
+      <div class="grid gap-3"><button class="quiz-btn text-left px-5 py-3" onclick="answer(this,0)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">A) Grotesk</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,1)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">B) Antiqua</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,2)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">C) Script / Handschrift</button>
+      </div>
+      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ Script-Fonts = Charakter. Ich gestalte individuelle Unterschriften – zusammen finden wir deinen Stil.</p>
+     </div>
+     <div class="question" data-correct="0" data-img="q3-img">
+      <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Dein Layout steht. Was ist der Goldene Schnitt?</h2>
+      <div class="grid gap-3"><button class="quiz-btn text-left px-5 py-3" onclick="answer(this,0)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">A) Das Verhältnis 1:1,618 für harmonische Proportionen</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,1)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">B) Eine Farbtechnik für Logos</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,2)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">C) Ein Druckverfahren</button>
+      </div>
+      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ Harmonie ist kein Zufall. Ich arbeite damit bei jedem Logo und Layout – auch bei deinem.</p>
+     </div>
+     <div class="question" data-correct="1" data-img="q4-img">
+      <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Dein Content geht live. Was macht einen guten Social-Media-Hook?</h2>
+      <div class="grid gap-3"><button class="quiz-btn text-left px-5 py-3" onclick="answer(this,0)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">A) Möglichst viele Hashtags</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,1)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">B) Die ersten 3 Sekunden fesseln emotional</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,2)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">C) Ein möglichst langes Video</button>
+      </div>
+      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ Boom. Genau das setze ich in jeder Kampagne um – dein Publikum soll hängen bleiben. Wir zwei? Unaufhaltbar.</p>
+     </div>
+     <div class="question" data-correct="0" data-img="q5-img">
+      <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Dein Logo soll überall funktionieren. Vektor vs. Pixel?</h2>
+      <div class="grid gap-3"><button class="quiz-btn text-left px-5 py-3" onclick="answer(this,0)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">A) Vektoren sind unendlich skalierbar ohne Qualitätsverlust</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,1)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">B) Pixel sind immer besser für Print</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,2)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">C) Es gibt keinen Unterschied</button>
+      </div>
+      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ Jedes Logo, das ich baue, ist vektorbasiert. Vom Favicon bis zur Plakatwand – überall perfekt.</p>
+     </div>
+     <div class="question" data-correct="2" data-img="q6-img">
+      <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Deine Unterschrift soll digital leben. Welches Tool imitiert Handschriften?</h2>
+      <div class="grid gap-3"><button class="quiz-btn text-left px-5 py-3" onclick="answer(this,0)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">A) ChatGPT</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,1)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">B) Photoshop</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,2)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">C) Calligraphr / Handwriting-KI-Modelle</button>
+      </div>
+      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ KI-Tools + echtes Schriftwissen = authentische, einzigartige Unterschriften. Genau mein Ding.</p>
+     </div>
+     <div class="question" data-correct="1" data-img="q7-img">
+      <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Wir prompten gerade dein nächstes Visual. Was ist Prompt Engineering?</h2>
+      <div class="grid gap-3"><button class="quiz-btn text-left px-5 py-3" onclick="answer(this,0)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">A) Das technische Setup der Hardware</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,1)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">B) Die gezielte Formulierung von Anweisungen für die KI</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,2)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">C) Ein Programmierparadigma</button>
+      </div>
+      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ Präzise Prompts = professionelle Ergebnisse. Mein tägliches Handwerk – bald auch für deine Visuals.</p>
+     </div>
+     <div class="question" data-correct="0" data-img="q8-img">
+      <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Bevor wir starten, brauchen wir ein Moodboard. Was ist das?</h2>
+      <div class="grid gap-3"><button class="quiz-btn text-left px-5 py-3" onclick="answer(this,0)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">A) Eine visuelle Sammlung aus Farben, Bildern &amp; Texturen zur Ideenfindung</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,1)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">B) Ein technisches Datenblatt</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,2)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">C) Eine To-do-Liste für Designer</button>
+      </div>
+      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ Moodboards sind mein erster Schritt. So übersetze ich deine Vorstellung in ein visuelles Erlebnis.</p>
+     </div>
+     <div class="question" data-correct="2" data-img="q9-img">
+      <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Die Typografie sitzt fast. Was ist Kerning?</h2>
+      <div class="grid gap-3"><button class="quiz-btn text-left px-5 py-3" onclick="answer(this,0)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">A) Die Schriftgröße in Pixeln</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,1)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">B) Die Zeilenabstände</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,2)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">C) Der individuelle Abstand zwischen zwei Buchstaben</button>
+      </div>
+      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ Details wie Kerning machen den Unterschied zwischen Amateur und Profi. Ich achte auf jedes Pixel.</p>
+     </div>
+     <div class="question" data-correct="1" data-img="q10-img">
+      <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Deine Farbwelt entsteht. Welche Palette wirkt am vertrauenswürdigsten?</h2>
+      <div class="grid gap-3"><button class="quiz-btn text-left px-5 py-3" onclick="answer(this,0)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">A) Neonfarben auf schwarzem Hintergrund</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,1)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">B) Harmonische, konsistente Markenfarben mit Kontrast</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,2)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">C) Jede Woche komplett neue Farben</button>
+      </div>
+      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ Konsistenz schafft Vertrauen. Zusammen entwickeln wir eine Farbwelt, die deine Audience sofort erkennt.</p>
+     </div>
+     <div class="question" data-correct="0" data-img="q11-img">
+      <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Dein Stil soll überall wiedererkennbar sein. Was ist Style Transfer?</h2>
+      <div class="grid gap-3"><button class="quiz-btn text-left px-5 py-3" onclick="answer(this,0)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">A) Den Stil eines Kunstwerks auf ein anderes Bild übertragen</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,1)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">B) Ein neues Logo automatisch generieren</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,2)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">C) Schriftarten zwischen Dokumenten kopieren</button>
+      </div>
+      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ Style Transfer = dein visueller Fingerabdruck, KI-gestützt auf alle Formate gebracht. Magisch, oder?</p>
+     </div>
+     <div class="question" data-correct="2" data-img="q12-img">
+      <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Fast fertig. Was beschreibt »Weißraum« im Design?</h2>
+      <div class="grid gap-3"><button class="quiz-btn text-left px-5 py-3" onclick="answer(this,0)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">A) Unbedruckte Flächen auf weißem Papier</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,1)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">B) Fehler im Druckprozess</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,2)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">C) Bewusst gesetzte leere Fläche, die Elementen Raum zum Atmen gibt</button>
+      </div>
+      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ Weniger ist mehr. Weißraum ist meine Geheimwaffe für elegante, wirksame Designs.</p>
+     </div>
+     <div class="question" data-correct="1" data-img="q13-img">
+      <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Dein Bild muss druckfähig sein. Was ist KI-Upscaling?</h2>
+      <div class="grid gap-3"><button class="quiz-btn text-left px-5 py-3" onclick="answer(this,0)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">A) Das Bild wird einfach gestreckt und verpixelt</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,1)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">B) KI berechnet neue Details und erhöht die Auflösung intelligent</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,2)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">C) Eine Komprimierungstechnik</button>
+      </div>
+      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ Upscaling macht KI-Bilder druckfähig. Deine Visuals? Überall gestochen scharf.</p>
+     </div>
+     <div class="question" data-correct="0" data-img="q14-img">
+      <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Deine Marke soll sitzen. Was ist der wichtigste Faktor für visuelle Identität?</h2>
+      <div class="grid gap-3"><button class="quiz-btn text-left px-5 py-3" onclick="answer(this,0)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">A) Konsistenz über alle Touchpoints hinweg</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,1)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">B) Möglichst viele verschiedene Schriften verwenden</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,2)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">C) Jeden Monat das Logo ändern</button>
+      </div>
+      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ Konsistenz ist King. Genau dafür sorge ich – deine Marke, ein roter Faden, überall.</p>
+     </div>
+     <div class="question" data-correct="2" data-img="q15-img">
+      <h2 class="mb-5" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 20px;">Letzte Frage. Was passiert, wenn KI und kreatives Fachwissen zusammenkommen?</h2>
+      <div class="grid gap-3"><button class="quiz-btn text-left px-5 py-3" onclick="answer(this,0)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">A) Nichts Besonderes – KI ersetzt alles</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,1)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">B) Chaos ohne klare Strategie</button> <button class="quiz-btn text-left px-5 py-3" onclick="answer(this,2)" style="background: transparent; color: rgb(212, 212, 212); font-weight: 400; font-size: 16px;">C) Einzigartige Ergebnisse, die weder Mensch noch Maschine allein schaffen</button>
+      </div>
+      <p class="mt-4 text-sm hidden" style="color: rgb(255, 227, 0); font-weight: 400; font-size: 16px;">→ Genau DAS ist mein Ansatz. KI + Fachwissen = Ergebnisse, die begeistern. Bereit für unser Projekt?</p>
+     </div>
+    </div><button id="next-btn" class="hidden mt-6 px-6 py-2.5 bg-yellow-400 text-black font-bold uppercase tracking-wider transition" onclick="nextQuestion()">Weiter →</button>
+   </section><!-- IMAGES -->
+   <div id="all-images" class="hidden"><img data-template-id="q1-img" class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="KI-Technologie"> <img data-template-id="q2-img" class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/30633929/pexels-photo-30633929.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Handschrift mit Füller"> <img data-template-id="q3-img" class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/4787231/pexels-photo-4787231.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Goldene Spirale"> <img data-template-id="q4-img" class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Social Media auf dem Smartphone"> <img data-template-id="q5-img" class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/4348401/pexels-photo-4348401.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Kalligrafie und digitales Design"> <img data-template-id="q6-img" class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/10288924/pexels-photo-10288924.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Handgeschriebene Briefe"> <img data-template-id="q7-img" class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/5474296/pexels-photo-5474296.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Code auf einem Laptop"> <img data-template-id="q8-img" class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/4466999/pexels-photo-4466999.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Moodboard an der Wand"> <img data-template-id="q9-img" class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/1337382/pexels-photo-1337382.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Buchstaben auf dunklem Hintergrund"> <img data-template-id="q10-img" class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Bunte Stifte"> <img data-template-id="q11-img" class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/3109807/pexels-photo-3109807.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Abstrakte Kunst"> <img data-template-id="q12-img" class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/5412270/pexels-photo-5412270.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Minimalistischer Arbeitsplatz"> <img data-template-id="q13-img" class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/3680219/pexels-photo-3680219.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Sonnenuntergang Stadt"> <img data-template-id="q14-img" class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/5706015/pexels-photo-5706015.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Visitenkarten"> <img data-template-id="q15-img" class="w-full h-full object-cover" loading="lazy" src="https://images.pexels.com/photos/8438918/pexels-photo-8438918.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800" alt="Mensch und Maschine beim Schach">
+   </div><!-- RESULT -->
+   <section id="result" class="hidden fade-in text-center">
+    <h2 class="mb-3" style="color: rgb(255, 255, 255); font-weight: 700; font-size: 24px;">Dein Ergebnis</h2>
+    <p id="score-display" class="text-5xl font-bold text-yellow-400 mb-4"></p>
+    <p data-template-id="result-high" class="mb-4 hidden" style="color: rgb(255, 255, 255); font-weight: 400; font-size: 16px;">Du weißt genau, wovon ich rede. 🔥 Stell dir vor, was passiert, wenn wir das zusammen auf dein Projekt loslassen. Ich bring die Execution, du die Vision – let's build.</p>
+    <p data-template-id="result-mid" class="mb-4 hidden" style="color: rgb(255, 255, 255); font-weight: 400; font-size: 16px;">Starker Start – du hast das Gespür. Die Lücken? Genau dafür bin ich da. Zusammen wird aus deiner Idee ein System, das funktioniert. Ready?</p>
+    <p data-template-id="result-low" class="mb-4 hidden" style="color: rgb(255, 255, 255); font-weight: 400; font-size: 16px;">Kein Stress – genau dafür buchst du mich. 🚀 Ich bringe das Know-how mit, du bringst deine Vorstellung. Zusammen wird's großartig. Versprochen.</p><button class="quiz-btn px-8 py-3 rounded-none font-bold uppercase tracking-wider mt-2" onclick="location.reload()" style="background: rgb(255, 227, 0); color: rgb(0, 0, 0); font-weight: 700; font-size: 16px;">NOCHMAL SPIELEN</button>
+   </section>
+  </main>
+  <script>
+    const allQuestions=[...document.querySelectorAll('#questions-pool .question')];
+    let order=[],current=0,score=0,answered=false;
+
+    function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+    function startQuiz(){
+      document.getElementById('intro').classList.add('hidden');
+      document.getElementById('quiz-area').classList.remove('hidden');
+      order=shuffle([...Array(allQuestions.length).keys()]);
+      current=0;score=0;answered=false;
+      showQuestion();
+    }
+
+    function showQuestion(){
+      const qCol=document.getElementById('question-col');
+      qCol.innerHTML='';
+      const q=allQuestions[order[current]];
+      const clone=q.cloneNode(true);
+      qCol.appendChild(clone);
+      const imgId=q.dataset.img;
+      const wrapper=document.getElementById('image-wrapper');
+      wrapper.innerHTML='';
+      const imgEl=document.querySelector('#all-images [data-template-id="'+imgId+'"]');
+      if(imgEl){const c=imgEl.cloneNode(true);c.classList.add('absolute','inset-0');wrapper.appendChild(c)}
+      document.getElementById('image-col').classList.remove('hidden');
+      updateProgress();
+    }
+
+    function updateProgress(){
+      const pct=(current/allQuestions.length)*100;
+      document.getElementById('progress-bar').style.width=pct+'%';
+      document.getElementById('progress-text').textContent=(current+1)+'/'+allQuestions.length;
+    }
+
+    function answer(btn,idx){
+      if(answered)return;
+      answered=true;
+      const qCol=document.getElementById('question-col');
+      const q=qCol.querySelector('.question');
+      const correct=parseInt(q.dataset.correct);
+      const btns=q.querySelectorAll('.quiz-btn');
+      btns[correct].classList.add('correct');
+      if(idx!==correct)btn.classList.add('wrong');
+      else score++;
+      btns.forEach(b=>b.style.pointerEvents='none');
+      const insight=q.querySelector('p.hidden');
+      if(insight)insight.classList.remove('hidden');
+      document.getElementById('next-btn').classList.remove('hidden');
+    }
+
+    function nextQuestion(){
+      answered=false;
+      document.getElementById('next-btn').classList.add('hidden');
+      current++;
+      if(current<allQuestions.length)showQuestion();
+      else showResult();
+    }
+
+    function showResult(){
+      document.getElementById('quiz-area').classList.add('hidden');
+      const r=document.getElementById('result');
+      r.classList.remove('hidden');
+      document.getElementById('score-display').textContent=score+' / '+allQuestions.length;
+      if(score>=12)r.querySelector('[data-template-id="result-high"]').classList.remove('hidden');
+      else if(score>=8)r.querySelector('[data-template-id="result-mid"]').classList.remove('hidden');
+      else r.querySelector('[data-template-id="result-low"]').classList.remove('hidden');
+    }
+  </script>
+  <script>
+    // Auto-Höhe: Quiz meldet seine Höhe an die Eltern-Seite (iframe wächst mit)
+    function postHeight(){ try{ parent.postMessage({quizHeight: document.documentElement.scrollHeight}, '*'); }catch(e){} }
+    window.addEventListener('load', postHeight);
+    window.addEventListener('resize', postHeight);
+    if(window.ResizeObserver){ new ResizeObserver(postHeight).observe(document.body); }
+    document.addEventListener('click', ()=>{ setTimeout(postHeight,80); });
+  </script>
+</body></html>

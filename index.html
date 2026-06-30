@@ -157,6 +157,10 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 .tv-text { font-size: clamp(1rem,2vw,1.5rem); line-height: 1.6; }
 .tv-text .em { color: var(--gold); font-style: italic; }
 .tv-sub { font-size: 0.88rem; line-height: 1.85; color: rgba(240,236,227,0.6); margin-top: 1.5rem; }
+/* QUIZ-EMBED */
+.quiz-embed { border: 1px solid rgba(255,227,0,0.18); background: #000; }
+.quiz-embed iframe { width: 100%; border: 0; display: block; min-height: 520px; transition: height 0.25s ease; }
+
 /* SCROLL-PROGRESS */
 .progress { position: fixed; top: 0; left: 0; height: 3px; width: 0; background: var(--gold); z-index: 200; will-change: width; }
 @media(prefers-reduced-motion: reduce){ .progress { display: none; } }
@@ -508,9 +512,21 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
   </div>
 </section>
 
+<div class="div"></div>
+
+<!-- QUIZ -->
+<section class="section" id="quiz">
+  <div class="eyebrow">05 — Kleiner Test</div>
+  <h2 class="cases-title r" style="margin-bottom:1.1rem">Sind wir auf einer Wellenlänge?</h2>
+  <p class="cases-note r">15 Fragen rund um KI, Design und Handschrift. Danach weißt du, warum wir zusammen anders arbeiten.</p>
+  <div class="quiz-embed r">
+    <iframe id="quizFrame" src="quiz.html" title="KI &amp; Kreativ-Quiz" loading="lazy" scrolling="no"></iframe>
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section class="contact-section">
-  <p class="contact-pre">05 — Lass uns sprechen</p>
+  <p class="contact-pre">06 — Lass uns sprechen</p>
   <h2 class="contact-hl r">
     Wenn dich das <span class="out">anspricht</span>,<br>meld dich.
   </h2>
@@ -530,6 +546,14 @@ footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem;
 <script>
 const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting) x.target.classList.add('on'); }), {threshold:0.06});
 document.querySelectorAll('.r').forEach(el => obs.observe(el));
+
+// Quiz-iframe: Höhe automatisch an Inhalt anpassen
+addEventListener('message', e => {
+  if (e.data && typeof e.data.quizHeight === 'number') {
+    const f = document.getElementById('quizFrame');
+    if (f) f.style.height = (e.data.quizHeight + 4) + 'px';
+  }
+});
 
 // Count-up für die Zahlen
 const countObs = new IntersectionObserver((entries, o) => {
