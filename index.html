@@ -13,6 +13,11 @@
 <link rel="canonical" href="https://mikam8.github.io/michaela-al-badri/">
 <meta name="theme-color" content="#070707">
 
+<!-- Favicons -->
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
@@ -81,7 +86,7 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
   }
   .hero-bg-portraits::before {
     content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-    width: 88%; max-width: 30rem; height: 70%; background: var(--gold); z-index: 0;
+    width: 88%; max-width: 30rem; height: 62%; background: var(--gold); z-index: 0;
   }
   .hero-bg-portraits img {
     position: relative; z-index: 1;
@@ -95,8 +100,8 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 .hero-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; display: block; }
 .hero-name { font-size: clamp(2rem,8vw,7rem); font-weight: 800; line-height: 0.92; text-transform: uppercase; margin-bottom: 2.5rem; overflow-wrap: break-word; }
 .hero-name .first { display: block; color: var(--white); letter-spacing: -0.02em; }
-.hero-name .last { display: block; color: transparent; -webkit-text-stroke: 1.5px var(--white); letter-spacing: 0.07em; }
-.hero-name .last .hy { display: inline-block; margin: 0 0.05em; -webkit-text-stroke: 1.5px var(--gold); }
+.hero-name .last { display: block; color: var(--white); -webkit-text-stroke: 0; letter-spacing: 0.07em; }
+.hero-name .last .hy { display: inline-block; margin: 0 0.05em; color: var(--gold); -webkit-text-stroke: 0; }
 .hero-roles { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; margin-bottom: 2.5rem; }
 .hero-role { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); position: relative; }
 .hero-role:not(:last-child)::after { content: '·'; position: absolute; right: -1rem; color: var(--gold); }
@@ -282,8 +287,8 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   .hero-content { padding-bottom: 1.6rem; }
   .hero-label { font-size: 0.6rem; letter-spacing: 0.25em; margin-bottom: 1.2rem; }
   .hero-name { font-size: 1.95rem; line-height: 1.08; margin-bottom: 1.4rem; }
-  .hero-name .last { letter-spacing: 0; -webkit-text-stroke-width: 1px; }
-  .hero-name .last .hy { -webkit-text-stroke-width: 1px; margin: 0 0.02em; }
+  .hero-name .last { letter-spacing: 0; -webkit-text-stroke: 0; }
+  .hero-name .last .hy { -webkit-text-stroke: 0; margin: 0 0.02em; }
   .hero-roles { gap: 0.3rem 1rem; margin-bottom: 1.6rem; }
   .hero-role { font-size: 0.58rem; letter-spacing: 0.1em; }
   .hero-tagline { font-size: 1rem; line-height: 1.7; margin-bottom: 2rem; max-width: 100%; }
