@@ -66,7 +66,8 @@ html { scroll-behavior: smooth; overflow-x: hidden; }
 body { background: var(--black); color: var(--white); font-family: 'Georgia', serif; overflow-x: hidden; }
 
 /* FLOATING CTA */
-.float-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; display: flex; align-items: center; gap: 0.8rem; background: rgba(7,7,7,0.9); border: 1px solid rgba(255,227,0,0.3); backdrop-filter: blur(12px); padding: 0.75rem 1.4rem; text-decoration: none; transition: border-color 0.25s; }
+.float-cta { position: fixed; bottom: 2rem; right: 2rem; z-index: 100; display: flex; align-items: center; gap: 0.8rem; background: rgba(7,7,7,0.9); border: 1px solid rgba(255,227,0,0.3); backdrop-filter: blur(12px); padding: 0.75rem 1.4rem; text-decoration: none; opacity: 0; transform: translateY(10px); pointer-events: none; transition: opacity 0.3s ease, transform 0.3s ease, border-color 0.25s; }
+.float-cta.show { opacity: 1; transform: none; pointer-events: auto; }
 .float-cta:hover { border-color: var(--gold); }
 .float-cta-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; animation: blink 2s ease-in-out infinite; }
 @keyframes blink { 0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.35;transform:scale(0.6)} }
@@ -86,6 +87,7 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 @media(prefers-reduced-motion: reduce){ .hero-logo { animation: none; opacity: 1; } }
 .hero-head { font-size: clamp(1.5rem,3.6vw,3rem); font-weight: 700; line-height: 1.16; letter-spacing: -0.01em; color: var(--white); margin-bottom: 1.4rem; text-wrap: balance; }
 .hero-sub { font-size: clamp(1rem,1.6vw,1.25rem); line-height: 1.55; color: rgba(240,236,227,0.68); max-width: 42ch; margin: 0 auto 2.2rem; }
+.hero-sub, .anti-stat-sub, .who-item-text, .skills-sub, .m8-sub, .case-line { text-wrap: pretty; }
 .hero-signature { margin-bottom: 2rem; }
 .hero-sig-name { display: block; font-size: clamp(1.05rem,1.6vw,1.3rem); font-weight: 800; letter-spacing: -0.01em; color: var(--white); }
 .hero-sig-role { display: block; font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-top: 0.55rem; }
@@ -387,7 +389,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   <div class="hero-content">
     <img class="hero-logo" src="assets/m8-logo-studio.png" alt="M8 Studio · Human in the Loop" width="260" height="260">
     <h1 class="hero-head">Marken, die bleiben. Nicht, weil sie laut sind, sondern weil sie sitzen.</h1>
-    <p class="hero-sub">Head of Creative &amp; Handschrift aus Berlin. Von Konzept bis Kampagne, alles aus einer Hand. Du zahlst das Ergebnis, nicht die Zeit.</p>
+    <p class="hero-sub">Head of Creative &amp; Handschrift aus Berlin.<br>Von Konzept bis Kampagne, alles aus einer Hand.<br>Du zahlst das Ergebnis, nicht die Zeit.</p>
     <div class="hero-signature">
       <span class="hero-sig-name">Michaela Al-Badri</span>
       <span class="hero-sig-role">Head of Creative · Handschriftspezialistin · der Mensch im Loop</span>
@@ -429,7 +431,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
     <span class="anti-stat-num"><span class="count" data-to="1">1</span></span>
     <div>
       <span class="anti-stat-main">Ansprechpartnerin für alles.</span>
-      <p class="anti-stat-sub">Idee, Logo, Kampagne, Film, von Anfang bis Schnitt aus einer Hand. Das hält die Wege kurz und die Abstimmung einfach.</p>
+      <p class="anti-stat-sub">Idee, Logo, Kampagne, Imagefilm, von Anfang bis Schnitt aus einer Hand. Das hält die Wege kurz und die Abstimmung einfach.</p>
     </div>
   </div>
   <div class="anti-stat r d1">
@@ -659,7 +661,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
     <span class="need">In einer Welt, die alles automatisiert, ist das Handgemachte das Statement. Unterschrift, Signet, handgeschriebenes Logo, für Marken, die den Unterschied wollen.</span>
     <a href="mailto:michaelalange@mac.com?subject=Handschrift-Projekt%20über%20M8%20Studio" class="cta-arrow">Handschrift-Projekt anfragen →</a>
   </div>
-  <p class="hw-course-note r">Du willst es selbst können? Den Einstieg in meine Welt gibt's auch für dich: <a href="https://mikam8.github.io/handschrift-kurs/" target="_blank" rel="noopener">Mein Handschrift-Kurs →</a></p>
+  <p class="hw-course-note r">Du willst deine eigene Unterschrift, die ein Statement setzt? Genau das entwickelst du in meinem Kurs: <a href="https://mikam8.github.io/handschrift-kurs/" target="_blank" rel="noopener">Deine Signatur entwickeln →</a></p>
 </section>
 
 <div class="div"></div>
@@ -669,12 +671,12 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   <div class="eyebrow">04 · Was du bekommst</div>
   <div class="skills-lead r">
     <p class="skills-claim">Eigentlich nur eine Sache:<br><span class="em">Ich verstehe, was du meinst,</span> bevor du es ausgesprochen hast.</p>
-    <p class="skills-sub">Brand, Film, Logo, Kampagne, Handschrift, das ist mein Handwerk. Es steht im Dienst einer einzigen Frage: Was braucht deine Marke wirklich? Da fängt meine Arbeit an, nicht bei der Software.</p>
+    <p class="skills-sub">Brand, Imagefilm, Logo, Kampagne, Handschrift, das ist mein Handwerk. Es steht im Dienst einer einzigen Frage: Was braucht deine Marke wirklich? Da fängt meine Arbeit an, nicht bei der Software.</p>
   </div>
   <div class="who-items benefits-grid">
     <div class="who-item r">
       <div class="who-item-label">Eine Ansprechpartnerin</div>
-      <div class="who-item-text">Idee, Konzept, Design, Film, Handschrift. Alles aus einer Hand, kein Pingpong zwischen fünf Abteilungen. Du erklärst einmal, ich liefere.</div>
+      <div class="who-item-text">Idee, Konzept, Design, Imagefilm, Handschrift. Alles aus einer Hand, kein Pingpong zwischen fünf Abteilungen. Du erklärst einmal, ich liefere.</div>
     </div>
     <div class="who-item r d1">
       <div class="who-item-label">Ein ehrliches Wort</div>
@@ -718,7 +720,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
     <div class="m8-text r">
       <div class="eyebrow">M8 Studio</div>
       <p class="m8-lead">Hinter M8 Studio steht <em>Michaela Al-Badri</em> und ein eingespieltes Netzwerk aus Kreativen und Freelancern.</p>
-      <p class="m8-sub">Konzept, Film, Brand Design, Text, Code, was dein Projekt braucht, wird zusammengestellt. Eine Ansprechpartnerin, das richtige Team dahinter. <span class="em">Alles ist möglich. Es muss nur gemacht werden.</span></p>
+      <p class="m8-sub">Konzept, Imagefilm, Brand Design, Text, Code, was dein Projekt braucht, wird zusammengestellt. Eine Ansprechpartnerin, das richtige Team dahinter. <span class="em">Alles ist möglich. Es muss nur gemacht werden.</span></p>
       <a href="mailto:michaelalange@mac.com" class="btn">Projekt besprechen</a>
     </div>
   </div>
@@ -820,6 +822,7 @@ document.querySelectorAll('.count').forEach(el => countObs.observe(el));
 // Scroll-Fortschrittsbalken
 const bar = document.getElementById('progress');
 const toTop = document.getElementById('toTop');
+const floatCta = document.querySelector('.float-cta');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 let ticking = false;
 function onScroll() {
@@ -832,6 +835,7 @@ function onScroll() {
       bar.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
     }
     if (toTop) toTop.classList.toggle('show', y > 500);
+    if (floatCta) floatCta.classList.toggle('show', y > 500);
     ticking = false;
   });
 }
