@@ -212,6 +212,9 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 }
 .skills-craft-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); margin: clamp(2.8rem,5vw,3.6rem) 0 1.6rem; }
 .skills-grid { opacity: 0.92; }
+/* Sektion 04: was der Kunde bekommt, im homogenen who-item-Stil */
+.benefits-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: clamp(2rem,4vw,2.6rem) clamp(3rem,6vw,5rem); margin-top: clamp(2.8rem,5vw,3.6rem); }
+@media(max-width:640px){ .benefits-grid { grid-template-columns: 1fr; gap: 1.8rem; } }
 /* Handschrift: dezente kleine Tür zum Kurs */
 .hw-course-note { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.82rem; letter-spacing: 0.03em; color: var(--muted); margin-top: 1.5rem; }
 .hw-course-note a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; white-space: nowrap; }
@@ -614,48 +617,27 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
 
 <!-- SKILLS -->
 <section class="section skills-section" id="skills">
-  <div class="eyebrow">04 · Was ich mitbringe</div>
+  <div class="eyebrow">04 · Was du bekommst</div>
   <div class="skills-lead r">
-    <p class="skills-claim">Eigentlich nur eine Sache: <span class="em">Ich verstehe, was du meinst,</span> bevor du es ausgesprochen hast.</p>
-    <p class="skills-sub">Brand, Film, Logo, Kampagne, Handschrift, das ist Handwerk. Es steht im Dienst einer einzigen Frage: Was braucht deine Marke wirklich? Da fängt meine Arbeit an, nicht bei der Software.</p>
+    <p class="skills-claim">Eigentlich nur eine Sache:<br><span class="em">Ich verstehe, was du meinst,</span> bevor du es ausgesprochen hast.</p>
+    <p class="skills-sub">Brand, Film, Logo, Kampagne, Handschrift, das ist mein Handwerk. Es steht im Dienst einer einzigen Frage: Was braucht deine Marke wirklich? Da fängt meine Arbeit an, nicht bei der Software.</p>
   </div>
-  <p class="skills-craft-label r">Das Handwerk dahinter</p>
-  <div class="skills-grid">
-    <div class="r">
-      <div class="sg-label">Design & Bild</div>
-      <div class="sg-tags">
-        <span class="sg-tag">Adobe Photoshop</span><span class="sg-tag">Adobe Illustrator</span><span class="sg-tag">Canva</span><span class="sg-tag">Druckvorstufe</span>
-      </div>
+  <div class="who-items benefits-grid">
+    <div class="who-item r">
+      <div class="who-item-label">Eine Ansprechpartnerin</div>
+      <div class="who-item-text">Idee, Konzept, Design, Film, Handschrift. Alles aus einer Hand, kein Pingpong zwischen fünf Abteilungen. Du erklärst einmal, ich liefere.</div>
     </div>
-    <div class="r d1">
-      <div class="sg-label">Bewegtbild & Motion</div>
-      <div class="sg-tags">
-        <span class="sg-tag">Motion Design</span><span class="sg-tag">Imagefilm, Konzept bis Cut</span><span class="sg-tag">Nachrichtengrafik</span>
-      </div>
+    <div class="who-item r d1">
+      <div class="who-item-label">Ein ehrliches Wort</div>
+      <div class="who-item-text">Ich sage dir, wenn eine Idee so nicht trägt, und bring die bessere gleich mit. Kein Ja-Sagen, keine 20 Korrekturschleifen.</div>
     </div>
-    <div class="r d2">
-      <div class="sg-label">Brand & Kampagne</div>
-      <div class="sg-tags">
-        <span class="sg-tag">Brand Design</span><span class="sg-tag">Corporate Design</span><span class="sg-tag">Kampagnen</span><span class="sg-tag">Social Media</span><span class="sg-tag">KI-Content</span>
-      </div>
+    <div class="who-item r d2">
+      <div class="who-item-label">Ein Ergebnis, kein Stundenzettel</div>
+      <div class="who-item-text">Du zahlst nicht die Zeit, du zahlst das fertige Stück. Vorher weißt du, woran du bist. Keine bösen Überraschungen.</div>
     </div>
-    <div class="r d1">
-      <div class="sg-label">Handschrift</div>
-      <div class="sg-tags">
-        <span class="sg-tag">Dynamisches Schreiben</span><span class="sg-tag">Jede Unterschrift</span><span class="sg-tag">Live bei Events</span><span class="sg-tag">Großauflagen</span>
-      </div>
-    </div>
-    <div class="r d2">
-      <div class="sg-label">Sprachen</div>
-      <div class="sg-tags">
-        <span class="sg-tag">Deutsch</span><span class="sg-tag">Englisch</span><span class="sg-tag">Schwedisch</span><span class="sg-tag">Mazedonisch</span>
-      </div>
-    </div>
-    <div class="r d3">
-      <div class="sg-label">Ich bin nicht</div>
-      <div class="sg-tags">
-        <span class="sg-tag no">Excel</span>
-      </div>
+    <div class="who-item r d3">
+      <div class="who-item-label">Eine Marke, die hängen bleibt</div>
+      <div class="who-item-text">Am Ende steht kein hübsches Bild, sondern etwas, das dich sichtbar, merkbar und unverwechselbar macht.</div>
     </div>
   </div>
   <div class="cta-line r">
