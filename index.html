@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>Michaela Al-Badri · Head of Creative &amp; Handschrift · M8 Studio Berlin</title>
+<title>M8 Studio · Michaela Al-Badri · Head of Creative &amp; Handschrift, Berlin</title>
 <meta name="description" content="M8 Studio, das ist Michaela Al-Badri, Head of Creative aus Berlin. Marken, Logos, Filme und Handschrift, die bleiben. Alles aus einer Hand, projektbasiert: du zahlst das Ergebnis, nicht die Zeit.">
 <meta name="keywords" content="Head of Creative Berlin, Creative Director Berlin, Brand Design, Corporate Design, Logo Design, Kampagnen, Imagefilm, Motion Design, Social Media, Handschrift, Kalligrafie, Handschriftspezialistin, Unterschrift gestalten, KI Content, Michaela Al-Badri">
 <meta name="author" content="Michaela Al-Badri">
@@ -63,6 +63,7 @@
 <link rel="stylesheet" href="assets/fonts.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
 :root { --black: #070707; --white: #f0ece3; --gold: #FFE300; --grey: #111; --mid: #222; --muted: #666; --pad: clamp(2rem, 6vw, 6rem); }
 html { scroll-behavior: smooth; overflow-x: hidden; }
 body { background: var(--black); color: var(--white); font-family: 'Fraunces','Georgia', serif; font-optical-sizing: auto; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
@@ -89,7 +90,7 @@ body { background: var(--black); color: var(--white); font-family: 'Fraunces','G
 @media(prefers-reduced-motion: reduce){ .hero-logo { animation: none; opacity: 1; } }
 .hero-head { font-size: clamp(1.9rem,4.6vw,3.6rem); font-weight: 700; line-height: 1.12; letter-spacing: -0.015em; color: var(--white); margin-bottom: 1.4rem; text-wrap: balance; }
 .hero-head .hl { color: var(--gold); }
-.hero-sub { font-size: clamp(1rem,1.6vw,1.25rem); line-height: 1.55; color: rgba(240,236,227,0.68); max-width: 42ch; margin: 0 auto 2.2rem; }
+.hero-sub { font-size: clamp(1rem,1.6vw,1.25rem); line-height: 1.55; color: rgba(240,236,227,0.8); max-width: 42ch; margin: 0 auto 2.2rem; }
 .hero-sub, .anti-stat-sub, .who-item-text, .skills-sub, .m8-sub, .case-line { text-wrap: pretty; }
 .hero-sub b { color: var(--white); font-weight: 700; }
 .hero-signature { margin-bottom: 2rem; }
@@ -121,7 +122,7 @@ body { background: var(--black); color: var(--white); font-family: 'Fraunces','G
 .anti-stat-num { font-size: clamp(1.8rem,3.5vw,3.5rem); font-weight: 800; color: var(--gold); line-height: 1; min-width: clamp(4rem,8vw,8rem); text-align: right; flex-shrink: 0; letter-spacing: -0.04em; font-variant-numeric: lining-nums; font-feature-settings: "lnum" 1; }
 .anti-stat-num .x { font-size: 0.45em; font-weight: 400; opacity: 0.7; }
 .anti-stat-main { font-size: clamp(1rem,1.8vw,1.5rem); font-weight: 700; line-height: 1.3; color: var(--white); }
-.anti-stat-sub { font-size: 0.82rem; color: rgba(240,236,227,0.45); font-style: italic; margin-top: 0.35rem; line-height: 1.65; }
+.anti-stat-sub { font-size: 0.82rem; color: rgba(240,236,227,0.62); font-style: italic; margin-top: 0.35rem; line-height: 1.65; }
 @media(max-width:600px){ .anti-stat { flex-direction: column; gap: 0.5rem; } .anti-stat-num { text-align: left; min-width: auto; } }
 
 /* DIVIDER */
@@ -142,12 +143,12 @@ body { background: var(--black); color: var(--white); font-family: 'Fraunces','G
 .who-items { display: flex; flex-direction: column; gap: 2.8rem; }
 .who-item { border-left: 1px solid var(--mid); padding-left: 2rem; }
 .who-item-label { font-family:'Inter','Helvetica Neue',Arial,sans-serif; font-size: 0.6rem; letter-spacing: 0.28em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.7rem; }
-.who-item-text { font-size: 0.9rem; line-height: 1.85; color: rgba(240,236,227,0.65); }
+.who-item-text { font-size: 0.9rem; line-height: 1.85; color: rgba(240,236,227,0.75); }
 .who-item-text b { color: var(--gold); font-weight: 700; }
 
 /* CASES: uniformes 16:9-Grid, alle Bilder gleich groß, kein Beschnitt */
 .cases-title { font-size: clamp(1.9rem,6vw,6rem); font-weight: 800; text-transform: uppercase; letter-spacing: -0.025em; line-height: 0.9; margin-bottom: 1.1rem; }
-.cases-note { font-size: 0.9rem; line-height: 1.6; color: rgba(240,236,227,0.5); font-style: italic; margin-bottom: clamp(2.5rem,5vw,3.5rem); max-width: 46ch; }
+.cases-note { font-size: 0.9rem; line-height: 1.6; color: rgba(240,236,227,0.72); font-style: italic; margin-bottom: clamp(2.5rem,5vw,3.5rem); max-width: 46ch; }
 .cases-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: clamp(1rem,2vw,1.5rem); }
 @media(max-width:700px){ .cases-grid { grid-template-columns: 1fr; } }
 .case-card { background: #0d0d0d; border: 1px solid rgba(255,227,0,0.14); overflow: hidden; transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease; }
@@ -160,7 +161,7 @@ body { background: var(--black); color: var(--white); font-family: 'Fraunces','G
 @media(max-width:640px){ .case-cap-top { flex-direction: column; align-items: flex-start; gap: 0.3rem; } }
 .case-name { font-size: clamp(1rem,1.5vw,1.25rem); font-weight: 700; letter-spacing: -0.01em; }
 .case-kind { font-family:'Inter','Helvetica Neue',Arial,sans-serif; font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
-.case-line { font-size: 0.82rem; line-height: 1.6; color: rgba(240,236,227,0.55); margin-bottom: 0.7rem; }
+.case-line { font-size: 0.82rem; line-height: 1.6; color: rgba(240,236,227,0.72); margin-bottom: 0.7rem; }
 .case-result { font-size: 0.82rem; line-height: 1.55; color: rgba(240,236,227,0.9); margin-bottom: 0.9rem; padding-left: 0.9rem; border-left: 2px solid var(--gold); }
 .case-result b { color: var(--gold); font-weight: 700; }
 .case-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
@@ -246,6 +247,28 @@ body { background: var(--black); color: var(--white); font-family: 'Fraunces','G
 .hw-course-note { font-family:'Inter','Helvetica Neue',Arial,sans-serif; font-size: 0.82rem; letter-spacing: 0.03em; color: var(--muted); margin-top: 1.5rem; }
 .hw-course-note a { color: var(--gold); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; white-space: nowrap; }
 .hw-course-note a:hover { border-color: var(--gold); }
+
+/* SO LÄUFT'S */
+.steps-section { background: var(--grey); }
+.steps-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: clamp(2rem,4vw,2.8rem) clamp(3rem,6vw,5rem); margin-top: clamp(2.5rem,5vw,3.5rem); }
+@media(max-width:640px){ .steps-grid { grid-template-columns: 1fr; gap: 2rem; } }
+.step { display: flex; gap: 1.3rem; align-items: flex-start; }
+.step-num { font-family:'Inter','Helvetica Neue',Arial,sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--black); background: var(--gold); width: 2.1rem; height: 2.1rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.step-body h3 { font-size: clamp(1.05rem,1.8vw,1.35rem); font-weight: 700; margin-bottom: 0.5rem; }
+.step-body p { font-size: 0.92rem; line-height: 1.7; color: rgba(240,236,227,0.75); }
+.steps-need { margin-top: clamp(2.4rem,4vw,3.2rem); font-size: 0.98rem; line-height: 1.7; color: rgba(240,236,227,0.88); border-left: 2px solid var(--gold); padding-left: 1.1rem; max-width: 62ch; }
+.steps-need b { color: var(--gold); }
+
+/* FAQ */
+.faq-list { margin-top: clamp(2.4rem,4vw,3.2rem); max-width: 62ch; }
+.faq-item { border-top: 1px solid var(--mid); }
+.faq-item:last-of-type { border-bottom: 1px solid var(--mid); }
+.faq-item summary { list-style: none; cursor: pointer; padding: 1.2rem 2.2rem 1.2rem 0; font-size: clamp(1rem,1.6vw,1.2rem); font-weight: 700; position: relative; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: '+'; position: absolute; right: 0; top: 50%; transform: translateY(-50%); color: var(--gold); font-size: 1.5rem; line-height: 1; }
+.faq-item[open] summary::after { content: '\2212'; }
+.faq-item > p { padding: 0 0 1.4rem; font-size: 0.95rem; line-height: 1.75; color: rgba(240,236,227,0.78); }
+.faq-item > p b { color: var(--gold); }
 
 /* CONTACT */
 .contact-section { min-height: 60vh; display: flex; flex-direction: column; justify-content: center; padding: clamp(5rem,10vw,9rem) var(--pad); position: relative; overflow: hidden; }
@@ -401,6 +424,8 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   <a href="#work">Arbeiten<span>Ausgewählte Referenzen</span></a>
   <a href="#handschrift">Handschrift<span>Mein Alleinstellungsmerkmal</span></a>
   <a href="#skills">Leistungen<span>Was ich für dich mache</span></a>
+  <a href="#ablauf">So läuft's<span>In vier Schritten zum Ergebnis</span></a>
+  <a href="#faq">Fragen<span>Kosten, Dauer, Rechte, KI</span></a>
   <a href="#quiz">Der Test<span>Passen wir zusammen?</span></a>
   <a href="#studio">M8 Studio<span>Das Netzwerk dahinter</span></a>
   <a href="#kontakt">Kontakt<span>Schreib mir</span></a>
@@ -531,7 +556,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
 <section class="section" id="work">
   <div class="eyebrow">02 · Ausgewählte Arbeiten</div>
   <h2 class="cases-title r">Was entsteht, bleibt.</h2>
-  <p class="cases-note r">Ausgewählte Arbeiten, entstanden in meiner Zeit als Head of Creative bei NUSSBAUM Marketing Berlin.</p>
+  <p class="cases-note r">Konzept, Design und Regie aus meiner Feder, als Head of Creative verantwortet bei NUSSBAUM Berlin. Neue Arbeiten aus dem M8 Studio folgen.</p>
   <div class="cases-grid">
 
     <div class="case-card">
@@ -738,6 +763,51 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
 </section>
 
 <div class="div"></div>
+
+<!-- SO LÄUFT'S -->
+<section class="section steps-section" id="ablauf">
+  <div class="eyebrow">So läuft's</div>
+  <h2 class="cases-title r">Von der ersten Mail zum fertigen Ergebnis.</h2>
+  <div class="steps-grid">
+    <div class="step r">
+      <span class="step-num">1</span>
+      <div class="step-body"><h3>Kennenlernen</h3><p>15 Minuten Klartext. Du erzählst, ich höre zu. Kostenlos und unverbindlich, du merkst sofort, ob es passt.</p></div>
+    </div>
+    <div class="step r d1">
+      <span class="step-num">2</span>
+      <div class="step-body"><h3>Klarer Festpreis</h3><p>Du bekommst ein Angebot mit festem Preis und definiertem Umfang. Keine Stundenzettel, keine bösen Überraschungen.</p></div>
+    </div>
+    <div class="step r d2">
+      <span class="step-num">3</span>
+      <div class="step-body"><h3>Umsetzung aus einer Hand</h3><p>Ich setze um, für Größeres mit meinem eingespielten Netzwerk. Du hast eine Ansprechpartnerin, kein Abteilungs-Pingpong.</p></div>
+    </div>
+    <div class="step r d3">
+      <span class="step-num">4</span>
+      <div class="step-body"><h3>Dein Ergebnis</h3><p>Du bekommst das fertige Stück, inklusive Nutzungsrechte. Es gehört dir, fertig zum Einsatz.</p></div>
+    </div>
+  </div>
+  <p class="steps-need r"><b>Was ich von dir brauche:</b> eine grobe Idee und dein Feedback an zwei, drei Punkten. Kein Briefing schreiben, ich frage gezielt nach.</p>
+</section>
+
+<div class="div"></div>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="eyebrow">Häufige Fragen</div>
+  <h2 class="cases-title r">Kurz und ehrlich beantwortet.</h2>
+  <div class="faq-list r">
+    <details class="faq-item"><summary>Was kostet das ungefähr?</summary><p>Projektbasiert, kein Stundensatz. Zur groben Orientierung: Signatur oder Logo ab rund 2.500 €, ein Marken-Paket ab rund 7.500 €, große Kampagnen und Imagefilme individuell. Sag mir im Kontakt deinen Budget-Rahmen, dann bekommst du ehrlich gesagt, was drin ist.</p></details>
+    <details class="faq-item"><summary>Wie lange dauert ein Projekt?</summary><p>Je nach Umfang: ein Logo oder eine Signatur in ein bis zwei Wochen, eine Marke in vier bis sechs, Größeres nach Absprache. Tempo ist meine Stärke, ohne dass die Qualität leidet.</p></details>
+    <details class="faq-item"><summary>Was brauchst du von mir?</summary><p>Eine grobe Vorstellung und dein Feedback an ein paar Punkten. Du musst kein Briefing schreiben, ich frage gezielt nach und verstehe schnell, worauf du hinauswillst.</p></details>
+    <details class="faq-item"><summary>Arbeitest du mit KI? Ist mein Zeug sicher?</summary><p>Ja, ich nutze KI als Werkzeug. Aber die Entscheidungen trifft ein Mensch: ich. <b>Deine Marke bleibt deine, der Mensch entscheidet.</b> Vertrauliches gebe ich nicht in offene KI-Dienste.</p></details>
+    <details class="faq-item"><summary>Bekomme ich die Rechte an der Arbeit?</summary><p>Ja. Die Nutzungsrechte am fertigen Ergebnis sind Teil des Preises und im Angebot klar geregelt. Es gehört dir.</p></details>
+    <details class="faq-item"><summary>Arbeitest du allein oder mit Team?</summary><p>Beides. Kleineres mache ich selbst, für Größeres hole ich mein eingespieltes Netzwerk aus Kreativen und Freelancern. Für dich bleibt es eine Ansprechpartnerin.</p></details>
+  </div>
+  <div class="cta-line r">
+    <span class="need">Noch eine Frage offen? Stell sie mir direkt.</span>
+    <a href="mailto:michaelalange@mac.com?subject=Frage%20an%20M8%20Studio" class="cta-arrow">Schreib mir →</a>
+  </div>
+</section>
 
 <!-- QUIZ -->
 <section class="section" id="quiz">
