@@ -161,6 +161,10 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 .case-result b { color: var(--gold); font-weight: 700; }
 .case-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .case-tag { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(255,227,0,0.28); padding: 0.2rem 0.6rem; }
+/* Imagefilm-Referenz: volle Breite */
+.case-card.case-video { grid-column: 1 / -1; }
+.case-embed { position: relative; aspect-ratio: 16 / 9; background: #000; line-height: 0; }
+.case-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
 
 /* KUNDENSTIMMEN (Social Proof) */
 .is-hidden { display: none !important; }
@@ -435,17 +439,17 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
     </div>
   </div>
   <div class="anti-stat r d1">
-    <span class="anti-stat-num"><span class="count" data-to="3">3</span></span>
+    <span class="anti-stat-num"><span class="count" data-to="2">2</span></span>
     <div>
-      <span class="anti-stat-main">Sender. Hintergrundgrafik im Sekundentakt.</span>
-      <p class="anti-stat-sub">ProSieben, Sat.1, kabel eins. Wer für Millionen Menschen unter Nachrichtendruck gestaltet, macht danach nichts Mittelmäßiges mehr. Diese Schule steckt in jeder Arbeit.</p>
+      <span class="anti-stat-main">Ohren, die zuerst zuhören.</span>
+      <p class="anti-stat-sub">Bevor ich gestalte, will ich dich verstehen. Am Ende erkennst du dich in der Arbeit wieder, nicht meinen Geschmack.</p>
     </div>
   </div>
   <div class="anti-stat r d2">
     <span class="anti-stat-num"><span class="count" data-to="0">0</span></span>
     <div>
       <span class="anti-stat-main">Mal Schöngerede.</span>
-      <p class="anti-stat-sub">Was nicht mein Fach ist, Excel zum Beispiel, sage ich offen. So weißt du von Anfang an, woran du bist.</p>
+      <p class="anti-stat-sub">Ich verspreche dir nur, was ich halten kann, und sage offen, was nicht mein Fach ist. So fühlst du dich von der ersten Minute an sicher.</p>
     </div>
   </div>
   <div class="anti-stat r d3">
@@ -467,7 +471,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
       <img class="about-portrait" src="assets/michaela-about.png" alt="Michaela Al-Badri, Head of Creative aus Berlin" loading="lazy">
       <div class="who-intro">
         <span class="em">Ich verstehe, was du willst,</span> bevor du es aussprichst.<br><br>
-        Das ist nicht Talent, das ist Training. Drei Schulen, zwei Jahrzehnte, eine Haltung. Jede steckt heute in deinem Projekt.
+        Das ist nicht Talent, das ist Training. Drei Schulen, zwei Jahrzehnte, ein Gespür für Menschen. Jede steckt heute in deinem Projekt.
       </div>
     </div>
     <div class="who-items">
@@ -566,6 +570,18 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
         <p class="case-line">Der Gepard.<br>„Wenn Sie es schnell wollen.“ Eine Tierwelt, ein System.</p>
         <p class="case-result"><b>Ergebnis:</b> ein Bildsystem, das jede Botschaft sofort trägt.</p>
         <div class="case-tags"><span class="case-tag">Bildsprache</span><span class="case-tag">Serie</span></div>
+      </div>
+    </div>
+
+    <div class="case-card case-video">
+      <div class="case-embed">
+        <iframe src="https://www.youtube-nocookie.com/embed/Pc7sjBYYglc?rel=0" title="Capital Baustoffe · Imagefilm von Michaela Al-Badri" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="case-cap">
+        <div class="case-cap-top"><span class="case-name">Capital Baustoffe</span><span class="case-kind">Imagefilm</span></div>
+        <p class="case-line">Der Imagefilm, von der ersten Idee bis zum finalen Schnitt komplett selbst gemacht.</p>
+        <p class="case-result"><b>Ergebnis:</b> eine Marke in Bewegung. Konzept, Kamera, Cut aus einer Hand.</p>
+        <div class="case-tags"><span class="case-tag">Imagefilm</span><span class="case-tag">Konzept bis Cut</span></div>
       </div>
     </div>
 
