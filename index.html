@@ -89,7 +89,8 @@ body { background: var(--black); color: var(--white); font-family: 'Fraunces','G
 .hero-logo { display: block; width: clamp(168px,25vw,260px); height: auto; margin: 0 auto clamp(2rem,4vw,2.8rem); background: var(--white); border-radius: 50%; padding: clamp(12px,1.8vw,20px); box-shadow: 0 18px 50px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,227,0,0.22); opacity: 0; animation: heroLogoIn 1s cubic-bezier(.16,1,.3,1) 0.1s forwards; }
 @keyframes heroLogoIn { from { opacity: 0; transform: translateY(14px) scale(.96); } to { opacity: 1; transform: none; } }
 @media(prefers-reduced-motion: reduce){ .hero-logo { animation: none; opacity: 1; } }
-.hero-head { font-size: clamp(1.5rem,3.6vw,3rem); font-weight: 700; line-height: 1.16; letter-spacing: -0.01em; color: var(--white); margin-bottom: 1.4rem; text-wrap: balance; }
+.hero-head { font-size: clamp(1.9rem,4.6vw,3.6rem); font-weight: 700; line-height: 1.12; letter-spacing: -0.015em; color: var(--white); margin-bottom: 1.4rem; text-wrap: balance; }
+.hero-head .hl { color: var(--gold); }
 .hero-sub { font-size: clamp(1rem,1.6vw,1.25rem); line-height: 1.55; color: rgba(240,236,227,0.68); max-width: 42ch; margin: 0 auto 2.2rem; }
 .hero-sub, .anti-stat-sub, .who-item-text, .skills-sub, .m8-sub, .case-line { text-wrap: pretty; }
 .hero-sub b { color: var(--white); font-weight: 700; }
@@ -396,7 +397,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
 <section class="hero">
   <div class="hero-content">
     <img class="hero-logo" src="assets/m8-logo-studio.png" alt="M8 Studio · Human in the Loop" width="260" height="260">
-    <h1 class="hero-head">Marken, die bleiben. Nicht, weil sie laut sind, sondern weil sie sitzen.</h1>
+    <h1 class="hero-head">Ich mache deine Marke <span class="hl">unübersehbar.</span></h1>
     <p class="hero-sub"><b>Das bekommst du:</b> Brand Design, Logos, Kampagnen, Imagefilme und Handschrift.<br>Alles aus einer Hand, aus Berlin.<br>Du zahlst das Ergebnis, nicht die Zeit.</p>
     <div class="hero-signature">
       <span class="hero-sig-name">Michaela Al-Badri</span>
