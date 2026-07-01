@@ -41,9 +41,10 @@
     .quiz-start-btn:hover .arrow{transform:translateX(4px)}
     .quiz-hint{display:block;margin-top:1.1rem;font-size:12px;letter-spacing:.05em;color:#666}
     .score-num{font-size:56px;font-weight:700;color:#FFE300;margin:.4rem 0 1.2rem;line-height:1}
-    .result-text{color:#fff;font-size:17px;line-height:1.6;max-width:34rem;margin:0 auto 1.9rem}
-    .quiz-again{display:block;margin:1.2rem auto 0;background:none;border:none;color:#666;font-size:13px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;font-family:inherit}
-    .quiz-again:hover{color:#FFE300}
+    .result-text{color:#fff;font-size:17px;line-height:1.6;max-width:34rem;margin:0 auto 1.1rem}
+    .result-close{color:#FFE300;font-weight:700;font-size:15px;line-height:1.5;max-width:34rem;margin:0 auto 1.8rem}
+    .quiz-again{display:inline-block;margin:1.3rem auto 0;background:none;border:1px solid #333;border-radius:999px;color:#a3a3a3;font-size:13px;letter-spacing:.08em;text-transform:uppercase;padding:.55rem 1.3rem;cursor:pointer;font-family:inherit;transition:border-color .2s,color .2s}
+    .quiz-again:hover{color:#FFE300;border-color:#FFE300}
   </style>
  </head>
  <body class="py-4 px-0">
@@ -73,8 +74,9 @@
      <span class="quiz-badge">Dein Ergebnis</span>
      <p id="score-display" class="score-num"></p>
      <p id="result-text" class="result-text"></p>
+     <p class="result-close">Und egal, wo du gerade stehst: Gemeinsam wird's besser. Ich freu mich auf dich.</p>
      <a href="mailto:michaelalange@mac.com" target="_top" class="quiz-start-btn">Schreib mir <span class="arrow">→</span></a>
-     <button class="quiz-again" onclick="location.reload()">Nochmal</button>
+     <button class="quiz-again" onclick="location.reload()">Nochmal spielen</button>
     </div>
    </section>
   </main>
@@ -151,6 +153,8 @@
       document.getElementById('score-display').textContent=score+' / '+allQuestions.length;
       document.getElementById('result-text').textContent=RESULT_MESSAGES[score]||RESULT_MESSAGES[RESULT_MESSAGES.length-1];
       try{parent.postMessage({quizScroll:true},'*');}catch(e){}
+      // iframe-Höhe sicher nachziehen, damit Schlusssatz + Nochmal-Button sichtbar sind
+      [60,300].forEach(function(t){setTimeout(function(){try{window.dispatchEvent(new Event('resize'));}catch(e){}},t);});
     }
   </script>
   <script>
