@@ -253,6 +253,22 @@ body { background: var(--black); color: var(--white); font-family: 'Fraunces','G
 .contact-link::before { content: '→'; font-style: normal; color: var(--gold); font-size: 0.85em; flex-shrink: 0; }
 .contact-link:hover { color: var(--gold); }
 
+/* BUDGET-QUALIFIER */
+.qualify { max-width: 540px; margin: 0 0 2.6rem; display: flex; flex-direction: column; gap: 1.6rem; position: relative; z-index: 1; }
+.q-field { display: flex; flex-direction: column; gap: 0.85rem; }
+.q-label { font-family:'Inter','Helvetica Neue',Arial,sans-serif; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+.q-budgets { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.q-budget { font-family:'Inter','Helvetica Neue',Arial,sans-serif; font-size: 0.82rem; color: rgba(240,236,227,0.85); background: transparent; border: 1px solid rgba(255,227,0,0.28); padding: 0.55rem 0.95rem; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+.q-budget:hover { border-color: var(--gold); }
+.q-budget.active { background: var(--gold); color: var(--black); border-color: var(--gold); font-weight: 700; }
+.q-field.q-missing .q-budget { border-color: rgba(255,120,120,0.7); }
+.q-field.q-missing .q-label { color: #ff8a8a; }
+.q-input { font-family:'Inter','Helvetica Neue',Arial,sans-serif; font-size: 0.95rem; line-height: 1.5; color: var(--white); background: #0d0d0d; border: 1px solid var(--mid); padding: 0.9rem 1rem; resize: vertical; width: 100%; }
+.q-input:focus { outline: none; border-color: var(--gold); }
+.q-input::placeholder { color: var(--muted); }
+.q-submit { align-self: flex-start; border: none; cursor: pointer; }
+.contact-alt { font-family:'Inter','Helvetica Neue',Arial,sans-serif; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+
 footer { border-top: 1px solid var(--mid); padding: 2rem var(--pad); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
 footer span { font-family:'Inter','Helvetica Neue',Arial,sans-serif; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
 .foot-brand { color: var(--gold)!important; font-weight: 700; letter-spacing: 0.25em!important; display: inline-flex; align-items: center; gap: 0.6rem; }
@@ -749,13 +765,30 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   <h2 class="contact-hl r">
     Wenn dich das <span class="out">anspricht</span>,<br>meld dich.
   </h2>
-  <p style="font-size:1.05rem;color:rgba(240,236,227,0.8);line-height:1.6;max-width:44ch;margin-bottom:2.4rem" class="r d1">Erzähl mir in zwei Sätzen von deinem Projekt. Du bekommst eine ehrliche Einschätzung zurück, kostenlos und unverbindlich. 15 Minuten, Klartext, kein Verkaufsgespräch.</p>
+  <p style="font-size:1.05rem;color:rgba(240,236,227,0.8);line-height:1.6;max-width:44ch;margin-bottom:2.4rem" class="r d1">Sag mir kurz, worum's geht und welcher Rahmen dir vorschwebt. Du bekommst eine ehrliche Einschätzung zurück, kostenlos und unverbindlich. 15 Minuten, Klartext, kein Verkaufsgespräch.</p>
+  <form class="qualify r d2" id="qualifyForm" novalidate>
+    <div class="q-field">
+      <span class="q-label">Dein Budget-Rahmen</span>
+      <div class="q-budgets">
+        <button type="button" class="q-budget" data-v="Einzelstück / Signatur">Einzelstück / Signatur</button>
+        <button type="button" class="q-budget" data-v="3.000–8.000 €">3.000–8.000 €</button>
+        <button type="button" class="q-budget" data-v="8.000–20.000 €">8.000–20.000 €</button>
+        <button type="button" class="q-budget" data-v="20.000 €+">20.000 €+</button>
+        <button type="button" class="q-budget" data-v="Laufende Betreuung (Retainer)">Laufende Betreuung</button>
+      </div>
+    </div>
+    <div class="q-field">
+      <label class="q-label" for="qMsg">Dein Projekt in zwei Sätzen</label>
+      <textarea id="qMsg" class="q-input" rows="3" placeholder="Worum geht's, und was soll am Ende rauskommen?"></textarea>
+    </div>
+    <button type="submit" class="btn q-submit">Anfrage schreiben</button>
+  </form>
+  <p class="contact-alt r d2">Oder direkt:</p>
   <div class="contact-links r d2">
-    <a href="mailto:michaelalange@mac.com?subject=Projektanfrage%20über%20M8%20Studio&body=Hallo%20Michaela%2C%0D%0A%0D%0Amein%20Projekt%20in%20zwei%20S%C3%A4tzen%3A%0D%0A%0D%0A" class="contact-link">michaelalange@mac.com</a>
+    <a href="mailto:michaelalange@mac.com?subject=Projektanfrage%20über%20M8%20Studio" class="contact-link">michaelalange@mac.com</a>
     <a href="tel:+4916090434343" class="contact-link">+49 160 90 43 43 43</a>
   </div>
-  <p style="font-size:.85rem;font-style:italic;color:var(--muted);margin:1.5rem 0 2.5rem" class="r d2">Gerne auch handschriftlich.</p>
-  <a href="mailto:michaelalange@mac.com?subject=Projektanfrage%20über%20M8%20Studio&body=Hallo%20Michaela%2C%0D%0A%0D%0Amein%20Projekt%20in%20zwei%20S%C3%A4tzen%3A%0D%0A%0D%0A" class="btn r d3">Projekt anfragen</a>
+  <p style="font-size:.85rem;font-style:italic;color:var(--muted);margin:1.5rem 0 0" class="r d2">Gerne auch handschriftlich.</p>
 </section>
 
 <footer>
@@ -866,6 +899,29 @@ if (toTop) {
     window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
   });
 }
+
+// Budget-Qualifier: baut beim Absenden eine vorausgefüllte Mail (kein Backend nötig)
+(function(){
+  const form = document.getElementById('qualifyForm');
+  if (!form) return;
+  const field = form.querySelector('.q-field');
+  let budget = '';
+  form.querySelectorAll('.q-budget').forEach(b => {
+    b.addEventListener('click', () => {
+      form.querySelectorAll('.q-budget').forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      budget = b.dataset.v;
+      field.classList.remove('q-missing');
+    });
+  });
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!budget) { field.classList.add('q-missing'); field.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block: 'center'}); return; }
+    const msg = (document.getElementById('qMsg').value || '').trim();
+    const body = 'Hallo Michaela,\n\nBudget-Rahmen: ' + budget + '\n\nMein Projekt in zwei Sätzen:\n' + msg + '\n';
+    window.location.href = 'mailto:michaelalange@mac.com?subject=' + encodeURIComponent('Projektanfrage über M8 Studio · ' + budget) + '&body=' + encodeURIComponent(body);
+  });
+})();
 </script>
 </body>
 </html>
