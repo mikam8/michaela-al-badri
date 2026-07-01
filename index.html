@@ -77,36 +77,25 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 .to-top.show { opacity: 1; transform: none; pointer-events: auto; }
 .to-top:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
 
-/* HERO (Typo-geführt, ohne Porträt · M8 Key-Visual als Marken-Anker) */
-.hero { min-height: 100vh; position: relative; display: flex; align-items: center; padding: var(--pad); padding-top: clamp(6rem,14vw,11rem); padding-bottom: clamp(3rem,8vw,7rem); overflow: hidden; }
-.hero-content { position: relative; z-index: 2; max-width: 60ch; }
-.hero-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.8rem; display: block; }
-.hero-name { font-size: clamp(1.5rem,4.4vw,4.8rem); font-weight: 800; line-height: 1.02; text-transform: uppercase; margin-bottom: 1.3rem; white-space: nowrap; }
-.hero-name .first { display: inline; color: var(--white); letter-spacing: -0.02em; }
-.hero-name .last { display: inline; color: var(--white); letter-spacing: 0.04em; margin-left: 0.25em; }
-.hero-name .last .hy { display: inline-block; margin: 0 0.05em; color: var(--gold); }
-.hero-bridge { font-size: clamp(1rem,1.7vw,1.3rem); line-height: 1.5; color: rgba(240,236,227,0.65); margin-bottom: 2rem; max-width: 34ch; }
-.hero-bridge .em { color: var(--gold); font-style: normal; font-weight: 700; }
-.hero-roles { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; margin-bottom: 2rem; }
-.hero-role { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); position: relative; }
-.hero-role:not(:last-child)::after { content: '·'; position: absolute; right: -1rem; color: var(--gold); }
-.hero-tagline { font-size: clamp(1.05rem,2vw,1.55rem); line-height: 1.55; color: rgba(240,236,227,0.85); margin-bottom: 2rem; max-width: 32ch; }
+/* HERO (Logo-geführt · M8 Studio groß, Michaela als Human in the Loop) */
+.hero { min-height: 100vh; position: relative; display: flex; align-items: center; padding: var(--pad); padding-top: clamp(6rem,14vw,10rem); padding-bottom: clamp(3rem,8vw,7rem); overflow: hidden; }
+.hero-content { position: relative; z-index: 2; max-width: 56ch; }
+.hero-logo { display: block; width: clamp(190px,30vw,330px); height: auto; margin-bottom: clamp(1.8rem,4vw,2.6rem); opacity: 0; animation: heroLogoIn 1s cubic-bezier(.16,1,.3,1) 0.1s forwards; }
+@keyframes heroLogoIn { from { opacity: 0; transform: translateY(14px) scale(.96); } to { opacity: 1; transform: none; } }
+@media(prefers-reduced-motion: reduce){ .hero-logo { animation: none; opacity: 1; } }
+.hero-tagline { font-size: clamp(1.2rem,2.4vw,1.95rem); line-height: 1.38; color: rgba(240,236,227,0.92); margin-bottom: 2rem; max-width: 24ch; }
 .hero-tagline .em { color: var(--white); font-weight: 700; font-style: normal; }
+.hero-signature { margin-bottom: 2.2rem; }
+.hero-sig-name { display: block; font-size: clamp(1.15rem,2vw,1.6rem); font-weight: 800; letter-spacing: -0.01em; color: var(--white); white-space: nowrap; }
+.hero-sig-role { display: block; font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin: 0.5rem 0 0.9rem; }
+.hero-sig-intro { font-size: clamp(0.95rem,1.5vw,1.1rem); line-height: 1.6; color: rgba(240,236,227,0.6); max-width: 42ch; }
 .hero-trust { margin-bottom: 2.4rem; }
 .hero-trust-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 0.6rem; }
 .hero-trust-names { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,236,227,0.78); }
 .hero-trust-names .sep { color: var(--gold); margin: 0 0.45rem; }
 .btn { display: inline-block; padding: 1rem 2.6rem; background: var(--gold); color: var(--black); font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none; transition: all 0.25s ease; }
 .btn:hover { background: var(--white); transform: translate(-3px,-3px); box-shadow: 5px 5px 0 var(--gold); }
-
-/* M8 KEY-VISUAL: Platzhalter. Sobald Mikas Logo da ist, .hero-mark-Inhalt gegen <img> tauschen. */
-.hero-mark { position: absolute; right: clamp(-1rem,1vw,3rem); top: 50%; transform: translateY(-50%); z-index: 0; pointer-events: none; user-select: none; font-family:'Helvetica Neue',Arial,sans-serif; font-weight: 800; font-size: clamp(9rem,26vw,26rem); line-height: 0.8; letter-spacing: -0.05em; color: transparent; -webkit-text-stroke: 1.5px rgba(255,227,0,0.28); opacity: 0; animation: markIn 1s ease 0.25s forwards; }
-@keyframes markIn { to { opacity: 1; } }
-@media(prefers-reduced-motion: reduce){ .hero-mark { animation: none; opacity: 1; } }
-@media(max-width:800px){
-  .hero { align-items: flex-start; min-height: auto; }
-  .hero-mark { font-size: clamp(7rem,40vw,14rem); right: -0.5rem; top: auto; bottom: 1.2rem; transform: none; -webkit-text-stroke-width: 1px; }
-}
+@media(max-width:800px){ .hero { align-items: flex-start; min-height: auto; } }
 
 
 
@@ -163,9 +152,29 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 @media(max-width:640px){ .case-cap-top { flex-direction: column; align-items: flex-start; gap: 0.3rem; } }
 .case-name { font-size: clamp(1rem,1.5vw,1.25rem); font-weight: 700; letter-spacing: -0.01em; }
 .case-kind { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
-.case-line { font-size: 0.82rem; line-height: 1.6; color: rgba(240,236,227,0.55); margin-bottom: 0.9rem; }
+.case-line { font-size: 0.82rem; line-height: 1.6; color: rgba(240,236,227,0.55); margin-bottom: 0.7rem; }
+.case-result { font-size: 0.82rem; line-height: 1.55; color: rgba(240,236,227,0.9); margin-bottom: 0.9rem; padding-left: 0.9rem; border-left: 2px solid var(--gold); }
+.case-result b { color: var(--gold); font-weight: 700; }
 .case-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .case-tag { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(255,227,0,0.28); padding: 0.2rem 0.6rem; }
+
+/* KUNDENSTIMMEN (Social Proof) */
+.is-hidden { display: none !important; }
+.testi-section { background: var(--grey); }
+.testi-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: clamp(1rem,2vw,1.5rem); margin-top: clamp(2.5rem,5vw,3.5rem); }
+@media(max-width:700px){ .testi-grid { grid-template-columns: 1fr; } }
+.testi-card { background: #0d0d0d; border: 1px solid rgba(255,227,0,0.14); padding: clamp(1.6rem,3vw,2.2rem); display: flex; flex-direction: column; gap: 1.4rem; }
+.testi-card.is-placeholder { border-style: dashed; border-color: rgba(255,227,0,0.22); }
+.testi-quote { font-size: clamp(1rem,1.5vw,1.2rem); line-height: 1.6; color: rgba(240,236,227,0.92); font-style: italic; }
+.testi-card.is-placeholder .testi-quote { color: rgba(240,236,227,0.4); font-style: normal; }
+.testi-foot { display: flex; align-items: center; gap: 0.9rem; margin-top: auto; }
+.testi-avatar { width: 42px; height: 42px; border-radius: 50%; background: #1a1a1a; border: 1px solid rgba(255,227,0,0.25); flex-shrink: 0; }
+.testi-name { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.8rem; font-weight: 700; color: var(--white); letter-spacing: 0.02em; }
+.testi-role { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-top: 0.25rem; }
+.testi-video { grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; gap: 1.1rem; min-height: 130px; background: #0d0d0d; border: 1px dashed rgba(255,227,0,0.22); text-align: left; padding: 1.6rem; }
+.testi-play { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; }
+.testi-video-txt { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.78rem; line-height: 1.55; color: var(--muted); }
+.testi-video-txt b { color: rgba(240,236,227,0.75); font-weight: 700; display: block; text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.62rem; margin-bottom: 0.35rem; }
 
 /* RICK RUBIN: full image band */
 .rubin-band { position: relative; background: var(--black); padding: clamp(3rem,7vw,6rem) var(--pad); display: flex; align-items: center; justify-content: center; }
@@ -233,7 +242,8 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 
 footer { border-top: 1px solid var(--mid); padding: 2rem var(--pad); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
 footer span { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
-.foot-brand { color: var(--gold)!important; font-weight: 700; letter-spacing: 0.25em!important; }
+.foot-brand { color: var(--gold)!important; font-weight: 700; letter-spacing: 0.25em!important; display: inline-flex; align-items: center; gap: 0.6rem; }
+.foot-mark { height: 30px; width: auto; display: block; }
 .foot-links { display: flex; gap: 1.5rem; }
 .foot-links a { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
 .foot-links a:hover { color: var(--gold); }
@@ -302,14 +312,11 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   /* HERO */
   .hero { min-height: auto; padding-top: 5.5rem; padding-bottom: 0; }
   .hero-content { padding-bottom: 1.6rem; }
-  .hero-label { font-size: 0.6rem; letter-spacing: 0.25em; margin-bottom: 1.2rem; }
-  .hero-name { font-size: clamp(1.15rem,6.2vw,1.65rem); line-height: 1.1; margin-bottom: 1.4rem; }
-  .hero-name .last { letter-spacing: 0; -webkit-text-stroke: 0; margin-left: 0.14em; }
-  .hero-tagline br { display: none; }
-  .hero-name .last .hy { -webkit-text-stroke: 0; margin: 0 0.02em; }
-  .hero-roles { gap: 0.3rem 1rem; margin-bottom: 1.6rem; }
-  .hero-role { font-size: 0.58rem; letter-spacing: 0.1em; }
-  .hero-tagline { font-size: 1rem; line-height: 1.7; margin-bottom: 2rem; max-width: 100%; }
+  .hero-logo { width: clamp(160px,52vw,240px); margin-bottom: 1.6rem; }
+  .hero-tagline { font-size: 1.25rem; line-height: 1.4; margin-bottom: 1.8rem; max-width: 100%; }
+  .hero-sig-name { font-size: 1.15rem; white-space: normal; }
+  .hero-sig-role { font-size: 0.58rem; letter-spacing: 0.16em; }
+  .hero-sig-intro { font-size: 0.98rem; line-height: 1.65; max-width: 100%; }
 
   /* BUTTONS */
   .btn { padding: 0.85rem 1.7rem; font-size: 0.66rem; letter-spacing: 0.14em; }
@@ -355,6 +362,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   <a href="#top">Start<span>Ganz nach oben</span></a>
   <a href="#about">Über mich<span>Wer hinter M8 Studio steht</span></a>
   <a href="#work">Arbeiten<span>Ausgewählte Referenzen</span></a>
+  <a href="#stimmen">Stimmen<span>Was Kunden sagen</span></a>
   <a href="#handschrift">Handschrift<span>Mein Alleinstellungsmerkmal</span></a>
   <a href="#skills">Leistungen<span>Was ich für dich mache</span></a>
   <a href="#quiz">Der Test<span>Passen wir zusammen?</span></a>
@@ -369,29 +377,21 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
 
 <a href="#top" class="to-top" id="toTop" aria-label="Nach oben">↑</a>
 
-<!-- HERO (Typo-geführt · M8 Key-Visual als Marken-Anker) -->
+<!-- HERO (Logo-geführt · M8 Studio groß, Michaela als Human in the Loop) -->
 <section class="hero">
-  <!-- M8 KEY-VISUAL: Platzhalter. Logo-Grafik von Mika hier eintauschen (<img> statt "M8"). -->
-  <div class="hero-mark" aria-hidden="true">M8</div>
   <div class="hero-content">
-    <span class="hero-label">M8 Studio · Berlin</span>
-    <h1 class="hero-name">
-      <span class="first">Michaela</span>
-      <span class="last">Al<span class="hy">-</span>Badri</span>
-    </h1>
-    <p class="hero-bridge"><span class="em">M8 Studio, das bin ich.</span> Plus ein eingespieltes Netzwerk aus Kreativen und Freelancern.</p>
-    <div class="hero-roles">
-      <span class="hero-role">Head of Creative</span>
-      <span class="hero-role">Handschriftspezialistin</span>
-      <span class="hero-role">Impulsgeberin</span>
-      <span class="hero-role">Berlinerin</span>
+    <img class="hero-logo" src="assets/m8-logo-studio.png" alt="M8 Studio · Human in the Loop" width="330" height="330">
+    <h1 class="hero-tagline"><span class="em">Deine Idee bekommt ein Gesicht, das hängen bleibt.</span> Konzept, Film, Logo, Kampagne. Alles aus einer Hand.</h1>
+    <div class="hero-signature">
+      <span class="hero-sig-name">Michaela Al-Badri</span>
+      <span class="hero-sig-role">Head of Creative · Handschriftspezialistin · Berlin</span>
+      <p class="hero-sig-intro">Ich bin der Mensch im Loop. M8 Studio, das bin ich, plus ein eingespieltes Netzwerk aus Kreativen und Freelancern.</p>
     </div>
-    <p class="hero-tagline"><span class="em">Deine Idee bekommt ein Gesicht, das hängen bleibt.</span> Konzept, Film, Logo, Kampagne. Alles aus einer Hand.</p>
     <div class="hero-trust">
       <span class="hero-trust-label">Stationen &amp; Kunden</span>
       <span class="hero-trust-names">ProSieben<span class="sep">·</span>Sat.1<span class="sep">·</span>Schreibstatt<span class="sep">·</span>NUSSBAUM<span class="sep">·</span>Dior</span>
     </div>
-    <a href="mailto:michaelalange@mac.com" class="btn">Schreib mir</a>
+    <a href="mailto:michaelalange@mac.com?subject=Projektanfrage%20über%20M8%20Studio" class="btn">Lass uns reden</a>
   </div>
 </section>
 
@@ -504,6 +504,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
       <div class="case-cap">
         <div class="case-cap-top"><span class="case-name">SAMSYS</span><span class="case-kind">Messe</span></div>
         <p class="case-line">Der komplette Messeauftritt,<br>vom Banner bis zur Bühne, inszeniert mit der Chili.</p>
+        <p class="case-result"><b>Ergebnis:</b> ein Auftritt, an dem auf der Messe keiner vorbeiging.</p>
         <div class="case-tags"><span class="case-tag">Konzept</span><span class="case-tag">Key Visual</span></div>
       </div>
     </div>
@@ -513,6 +514,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
       <div class="case-cap">
         <div class="case-cap-top"><span class="case-name">MBST®</span><span class="case-kind">Corporate Design</span></div>
         <p class="case-line">Die Markenwelt an der Wand.<br>„Gesundheit beginnt in der Zelle“.</p>
+        <p class="case-result"><b>Ergebnis:</b> ein Claim, der die Marke in einem Satz erklärt.</p>
         <div class="case-tags"><span class="case-tag">Brand Design</span><span class="case-tag">Markenauftritt</span></div>
       </div>
     </div>
@@ -522,6 +524,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
       <div class="case-cap">
         <div class="case-cap-top"><span class="case-name">MBST®</span><span class="case-kind">Social Media</span></div>
         <p class="case-line">Der Instagram-Auftritt, von Grund auf entwickelt.</p>
+        <p class="case-result"><b>Ergebnis:</b> aus null ein Auftritt mit klarer Wiedererkennung.</p>
         <div class="case-tags"><span class="case-tag">Social Media</span><span class="case-tag">Content</span></div>
       </div>
     </div>
@@ -531,6 +534,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
       <div class="case-cap">
         <div class="case-cap-top"><span class="case-name">MBST®</span><span class="case-kind">Markenwelt</span></div>
         <p class="case-line">Vom Boarding-Pass bis zum Empfang.<br>Eine Marke, international gedacht.</p>
+        <p class="case-result"><b>Ergebnis:</b> eine Marke, die weltweit gleich klingt.</p>
         <div class="case-tags"><span class="case-tag">Brand World</span><span class="case-tag">International</span></div>
       </div>
     </div>
@@ -540,6 +544,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
       <div class="case-cap">
         <div class="case-cap-top"><span class="case-name">Capital Baustoffe</span><span class="case-kind">Out-of-Home</span></div>
         <p class="case-line">Der Gorilla.<br>„Wenn Sie starke Partner wollen.“</p>
+        <p class="case-result"><b>Ergebnis:</b> ein Truck, den man im Verkehr nicht vergisst.</p>
         <div class="case-tags"><span class="case-tag">Kampagne</span><span class="case-tag">OOH</span></div>
       </div>
     </div>
@@ -549,6 +554,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
       <div class="case-cap">
         <div class="case-cap-top"><span class="case-name">Capital Baustoffe</span><span class="case-kind">Out-of-Home</span></div>
         <p class="case-line">Der Gepard.<br>„Wenn Sie es schnell wollen.“ Eine Tierwelt, ein System.</p>
+        <p class="case-result"><b>Ergebnis:</b> ein Bildsystem, das jede Botschaft sofort trägt.</p>
         <div class="case-tags"><span class="case-tag">Bildsprache</span><span class="case-tag">Serie</span></div>
       </div>
     </div>
@@ -558,6 +564,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
       <div class="case-cap">
         <div class="case-cap-top"><span class="case-name">Dr. Brunk</span><span class="case-kind">Logo</span></div>
         <p class="case-line">Äskulapstab trifft Darm,<br>zwei Formen, eine Linie. Logo &amp; Praxisschild.</p>
+        <p class="case-result"><b>Ergebnis:</b> ein Signet, das Vertrauen schafft, bevor man spricht.</p>
         <div class="case-tags"><span class="case-tag">Logo</span><span class="case-tag">Signet</span></div>
       </div>
     </div>
@@ -567,6 +574,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
       <div class="case-cap">
         <div class="case-cap-top"><span class="case-name">Handschrift</span><span class="case-kind">Schrift & Signatur</span></div>
         <p class="case-line">Von Dior bis zur Unterschrift,<br>Handschrift als Markenzeichen.</p>
+        <p class="case-result"><b>Ergebnis:</b> Handschrift, die aus einem Namen eine Marke macht.</p>
         <div class="case-tags"><span class="case-tag">Handschrift</span><span class="case-tag">Kalligrafie</span></div>
       </div>
     </div>
@@ -575,6 +583,39 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   <div class="cta-line r">
     <span class="need">Das, was hängen bleibt, entsteht nicht von allein.</span>
     <a href="mailto:michaelalange@mac.com" class="cta-arrow">Projekt starten →</a>
+  </div>
+</section>
+
+<!-- KUNDENSTIMMEN · Platzhalter, echte O-Töne folgen. Zum Ausblenden: is-hidden an <section> -->
+<section class="section testi-section" id="stimmen">
+  <div class="eyebrow">Kundenstimmen</div>
+  <h2 class="cases-title r">Was Kunden sagen.</h2>
+  <p class="cases-note r">Echte O-Töne folgen in den nächsten Tagen. So sieht ihr Platz aus.</p>
+  <div class="testi-grid">
+    <figure class="testi-card is-placeholder r">
+      <blockquote class="testi-quote">Hier steht bald: Was war das Problem, und wie hat Michaela es gelöst?</blockquote>
+      <figcaption class="testi-foot"><span class="testi-avatar"></span><span><span class="testi-name">Kundenstimme folgt</span><span class="testi-role">Marke · Projekt</span></span></figcaption>
+    </figure>
+    <figure class="testi-card is-placeholder r d1">
+      <blockquote class="testi-quote">Hier steht bald: Wie war die Zusammenarbeit, was war anders als sonst?</blockquote>
+      <figcaption class="testi-foot"><span class="testi-avatar"></span><span><span class="testi-name">Kundenstimme folgt</span><span class="testi-role">Marke · Projekt</span></span></figcaption>
+    </figure>
+    <figure class="testi-card is-placeholder r d2">
+      <blockquote class="testi-quote">Hier steht bald: Was kam am Ende raus, was hat es gebracht?</blockquote>
+      <figcaption class="testi-foot"><span class="testi-avatar"></span><span><span class="testi-name">Kundenstimme folgt</span><span class="testi-role">Marke · Projekt</span></span></figcaption>
+    </figure>
+    <figure class="testi-card is-placeholder r d3">
+      <blockquote class="testi-quote">Hier steht bald: Warum würdest du Michaela weiterempfehlen?</blockquote>
+      <figcaption class="testi-foot"><span class="testi-avatar"></span><span><span class="testi-name">Kundenstimme folgt</span><span class="testi-role">Marke · Projekt</span></span></figcaption>
+    </figure>
+    <div class="testi-video r">
+      <span class="testi-play">▶</span>
+      <span class="testi-video-txt"><b>Video-Testimonial</b>Platz für 30 bis 60 Sekunden: ein Kunde vor der Kamera. Stärkster Vertrauensbeweis, kommt hier rein.</span>
+    </div>
+  </div>
+  <div class="cta-line r">
+    <span class="need">Willst du der Erste sein, der hier steht?</span>
+    <a href="mailto:michaelalange@mac.com?subject=Projektanfrage%20über%20M8%20Studio" class="cta-arrow">Projekt starten →</a>
   </div>
 </section>
 
@@ -607,8 +648,8 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
     <div class="hw-vid"><video src="assets/hw-vid3.mp4" muted loop playsinline preload="metadata" autoplay></video></div>
   </div>
   <div class="cta-line r">
-    <span class="need">In einer Welt voller Copy-Paste bleibt das hängen, was von Hand kommt.</span>
-    <a href="mailto:michaelalange@mac.com" class="cta-arrow">Lass uns reden →</a>
+    <span class="need">In einer Welt, die alles automatisiert, ist das Handgemachte das Statement. Unterschrift, Signet, handgeschriebenes Logo, für Marken, die den Unterschied wollen.</span>
+    <a href="mailto:michaelalange@mac.com?subject=Handschrift-Projekt%20über%20M8%20Studio" class="cta-arrow">Handschrift-Projekt anfragen →</a>
   </div>
   <p class="hw-course-note r">Du willst es selbst können? Den Einstieg in meine Welt gibt's auch für dich: <a href="https://mikam8.github.io/handschrift-kurs/" target="_blank" rel="noopener">Mein Handschrift-Kurs →</a></p>
 </section>
@@ -680,16 +721,17 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   <h2 class="contact-hl r">
     Wenn dich das <span class="out">anspricht</span>,<br>meld dich.
   </h2>
-  <p style="font-size:.9rem;font-style:italic;color:var(--muted);margin-bottom:3rem" class="r d1">Gerne auch handschriftlich.</p>
+  <p style="font-size:1.05rem;color:rgba(240,236,227,0.8);line-height:1.6;max-width:44ch;margin-bottom:2.4rem" class="r d1">Erzähl mir in zwei Sätzen von deinem Projekt. Du bekommst eine ehrliche Einschätzung zurück, kostenlos und unverbindlich. 15 Minuten, Klartext, kein Verkaufsgespräch.</p>
   <div class="contact-links r d2">
-    <a href="mailto:michaelalange@mac.com" class="contact-link">michaelalange@mac.com</a>
+    <a href="mailto:michaelalange@mac.com?subject=Projektanfrage%20über%20M8%20Studio&body=Hallo%20Michaela%2C%0D%0A%0D%0Amein%20Projekt%20in%20zwei%20S%C3%A4tzen%3A%0D%0A%0D%0A" class="contact-link">michaelalange@mac.com</a>
     <a href="tel:+4916090434343" class="contact-link">+49 160 90 43 43 43</a>
   </div>
-  <a href="mailto:michaelalange@mac.com" class="btn r d3">Jetzt schreiben</a>
+  <p style="font-size:.85rem;font-style:italic;color:var(--muted);margin:1.5rem 0 2.5rem" class="r d2">Gerne auch handschriftlich.</p>
+  <a href="mailto:michaelalange@mac.com?subject=Projektanfrage%20über%20M8%20Studio&body=Hallo%20Michaela%2C%0D%0A%0D%0Amein%20Projekt%20in%20zwei%20S%C3%A4tzen%3A%0D%0A%0D%0A" class="btn r d3">Projekt anfragen</a>
 </section>
 
 <footer>
-  <span class="foot-brand">M8&nbsp;STUDIO</span>
+  <span class="foot-brand"><img src="assets/m8-logo.png" alt="" class="foot-mark">M8&nbsp;STUDIO</span>
   <nav class="foot-links">
     <a href="impressum.html">Impressum</a>
     <a href="datenschutz.html">Datenschutz</a>
