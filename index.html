@@ -77,52 +77,36 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 .to-top.show { opacity: 1; transform: none; pointer-events: auto; }
 .to-top:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
 
-/* HERO */
-.hero { min-height: 100vh; position: relative; display: flex; align-items: flex-end; padding: var(--pad); padding-top: clamp(5rem,12vw,10rem); padding-bottom: 0; overflow: hidden; }
-.hero-bg-portraits { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
-.hero-bg-portraits img { position: absolute; bottom: 0; right: 2%; height: 100%; width: auto; object-fit: contain; object-position: bottom center; opacity: 1;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%);
-          mask-image: linear-gradient(to bottom, transparent 0%, #000 12%); }
-.hero-bg-portraits .hero-portrait-cta { display: none; }
-@media(max-width:800px){
-  /* Mobile: Porträt als Büste, der zentrierte CTA-Button ist die Standlinie –
-     das Bild endet exakt an der Unterkante des Buttons. */
-  .hero { flex-direction: column; align-items: stretch; min-height: auto; padding-bottom: 0; }
-  .hero-content { order: 1; position: relative; z-index: 2; }
-  .hero-content .btn { display: none; }
-  .hero-bg-portraits {
-    position: relative; order: 2;
-    margin: 1.6rem calc(-1 * var(--pad)) 1.4rem;
-    height: clamp(24rem, 56vh, 36rem);
-    overflow: hidden; display: block; isolation: isolate;
-  }
-  .hero-bg-portraits img {
-    position: absolute; left: 50%; top: 0; transform: translateX(-50%);
-    height: auto; width: auto; max-width: 90%; max-height: none;
-    margin: 0; display: block; opacity: 1; z-index: 0;
-  }
-  .hero-bg-portraits .hero-portrait-cta {
-    display: inline-block;
-    position: absolute; left: 50%; bottom: 0; transform: translateX(-50%);
-    z-index: 2; margin: 0; white-space: nowrap;
-  }
-}
-
-.hero-content { position: relative; z-index: 1; }
-.hero-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; display: block; }
+/* HERO (Typo-geführt, ohne Porträt · M8 Key-Visual als Marken-Anker) */
+.hero { min-height: 100vh; position: relative; display: flex; align-items: center; padding: var(--pad); padding-top: clamp(6rem,14vw,11rem); padding-bottom: clamp(3rem,8vw,7rem); overflow: hidden; }
+.hero-content { position: relative; z-index: 2; max-width: 60ch; }
+.hero-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.8rem; display: block; }
 .hero-name { font-size: clamp(1.5rem,4.4vw,4.8rem); font-weight: 800; line-height: 1.02; text-transform: uppercase; margin-bottom: 1.3rem; white-space: nowrap; }
-.hero-bridge { font-size: clamp(1rem,1.7vw,1.3rem); line-height: 1.5; color: rgba(240,236,227,0.65); margin-bottom: 2.2rem; max-width: 34ch; }
-.hero-bridge .em { color: var(--gold); font-style: normal; font-weight: 700; }
 .hero-name .first { display: inline; color: var(--white); letter-spacing: -0.02em; }
-.hero-name .last { display: inline; color: var(--white); -webkit-text-stroke: 0; letter-spacing: 0.04em; margin-left: 0.25em; }
-.hero-name .last .hy { display: inline-block; margin: 0 0.05em; color: var(--gold); -webkit-text-stroke: 0; }
-.hero-roles { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; margin-bottom: 2.5rem; }
+.hero-name .last { display: inline; color: var(--white); letter-spacing: 0.04em; margin-left: 0.25em; }
+.hero-name .last .hy { display: inline-block; margin: 0 0.05em; color: var(--gold); }
+.hero-bridge { font-size: clamp(1rem,1.7vw,1.3rem); line-height: 1.5; color: rgba(240,236,227,0.65); margin-bottom: 2rem; max-width: 34ch; }
+.hero-bridge .em { color: var(--gold); font-style: normal; font-weight: 700; }
+.hero-roles { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; margin-bottom: 2rem; }
 .hero-role { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); position: relative; }
 .hero-role:not(:last-child)::after { content: '·'; position: absolute; right: -1rem; color: var(--gold); }
-.hero-tagline { font-size: clamp(1rem,2vw,1.55rem); line-height: 1.65; color: rgba(240,236,227,0.8); margin-bottom: 3rem; max-width: 28ch; }
+.hero-tagline { font-size: clamp(1.05rem,2vw,1.55rem); line-height: 1.55; color: rgba(240,236,227,0.85); margin-bottom: 2rem; max-width: 32ch; }
+.hero-tagline .em { color: var(--white); font-weight: 700; font-style: normal; }
+.hero-trust { margin-bottom: 2.4rem; }
+.hero-trust-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 0.6rem; }
+.hero-trust-names { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(240,236,227,0.78); }
+.hero-trust-names .sep { color: var(--gold); margin: 0 0.45rem; }
 .btn { display: inline-block; padding: 1rem 2.6rem; background: var(--gold); color: var(--black); font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none; transition: all 0.25s ease; }
 .btn:hover { background: var(--white); transform: translate(-3px,-3px); box-shadow: 5px 5px 0 var(--gold); }
-.hero-content { padding-bottom: clamp(3rem,6vw,6rem); }
+
+/* M8 KEY-VISUAL: Platzhalter. Sobald Mikas Logo da ist, .hero-mark-Inhalt gegen <img> tauschen. */
+.hero-mark { position: absolute; right: clamp(-1rem,1vw,3rem); top: 50%; transform: translateY(-50%); z-index: 0; pointer-events: none; user-select: none; font-family:'Helvetica Neue',Arial,sans-serif; font-weight: 800; font-size: clamp(9rem,26vw,26rem); line-height: 0.8; letter-spacing: -0.05em; color: transparent; -webkit-text-stroke: 1.5px rgba(255,227,0,0.28); opacity: 0; animation: markIn 1s ease 0.25s forwards; }
+@keyframes markIn { to { opacity: 1; } }
+@media(prefers-reduced-motion: reduce){ .hero-mark { animation: none; opacity: 1; } }
+@media(max-width:800px){
+  .hero { align-items: flex-start; min-height: auto; }
+  .hero-mark { font-size: clamp(7rem,40vw,14rem); right: -0.5rem; top: auto; bottom: 1.2rem; transform: none; -webkit-text-stroke-width: 1px; }
+}
 
 
 
@@ -162,6 +146,7 @@ body { background: var(--black); color: var(--white); font-family: 'Georgia', se
 .who-item { border-left: 1px solid var(--mid); padding-left: 2rem; }
 .who-item-label { font-family:'Helvetica Neue',Arial,sans-serif; font-size: 0.6rem; letter-spacing: 0.28em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.7rem; }
 .who-item-text { font-size: 0.9rem; line-height: 1.85; color: rgba(240,236,227,0.65); }
+.who-item-text b { color: var(--gold); font-weight: 700; }
 
 /* CASES: uniformes 16:9-Grid, alle Bilder gleich groß, kein Beschnitt */
 .cases-title { font-size: clamp(1.9rem,6vw,6rem); font-weight: 800; text-transform: uppercase; letter-spacing: -0.025em; line-height: 0.9; margin-bottom: 1.1rem; }
@@ -381,12 +366,10 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
 
 <a href="#top" class="to-top" id="toTop" aria-label="Nach oben">↑</a>
 
-<!-- HERO -->
+<!-- HERO (Typo-geführt · M8 Key-Visual als Marken-Anker) -->
 <section class="hero">
-  <div class="hero-bg-portraits">
-    <img src="assets/michaela2.png" alt="">
-    <a href="mailto:michaelalange@mac.com" class="btn hero-portrait-cta">Schreib mir</a>
-  </div>
+  <!-- M8 KEY-VISUAL: Platzhalter. Logo-Grafik von Mika hier eintauschen (<img> statt "M8"). -->
+  <div class="hero-mark" aria-hidden="true">M8</div>
   <div class="hero-content">
     <span class="hero-label">M8 Studio · Berlin</span>
     <h1 class="hero-name">
@@ -400,10 +383,11 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
       <span class="hero-role">Impulsgeberin</span>
       <span class="hero-role">Berlinerin</span>
     </div>
-    <p class="hero-tagline">
-      Ich entwickle kreative Ideen <br>und setze sie um. <br>
-      Vom Konzept bis zum fertigen Film, <br>Logo oder Kampagne.
-    </p>
+    <p class="hero-tagline"><span class="em">Deine Idee bekommt ein Gesicht, das hängen bleibt.</span> Konzept, Film, Logo, Kampagne. Alles aus einer Hand.</p>
+    <div class="hero-trust">
+      <span class="hero-trust-label">Stationen &amp; Kunden</span>
+      <span class="hero-trust-names">ProSieben<span class="sep">·</span>Sat.1<span class="sep">·</span>Schreibstatt<span class="sep">·</span>NUSSBAUM<span class="sep">·</span>Dior</span>
+    </div>
     <a href="mailto:michaelalange@mac.com" class="btn">Schreib mir</a>
   </div>
 </section>
@@ -470,26 +454,21 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   <div class="eyebrow">01 · Wer ich bin</div>
   <div class="who-grid">
     <div class="who-intro r">
-      Vier Jahre Head of Creative.<br>
-      Sechs Jahre Handschrift.<br>
-      Davor Nachrichtengrafik für ProSieben.<br>
-      Bewegtbild. Logos. Kampagnen,<br>
-      die durch Berlin fahren.<br><br>
-      Ich wusste, was der Kunde wollte,<br>
-      <span class="em">bevor er es selbst wusste.</span>
+      <span class="em">Ich verstehe, was du willst,</span> bevor du es aussprichst.<br><br>
+      Das ist nicht Talent, das ist Training. Drei Schulen, zwei Jahrzehnte, eine Haltung. Jede steckt heute in deinem Projekt.
     </div>
     <div class="who-items">
       <div class="who-item r d1">
-        <div class="who-item-label">Head of Creative · NUSSBAUM Berlin</div>
-        <div class="who-item-text">Konzept, Brand Design, Logos, Imagefilme, von der Idee bis zum Finalcut. Team zusammengestellt. Drohne. Master Cutter. Alles. Nicht weil es mein Job war, sondern weil ich wusste, was der Kunde wollte.</div>
+        <div class="who-item-label">Die TV-Schule · ProSieben · Sat.1 · kabel eins</div>
+        <div class="who-item-text">Live-Grafik unter Sendedruck, für Millionen Zuschauer. Keine zweite Chance, kein zweiter Take. <b>Heißt für dich:</b> Was ich liefere, sitzt. Schnell und präzise, wenn es zählt.</div>
       </div>
       <div class="who-item r d2">
-        <div class="who-item-label">Handschriftspezialistin · Schreibstatt</div>
-        <div class="who-item-text">25 Seiten täglich. Ich kann jede Unterschrift. Für Marken und Konzerne, die wissen, wie Wertschätzung analog funktioniert.</div>
+        <div class="who-item-label">Die Handschrift-Schule · Schreibstatt</div>
+        <div class="who-item-text">25 Seiten am Tag, jede Unterschrift, jede Type. Von Dior bis zum Konzern. <b>Heißt für dich:</b> das Analoge, das in einer Copy-Paste-Welt hängen bleibt.</div>
       </div>
       <div class="who-item r d3">
-        <div class="who-item-label">Nachrichtengrafik · ProSieben · Sat.1</div>
-        <div class="who-item-text">Live-Grafik unter Sendedruck. Bilder, die sofort sitzen müssen. Keine zweite Chance, kein zweiter Take. Hier habe ich gelernt, schnell und präzise zu liefern, wenn es zählt. Diese Schule steckt bis heute in jeder Idee.</div>
+        <div class="who-item-label">Die Marken-Schule · Head of Creative · NUSSBAUM Berlin</div>
+        <div class="who-item-text">Konzept, Brand Design, Logos, Imagefilme, von der Idee bis zum Finalcut. Team und Drohne inklusive. <b>Heißt für dich:</b> alles aus einer Hand, ein Ansprechpartner.</div>
       </div>
     </div>
   </div>
@@ -805,8 +784,7 @@ const countObs = new IntersectionObserver((entries, o) => {
 }, {threshold: 0.6});
 document.querySelectorAll('.count').forEach(el => countObs.observe(el));
 
-// Dezenter Parallax fürs Hero-Portrait + Scroll-Fortschrittsbalken
-const portrait = document.querySelector('.hero-bg-portraits img');
+// Scroll-Fortschrittsbalken
 const bar = document.getElementById('progress');
 const toTop = document.getElementById('toTop');
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
