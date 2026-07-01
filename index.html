@@ -85,8 +85,12 @@ body { background: var(--black); color: var(--white); font-family: 'Fraunces','G
 .hero { min-height: 100vh; position: relative; display: flex; flex-direction: column; justify-content: center; text-align: center; padding: var(--pad); padding-top: clamp(6rem,13vw,9rem); padding-bottom: clamp(3rem,8vw,7rem); overflow: hidden; }
 .hero-content { position: relative; z-index: 2; width: 100%; max-width: min(60ch, 100%); margin-left: auto; margin-right: auto; }
 .hero-head, .hero-sub, .hero-trust-names { overflow-wrap: break-word; }
-.hero-logo { display: block; width: clamp(168px,25vw,260px); height: auto; margin: 0 auto clamp(2rem,4vw,2.8rem); background: var(--white); border-radius: 50%; padding: clamp(12px,1.8vw,20px); box-shadow: 0 18px 50px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,227,0,0.22); opacity: 0; animation: heroLogoIn 1s cubic-bezier(.16,1,.3,1) 0.1s forwards; }
-@keyframes heroLogoIn { from { opacity: 0; transform: translateY(14px) scale(.96); } to { opacity: 1; transform: none; } }
+.hero-logo { display: block; width: clamp(168px,25vw,260px); height: auto; margin: 0 auto clamp(2rem,4vw,2.8rem); background: var(--white); border-radius: 50%; padding: clamp(12px,1.8vw,20px); box-shadow: 0 18px 50px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,227,0,0.22); opacity: 0; animation: heroLogoIn 4.5s linear 0.2s forwards; transform-origin: center center; }
+@keyframes heroLogoIn {
+  0%   { opacity: 0; transform: translateY(14px) scale(.96) perspective(700px) rotateY(0deg); animation-timing-function: cubic-bezier(.16,1,.3,1); }
+  15%  { opacity: 1; transform: translateY(0) scale(1) perspective(700px) rotateY(0deg); animation-timing-function: cubic-bezier(.45,0,.15,1); }
+  100% { opacity: 1; transform: translateY(0) scale(1) perspective(700px) rotateY(720deg); }
+}
 @media(prefers-reduced-motion: reduce){ .hero-logo { animation: none; opacity: 1; } }
 .hero-head { font-size: clamp(1.9rem,4.6vw,3.6rem); font-weight: 700; line-height: 1.12; letter-spacing: -0.015em; color: var(--white); margin-bottom: 1.4rem; text-wrap: balance; }
 .hero-head .hl { color: var(--gold); }
@@ -431,7 +435,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   <a href="#kontakt">Kontakt<span>Schreib mir</span></a>
 </nav>
 
-<a href="mailto:michaelalange@mac.com" class="float-cta">
+<a href="/cdn-cgi/l/email-protection#f39e9a909b92969f929f929d9496b39e9290dd909c9e" class="float-cta">
   <span class="float-cta-dot"></span>
   <span class="float-cta-text">Schreib mir</span>
 </a>
@@ -442,13 +446,13 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
 <section class="hero">
   <div class="hero-content">
     <img class="hero-logo" src="assets/m8-logo-studio.png" alt="M8 Studio · Human in the Loop" width="260" height="260">
-    <h1 class="hero-head">Jeder kann heute alles.<br><span class="hl">Ich weiß, was davon gut ist.</span></h1>
+    <h1 class="hero-head"><span style="white-space: nowrap">Jeder kann heute alles.</span><br><span class="hl">Ich weiß, was davon gut ist.</span></h1>
     <p class="hero-sub"><b>Das bekommst du:</b> Brand Design, Logos, Kampagnen, Imagefilme und Handschrift.<br>Alles aus einer Hand, aus Berlin.<br>Du zahlst das Ergebnis, nicht die Zeit.</p>
     <div class="hero-signature">
       <span class="hero-sig-name">Michaela Al-Badri</span>
       <span class="hero-sig-role">Head of Creative · Handschriftspezialistin · Human in the Loop</span>
     </div>
-    <a href="mailto:michaelalange@mac.com?subject=Projektanfrage%20über%20M8%20Studio" class="btn">Lass uns reden</a>
+    <a href="/cdn-cgi/l/email-protection#aac7c3c9c2cbcfc6cbc6cbc4cdcfeac7cbc984c9c5c795d9dfc8c0cfc9de97fad8c5c0cfc1decbc4ccd8cbcdcf8f989a6916c8cfd88f989ae7928f989af9dedfcec3c5" class="btn">Lass uns reden</a>
   </div>
 </section>
 
@@ -537,7 +541,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   </div>
   <div class="cta-line r">
     <span class="need">Deine Marke braucht keinen Dienstleister, der abarbeitet, sondern jemanden, der sie versteht.</span>
-    <a href="mailto:michaelalange@mac.com" class="cta-arrow">Schreib mir →</a>
+    <a href="/cdn-cgi/l/email-protection#a5c8ccc6cdc4c0c9c4c9c4cbc2c0e5c8c4c68bc6cac8" class="cta-arrow">Schreib mir →</a>
   </div>
 </section>
 
@@ -657,7 +661,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   </div>
   <div class="cta-line r">
     <span class="need">Das, was hängen bleibt, entsteht nicht von allein.</span>
-    <a href="mailto:michaelalange@mac.com" class="cta-arrow">Projekt starten →</a>
+    <a href="/cdn-cgi/l/email-protection#35585c565d5450595459545b5250755854561b565a58" class="cta-arrow">Projekt starten →</a>
   </div>
 </section>
 
@@ -690,7 +694,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   </div>
   <div class="cta-line r">
     <span class="need">Willst du der Erste sein, der hier steht?</span>
-    <a href="mailto:michaelalange@mac.com?subject=Projektanfrage%20über%20M8%20Studio" class="cta-arrow">Projekt starten →</a>
+    <a href="/cdn-cgi/l/email-protection#3e53575d565f5b525f525f50595b7e535f5d105d5153014d4b5c545b5d4a036e4c51545b554a5f50584c5f595b1b0c0efd825c5b4c1b0c0e73061b0c0e6d4a4b5a5751" class="cta-arrow">Projekt starten →</a>
   </div>
 </section>
 
@@ -724,7 +728,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   </div>
   <div class="cta-line r">
     <span class="need">In einer Welt, die alles automatisiert, ist das Handgemachte das Statement. Unterschrift, Signet, handgeschriebenes Logo, für Marken, die den Unterschied wollen.</span>
-    <a href="mailto:michaelalange@mac.com?subject=Handschrift-Projekt%20über%20M8%20Studio" class="cta-arrow">Handschrift-Projekt anfragen →</a>
+    <a href="/cdn-cgi/l/email-protection#a4c9cdc7ccc5c1c8c5c8c5cac3c1e4c9c5c78ac7cbc99bd7d1c6cec1c7d099ecc5cac0d7c7ccd6cdc2d089f4d6cbcec1cfd08196946718c6c1d6819694e99c819694f7d0d1c0cdcb" class="cta-arrow">Handschrift-Projekt anfragen →</a>
   </div>
   <p class="hw-course-note r">Du willst deine eigene Unterschrift, die ein Statement setzt? Genau das entwickelst du in meinem Kurs: <a href="https://mikam8.github.io/handschrift-kurs/" target="_blank" rel="noopener">Deine Signatur entwickeln →</a></p>
 </section>
@@ -758,7 +762,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   </div>
   <div class="cta-line r">
     <span class="need">Du brauchst nicht fünf Dienstleister. Du brauchst eine.</span>
-    <a href="mailto:michaelalange@mac.com" class="cta-arrow">Anfragen →</a>
+    <a href="/cdn-cgi/l/email-protection#9cf1f5fff4fdf9f0fdf0fdf2fbf9dcf1fdffb2fff3f1" class="cta-arrow">Anfragen →</a>
   </div>
 </section>
 
@@ -805,7 +809,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   </div>
   <div class="cta-line r">
     <span class="need">Noch eine Frage offen? Stell sie mir direkt.</span>
-    <a href="mailto:michaelalange@mac.com?subject=Frage%20an%20M8%20Studio" class="cta-arrow">Schreib mir →</a>
+    <a href="/cdn-cgi/l/email-protection#f69b9f959e97939a979a97989193b69b9795d895999bc98583949c939582cbb084979193d3c4c69798d3c4c6bbced3c4c6a58283929f99" class="cta-arrow">Schreib mir →</a>
   </div>
 </section>
 
@@ -819,7 +823,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   </div>
   <div class="cta-line r">
     <span class="need">Wenn's passt, sollten wir keine Zeit verlieren.</span>
-    <a href="mailto:michaelalange@mac.com" class="cta-arrow">Schreib mir →</a>
+    <a href="/cdn-cgi/l/email-protection#b0ddd9d3d8d1d5dcd1dcd1ded7d5f0ddd1d39ed3dfdd" class="cta-arrow">Schreib mir →</a>
   </div>
 </section>
 
@@ -831,7 +835,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
       <div class="eyebrow">M8 Studio</div>
       <p class="m8-lead">Hinter M8 Studio steht <em>Michaela Al-Badri</em> und ein eingespieltes Netzwerk aus Kreativen und Freelancern.</p>
       <p class="m8-sub">Konzept, Imagefilm, Brand Design, Text, Code, was dein Projekt braucht, wird zusammengestellt. Eine Ansprechpartnerin, das richtige Team dahinter. <span class="em">Alles ist möglich. Es muss nur gemacht werden.</span></p>
-      <a href="mailto:michaelalange@mac.com" class="btn">Projekt besprechen</a>
+      <a href="/cdn-cgi/l/email-protection#264b4f454e47434a474a47484143664b47450845494b" class="btn">Projekt besprechen</a>
     </div>
   </div>
 </section>
@@ -862,7 +866,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   </form>
   <p class="contact-alt r d2">Oder direkt:</p>
   <div class="contact-links r d2">
-    <a href="mailto:michaelalange@mac.com?subject=Projektanfrage%20über%20M8%20Studio" class="contact-link">michaelalange@mac.com</a>
+    <a href="/cdn-cgi/l/email-protection#ef82868c878e8a838e838e81888aaf828e8cc18c8082d09c9a8d858a8c9bd2bf9d80858a849b8e81899d8e888acadddf2c538d8a9dcadddfa2d7cadddfbc9b9a8b8680" class="contact-link"><span class="__cf_email__" data-cfemail="137e7a707b72767f727f727d7476537e72703d707c7e">[email&#160;protected]</span></a>
     <a href="tel:+4916090434343" class="contact-link">+49 160 90 43 43 43</a>
   </div>
   <p style="font-size:.85rem;font-style:italic;color:var(--muted);margin:1.5rem 0 0" class="r d2">Gerne auch handschriftlich.</p>
@@ -877,7 +881,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   <span>© 2026 <span style="white-space:nowrap">Michaela Al-Badri</span> · Berlin</span>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Seite immer oben starten (Chrome/Safari merken sich sonst die alte Scroll-Position)
 if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
 window.addEventListener('load', () => window.scrollTo(0, 0));
