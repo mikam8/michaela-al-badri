@@ -59,10 +59,8 @@
   "makesOffer": { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kreative Markenarbeit", "description": "Konzept, Brand Design, Logos, Kampagnen, Imagefilme und Handschrift, projektbasiert abgerechnet. Du bezahlst nicht die Zeit, du bezahlst das Ergebnis." } }
 }
 </script>
-<!-- Typo-System: Fraunces (Serif, Display+Text) + Inter (Sans, Labels) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Typo-System selbst gehostet (Fraunces + Inter) – DSGVO-konform, keine externen Font-Requests -->
+<link rel="stylesheet" href="assets/fonts.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root { --black: #070707; --white: #f0ece3; --gold: #FFE300; --grey: #111; --mid: #222; --muted: #666; --pad: clamp(2rem, 6vw, 6rem); }
@@ -170,6 +168,13 @@ body { background: var(--black); color: var(--white); font-family: 'Fraunces','G
 /* Imagefilm-Referenz: normale Kartengröße wie die anderen */
 .case-embed { position: relative; aspect-ratio: 16 / 9; background: #000; line-height: 0; }
 .case-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+/* YouTube 2-Klick-Fassade (DSGVO: lädt erst nach Klick) */
+.yt-facade { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; cursor: pointer; background: #000 center/cover no-repeat; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.9rem; padding: 1rem; }
+.yt-facade::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.3); transition: background 0.25s; }
+.yt-facade:hover::before { background: rgba(0,0,0,0.12); }
+.yt-play { position: relative; z-index: 1; width: 64px; height: 64px; border-radius: 50%; background: var(--gold); color: var(--black); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; padding-left: 4px; transition: transform 0.2s; }
+.yt-facade:hover .yt-play { transform: scale(1.08); }
+.yt-consent { position: relative; z-index: 1; font-family:'Inter','Helvetica Neue',Arial,sans-serif; font-size: 0.6rem; letter-spacing: 0.03em; line-height: 1.4; color: rgba(240,236,227,0.92); background: rgba(7,7,7,0.65); padding: 0.35rem 0.7rem; max-width: 92%; text-align: center; }
 
 /* KUNDENSTIMMEN (Social Proof) */
 .is-hidden { display: none !important; }
@@ -592,7 +597,10 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
 
     <div class="case-card case-video">
       <div class="case-embed">
-        <iframe src="https://www.youtube.com/embed/Pc7sjBYYglc" title="Capital Baustoffe · Imagefilm von Michaela Al-Badri" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <button type="button" class="yt-facade" data-id="Pc7sjBYYglc" style="background-image:url(assets/imagefilm-poster.jpg)" aria-label="Imagefilm abspielen, lädt YouTube">
+          <span class="yt-play" aria-hidden="true">▶</span>
+          <span class="yt-consent">Mit Klick lädt das Video von YouTube. Es gelten Googles Datenschutzbestimmungen.</span>
+        </button>
       </div>
       <div class="case-cap">
         <div class="case-cap-top"><span class="case-name">Capital Baustoffe</span><span class="case-kind">Imagefilm</span></div>
@@ -738,7 +746,7 @@ body.nav-open .nav-overlay { opacity: 1; pointer-events: auto; }
   <h2 class="cases-title r" style="margin-bottom:1.1rem">Sind wir auf einer Wellenlänge?</h2>
   <p class="cases-note r">Ein paar ehrliche Fragen, ganz persönlich. Danach hast du ein Gefühl dafür, wie ich ticke und ob wir zusammenpassen.</p>
   <div class="quiz-embed r">
-    <iframe id="quizFrame" src="quiz.html?v=3" title="Lernen wir uns kennen, das Quiz" scrolling="no"></iframe>
+    <iframe id="quizFrame" src="quiz.html?v=3" title="Lernen wir uns kennen, das Quiz" scrolling="no" loading="lazy"></iframe>
   </div>
   <div class="cta-line r">
     <span class="need">Wenn's passt, sollten wir keine Zeit verlieren.</span>
@@ -899,6 +907,20 @@ if (toTop) {
     window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
   });
 }
+
+// YouTube 2-Klick: Video erst nach Klick laden (DSGVO)
+document.querySelectorAll('.yt-facade').forEach(f => {
+  f.addEventListener('click', () => {
+    const ifr = document.createElement('iframe');
+    ifr.src = 'https://www.youtube.com/embed/' + f.dataset.id + '?autoplay=1&rel=0';
+    ifr.title = 'Capital Baustoffe · Imagefilm';
+    ifr.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    ifr.referrerPolicy = 'strict-origin-when-cross-origin';
+    ifr.allowFullscreen = true;
+    ifr.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0';
+    f.replaceWith(ifr);
+  });
+});
 
 // Budget-Qualifier: baut beim Absenden eine vorausgefüllte Mail (kein Backend nötig)
 (function(){
